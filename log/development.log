@@ -717,3 +717,12 @@ Processing by CountriesController#index as HTML
 Completed 200 OK in 28ms (Views: 15.1ms | ActiveRecord: 11.0ms)
 
 
+Started GET "/api/countries" for ::1 at 2019-03-23 15:28:57 -0700
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/douglaslawrence/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by CountriesController#index as HTML
+  [1m[36mCountry Load (1.5ms)[0m  [1m[34mSELECT "countries".* FROM "countries"[0m
+  ↳ app/controllers/countries_controller.rb:8
+Completed 200 OK in 24ms (Views: 13.4ms | ActiveRecord: 9.9ms)
+
+
