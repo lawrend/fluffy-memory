@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_23_215414) do
+ActiveRecord::Schema.define(version: 2019_03_28_095321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,21 @@ ActiveRecord::Schema.define(version: 2019_03_23_215414) do
     t.index ["year_id"], name: "index_country_years_on_year_id"
   end
 
+  create_table "species", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "species_years", force: :cascade do |t|
+    t.bigint "species_id"
+    t.bigint "year_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["species_id"], name: "index_species_years_on_species_id"
+    t.index ["year_id"], name: "index_species_years_on_year_id"
+  end
+
   create_table "years", force: :cascade do |t|
     t.integer "year"
     t.datetime "created_at", null: false
@@ -68,4 +83,6 @@ ActiveRecord::Schema.define(version: 2019_03_23_215414) do
 
   add_foreign_key "country_years", "countries"
   add_foreign_key "country_years", "years"
+  add_foreign_key "species_years", "species"
+  add_foreign_key "species_years", "years"
 end

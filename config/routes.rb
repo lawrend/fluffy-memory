@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :species_years
+  resources :species
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
