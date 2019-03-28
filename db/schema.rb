@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_28_095321) do
+ActiveRecord::Schema.define(version: 2019_03_28_112351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,31 @@ ActiveRecord::Schema.define(version: 2019_03_28_095321) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "contract_years", force: :cascade do |t|
+    t.bigint "contracts_id"
+    t.bigint "years_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contracts_id"], name: "index_contract_years_on_contracts_id"
+    t.index ["years_id"], name: "index_contract_years_on_years_id"
+  end
+
+  create_table "contracts", force: :cascade do |t|
+    t.string "award_ID_PIID"
+    t.string "funding_agency"
+    t.string "funding_sub_agency"
+    t.string "funding_office"
+    t.text "award_description"
+    t.string "recipient_name"
+    t.string "recipient_parent_name"
+    t.string "recipient_state"
+    t.integer "recipient_congressional_district"
+    t.string "naics_description"
+    t.float "award"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "countries", force: :cascade do |t|
@@ -81,6 +106,8 @@ ActiveRecord::Schema.define(version: 2019_03_28_095321) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "contract_years", "contracts", column: "contracts_id"
+  add_foreign_key "contract_years", "years", column: "years_id"
   add_foreign_key "country_years", "countries"
   add_foreign_key "country_years", "years"
   add_foreign_key "species_years", "species"

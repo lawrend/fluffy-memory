@@ -12,5 +12,3 @@ class SpeciesYear < ApplicationRecord
 
 end
 
-# https://public.enigma.com/api/datasets/f2778fbc-47fd-45e3-a01a-936040650096
-# f2778fbc-47fd-45e3-a01a-936040650096

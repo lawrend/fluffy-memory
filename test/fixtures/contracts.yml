@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  award_ID_PIID: MyString
+  funding_agency: MyString
+  funding_sub_agency: MyString
+  funding_office: MyString
+  award_description: MyText
+  recipient_name: MyString
+  recipient_parent_name: MyString
+  recipient_state: MyString
+  recipient_congressional_district: 1
+  naics_description: MyString
+  award: 1.5
+
+two:
+  award_ID_PIID: MyString
+  funding_agency: MyString
+  funding_sub_agency: MyString
+  funding_office: MyString
+  award_description: MyText
+  recipient_name: MyString
+  recipient_parent_name: MyString
+  recipient_state: MyString
+  recipient_congressional_district: 1
+  naics_description: MyString
+  award: 1.5

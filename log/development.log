@@ -2473,3 +2473,45 @@ Processing by SpeciesYearsController#index as HTML
 Completed 200 OK in 514ms (Views: 0.1ms | ActiveRecord: 0.0ms)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7374330251178467430)[0m
+  ↳ /Users/douglaslawrence/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/douglaslawrence/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateContracts (20190328112155)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/douglaslawrence/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "contracts" ("id" bigserial primary key, "award_ID_PIID" character varying, "funding_agency" character varying, "funding_sub_agency" character varying, "funding_office" character varying, "award_description" text, "recipient_name" character varying, "recipient_parent_name" character varying, "recipient_state" character varying, "recipient_congressional_district" integer, "naics_description" character varying, "award" float, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190328112155_create_contracts.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190328112155"]]
+  ↳ /Users/douglaslawrence/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/douglaslawrence/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateContractYears (20190328112351)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/douglaslawrence/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "contract_years" ("id" bigserial primary key, "contracts_id" bigint, "years_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_206f7164cd"
+FOREIGN KEY ("contracts_id")
+  REFERENCES "contracts" ("id")
+, CONSTRAINT "fk_rails_f3e9078584"
+FOREIGN KEY ("years_id")
+  REFERENCES "years" ("id")
+)[0m
+  ↳ db/migrate/20190328112351_create_contract_years.rb:3
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_contract_years_on_contracts_id" ON "contract_years"  ("contracts_id")[0m
+  ↳ db/migrate/20190328112351_create_contract_years.rb:3
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_contract_years_on_years_id" ON "contract_years"  ("years_id")[0m
+  ↳ db/migrate/20190328112351_create_contract_years.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190328112351"]]
+  ↳ /Users/douglaslawrence/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/douglaslawrence/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/douglaslawrence/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/douglaslawrence/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/douglaslawrence/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7374330251178467430)[0m
+  ↳ /Users/douglaslawrence/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/douglaslawrence/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273

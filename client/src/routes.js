@@ -5,6 +5,7 @@ import Home from './components/Home.js'
 import ErrorRoute from './components/ErrorRoute';
 import CountryData from './containers/CountryData.js';
 import SpeciesData from './containers/SpeciesData.js';
+import ContractData from './containers/ContractData.js';
 // import SongSearchBar from './containers/SongSearchBar.js';
 // import SongSpecifics from './components/SongSpecifics.js';
 // import SongOfTheDayContainer from './containers/SongOfTheDayContainer.js';
@@ -16,6 +17,7 @@ class Routes extends Component {
         <Route exact path="/" component={Home} />
         <Route exact path="/country-data" component={CountryData} />
         <Route exact path="/species-data" component={SpeciesData} />
+        <Route exact path="/contract-data" component={ContractData} />
         <Route component={ErrorRoute} />
       </Switch>
       )
