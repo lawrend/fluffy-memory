@@ -1,9 +1,9 @@
-class SpeciesYearsController < ApplicationController
+class SpeciesYearsController < ApiController
   before_action :set_species_year, only: [:show, :update, :destroy]
 
   # GET /species_years
   def index
-    @species_years = SpeciesYear.all
+    @species_years = SpeciesYear.get_enigma_collections
 
     render json: @species_years
   end
