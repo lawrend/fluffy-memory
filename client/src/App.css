@@ -1,0 +1,14 @@
+.App {
+  padding-top: 7em; 
+  padding-bottom: 7em;
+  text-align: center;
+  background-image : 
+    radial-gradient(
+      circle at top center,
+      #fdfffc, #81f18d);
+  color: #314;
+  font-family: "Roboto", "Oxygen", "Helvetica Neue", sans-serif;
+  min-height: 100vh;
+}
+
+
