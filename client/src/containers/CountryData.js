@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import CountryItem from '../containers/CountryData.js'
 
 class CountryData extends Component {
   render(){
     return(
-      <div>This is the CountryData</div>
+      <div>
+          this is the country item container
+        <CountryItem />
+      </div>
     )
   }
 }

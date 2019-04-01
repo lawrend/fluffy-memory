@@ -1,4 +1,4 @@
-class ContractYearsController < ApplicationController
+class ContractYearsController < ApiController
   before_action :set_contract_year, only: [:show, :update, :destroy]
 
   # GET /contract_years

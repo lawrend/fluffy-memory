@@ -1,9 +1,10 @@
-class ContractsController < ApplicationController
+class ContractsController < ApiController
   before_action :set_contract, only: [:show, :update, :destroy]
 
   # GET /contracts
   def index
-    @contracts = Contract.all
+    @contracts = Contract.get_enigma_collections
+    # @contracts = Contract.all
 
     render json: @contracts
   end

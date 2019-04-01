@@ -3,8 +3,7 @@ class CountriesController < ApiController
 
   # GET /countries
   def index
-    @countries = Country.get_enigma_collections
-    # @countries = Country.all
+    @countries = Country.all
 
     render json: @countries
   end
