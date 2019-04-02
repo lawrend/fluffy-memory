@@ -1,10 +1,10 @@
 class SpeciesController < ApiController
-  include ApiHelper
 
   before_action :set_species, only: [:show, :update, :destroy]
 
   # GET /species
   def index
+    # @species = Species.get_enigma_collections
     @species = Species.get_enigma_dataset("f2778fbc-47fd-45e3-a01a-936040650096")
     # @species = Species.all
 
