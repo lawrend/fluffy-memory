@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   scope '/api' do
-    resources :countries, :country_years, :years, :species, :species_years, :contracts, :contract_years
+    resources :countries, :country_years, :years, :species, :contracts, :contract_years
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '*path', to: "application#fallback_index_html", constraints: ->(request) do

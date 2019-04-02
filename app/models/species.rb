@@ -1,6 +1,4 @@
 class Species < ApplicationRecord
-  has_many :species_years
-  has_many :years, through: :species_years
 
   def self.get_enigma_collections
     conn = Faraday.new "https://public.enigma.com/api/"
