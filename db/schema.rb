@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_03_015922) do
+ActiveRecord::Schema.define(version: 2019_04_03_234619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,50 +41,6 @@ ActiveRecord::Schema.define(version: 2019_04_03_015922) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "contract_years", force: :cascade do |t|
-    t.bigint "contracts_id"
-    t.bigint "years_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["contracts_id"], name: "index_contract_years_on_contracts_id"
-    t.index ["years_id"], name: "index_contract_years_on_years_id"
-  end
-
-  create_table "contracts", force: :cascade do |t|
-    t.string "award_ID_PIID"
-    t.string "funding_agency"
-    t.string "funding_sub_agency"
-    t.string "funding_office"
-    t.text "award_description"
-    t.string "recipient_name"
-    t.string "recipient_parent_name"
-    t.string "recipient_state"
-    t.integer "recipient_congressional_district"
-    t.string "naics_description"
-    t.float "award"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "countries", force: :cascade do |t|
-    t.string "name"
-    t.string "currency"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "isocode"
-  end
-
-  create_table "country_years", force: :cascade do |t|
-    t.bigint "country_id"
-    t.bigint "year_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "population"
-    t.integer "usd_exchange_rate"
-    t.index ["country_id"], name: "index_country_years_on_country_id"
-    t.index ["year_id"], name: "index_country_years_on_year_id"
-  end
-
   create_table "locations", force: :cascade do |t|
     t.string "loc"
     t.string "state"
@@ -101,25 +57,15 @@ ActiveRecord::Schema.define(version: 2019_04_03_015922) do
     t.string "status"
   end
 
-  create_table "species_years", force: :cascade do |t|
+  create_table "species_locations", force: :cascade do |t|
     t.bigint "species_id"
-    t.bigint "year_id"
+    t.bigint "location_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["species_id"], name: "index_species_years_on_species_id"
-    t.index ["year_id"], name: "index_species_years_on_year_id"
+    t.index ["location_id"], name: "index_species_locations_on_location_id"
+    t.index ["species_id"], name: "index_species_locations_on_species_id"
   end
 
-  create_table "years", force: :cascade do |t|
-    t.integer "year"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_foreign_key "contract_years", "contracts", column: "contracts_id"
-  add_foreign_key "contract_years", "years", column: "years_id"
-  add_foreign_key "country_years", "countries"
-  add_foreign_key "country_years", "years"
-  add_foreign_key "species_years", "species"
-  add_foreign_key "species_years", "years"
+  add_foreign_key "species_locations", "locations"
+  add_foreign_key "species_locations", "species"
 end
