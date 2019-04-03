@@ -13,13 +13,12 @@ class SpeciesController < ApiController
     # @fields = @species['table_rows']['fields']
     # render json: @fields
     @rows = @species['table_rows']['rows']
-    @names = @rows.collect {|r| r[1,3]}
-    @just_names = @names.collect {|r| r[0]}
-    @names.each {|n| Species.find_or_create_by(name: n[0], status: n[1], location: n[2])}
+    @names = @rows.collect {|r| r[1,5]}
+    @names.each {|n| Species.find_or_create_by(name: n[0], status: n[1] )}
+    @names.each {|n| Location.find_or_create_by(loc: n[2], state: n[3], other_states: n[4])}
     # @names.each {|n| Species.create(name: [0])}
     # render json: @rows
-    # render json: @names
-    render json: @just_names 
+    render json: @names
     
   end
 
