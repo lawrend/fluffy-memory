@@ -1,6 +1,8 @@
 class Species < ApplicationRecord
   include Enigma
 
+  # Would make more sense to create one record per species and maybe make location another model
+
   # def self.get_enigma_collections
   #   conn = Faraday.new "https://public.enigma.com/api/"
   #   resp = conn.get("datasets/f2778fbc-47fd-45e3-a01a-936040650096") do |req|

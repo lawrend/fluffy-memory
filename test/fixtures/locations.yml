@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  loc: MyString
+  state: MyString
+  other_states: MyString
+
+two:
+  loc: MyString
+  state: MyString
+  other_states: MyString
