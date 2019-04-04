@@ -19,8 +19,8 @@ class App extends Component {
               Home
             </Menu.Item>
 
-            <Menu.Item href="/country-data" >
-             Country Data
+            <Menu.Item href="/species-data" >
+                Species Data
             </Menu.Item>
             <Menu.Item href="#" >
               Another thing to do

@@ -4,27 +4,21 @@ class SpeciesController < ApiController
 
   # GET /species
   def index
-    # @species = Species.get_enigma_collections
-    @species = Species.get_enigma_dataset("f2778fbc-47fd-45e3-a01a-936040650096")
-    # @species = Species.all
+    if Species.all.count > 2
+      @species = Species.all
+      render json: @species
+    else
+      @species = Species.get_enigma_dataset("f2778fbc-47fd-45e3-a01a-936040650096")
+      @rows = @species['table_rows']['rows']
+      @names = @rows.collect {|r| r[1,5]}
+      @names.each do |n| 
+        @species = Species.find_or_create_by(name: n[0], status: n[1] )
+        @location = Location.find_or_create_by(loc: n[2], state: n[3], other_states: n[4])
+        SpeciesLocation.find_or_create_by(species_id: @species.id, location_id: @location.id)
+      end
 
-    # render json: @species
-
-    # @fields = @species['table_rows']['fields']
-    # render json: @fields
-    @rows = @species['table_rows']['rows']
-    @names = @rows.collect {|r| r[1,5]}
-    @names.each do |n| 
-      species = Species.find_or_create_by(name: n[0], status: n[1] )
-      location = Location.find_or_create_by(loc: n[2], state: n[3], other_states: n[4])
-
+      render json: @names
     end
-    # @names.each {|n| Species.find_or_create_by(name: n[0], status: n[1] )}
-    # @names.each {|n| Location.find_or_create_by(loc: n[2], state: n[3], other_states: n[4])}
-    # @names.each {|n| Species.create(name: [0])}
-    # render json: @rows
-    render json: @names
-    
   end
 
   # GET /species/1
@@ -58,13 +52,13 @@ class SpeciesController < ApiController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_species
-      @species = Species.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_species
+    @species = Species.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def species_params
-      params.require(:species).permit(:name, :location)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def species_params
+    params.require(:species).permit(:name, :location)
+  end
 end
