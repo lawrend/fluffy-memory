@@ -62,3 +62,6 @@ class SpeciesController < ApiController
     params.require(:species).permit(:name, :location)
   end
 end
+
+# for wikipedia queries use:
+#     en.wikipedia.org/w/index.php?title=TERM

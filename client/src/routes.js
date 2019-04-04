@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import { Route, withRouter, Switch } from 'react-router-dom';
 import Home from './components/Home.js'
 import ErrorRoute from './components/ErrorRoute';
-import SpeciesData from './containers/SpeciesData.js';
+import SpeciesData from './components/SpeciesData.js';
+import SpeciesForm from './containers/SpeciesForm.js';
 // import SongSearchBar from './containers/SongSearchBar.js';
 // import SongSpecifics from './components/SongSpecifics.js';
 // import SongOfTheDayContainer from './containers/SongOfTheDayContainer.js';
@@ -13,6 +14,7 @@ class Routes extends Component {
     return (
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/species-form" component={SpeciesForm} />
         <Route exact path="/species-data" component={SpeciesData} />
         <Route component={ErrorRoute} />
       </Switch>

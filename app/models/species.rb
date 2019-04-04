@@ -1,6 +1,9 @@
 class Species < ApplicationRecord
   include Enigma
 
+  has_many :species_locations
+  has_many :locations, through: :species_locations
+
   # Would make more sense to create one record per species and maybe make location another model
 
   # def self.get_enigma_collections
