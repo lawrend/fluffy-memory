@@ -15,7 +15,6 @@ class Routes extends Component {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/species-form" component={SpeciesForm} />
-        <Route exact path="/species-data" component={SpeciesData} />
         <Route component={ErrorRoute} />
       </Switch>
       )
