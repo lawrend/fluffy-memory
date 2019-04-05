@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { Route, withRouter, Switch } from 'react-router-dom';
 import Home from './components/Home.js'
 import ErrorRoute from './components/ErrorRoute';
-import SpeciesData from './components/SpeciesData.js';
 import SpeciesForm from './containers/SpeciesForm.js';
 // import SongSearchBar from './containers/SongSearchBar.js';
 // import SongSpecifics from './components/SongSpecifics.js';
