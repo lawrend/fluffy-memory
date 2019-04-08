@@ -3,8 +3,9 @@ class SpeciesController < ApiController
   before_action :set_species, only: [:show, :update, :destroy]
 
   # GET /species
+  # either get all the species/locations records or make them
   def index
-    if Species.all.count > 2
+    if Species.all.count > 1
       @species = Species.all
       render json: @species
     else

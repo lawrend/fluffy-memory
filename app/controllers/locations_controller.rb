@@ -3,9 +3,21 @@ class LocationsController < ApiController
 
   # GET /locations
   def index
-    @locations = Location.all
+    if Locations.all.count > 1
+      @locations = Locations.all
+      render json: @locations
+    else
+      @locations = Locations.get_enigma_dataset("f2778fbc-47fd-45e3-a01a-936040650096")
+      @rows = @locations['table_rows']['rows']
+      @names = @rows.collect {|r| r[1,5]}
+      @names.each do |n| 
+        @species = Species.find_or_create_by(name: n[0], status: n[1] )
+        @location = Location.find_or_create_by(loc: n[2], state: n[3], other_states: n[4])
+        SpeciesLocation.find_or_create_by(species_id: @species.id, location_id: @location.id)
+      end
 
-    render json: @locations
+      render json: @names
+    end
   end
 
   # GET /locations/1
@@ -39,13 +51,13 @@ class LocationsController < ApiController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_location
-      @location = Location.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_location
+    @location = Location.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def location_params
-      params.require(:location).permit(:loc, :state, :other_states)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def location_params
+    params.require(:location).permit(:loc, :state, :other_states)
+  end
 end
