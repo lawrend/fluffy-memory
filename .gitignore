@@ -20,6 +20,9 @@
 .env
 /tmp
 /tmp/cache
+/tmp/development_secret.txt
+
+./log
 /log
 
 npm-debug.log*
