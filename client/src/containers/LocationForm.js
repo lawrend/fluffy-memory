@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import LocationData from '../components/LocationData.js';
+import { Card, Divider } from 'semantic-ui-react';
 import axios from 'axios';
 
 class LocationForm extends Component {
@@ -20,7 +21,10 @@ class LocationForm extends Component {
     return(
       <div>
           this is the location data container
+        <Divider />
+        <Card.Group centered>
         <LocationData locations={this.state.locations}/>
+      </Card.Group>
       </div>
     )
   }

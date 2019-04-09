@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SpeciesData from '../components/SpeciesData.js';
 import axios from 'axios';
+import { Card, Divider } from 'semantic-ui-react';
 
 class SpeciesForm extends Component {
   state = {
@@ -19,10 +20,13 @@ class SpeciesForm extends Component {
     console.log(this.state.species)
     return(
       <div>
+        <Divider />
           this is the species data container
-        <SpeciesData species={this.state.species}/>
+        <Card.Group centered>
+          <SpeciesData species={this.state.species}/>
+        </Card.Group>
       </div>
-    )
+        )
   }
 }
 
