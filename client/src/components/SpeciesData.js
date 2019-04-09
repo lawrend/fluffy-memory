@@ -6,6 +6,7 @@ const SpeciesData = (props) => {
     <SpeciesItem name={spec.name} key={spec.id}/>)
 };
 
+
 export default SpeciesData
 // class SpeciesData extends Component {
 //   render(){

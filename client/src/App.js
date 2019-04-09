@@ -22,8 +22,8 @@ class App extends Component {
             <Menu.Item href="/species-form" >
                 Species Data
             </Menu.Item>
-            <Menu.Item href="#" >
-              Another thing to do
+            <Menu.Item href="/location-form" >
+                Location Data
             </Menu.Item>
 
             <Menu.Item href="https://developer.spotify.com"

@@ -7,3 +7,4 @@ export default props => (
     <Divider/>
   </div>
 )
+

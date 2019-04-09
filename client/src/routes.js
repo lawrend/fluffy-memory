@@ -5,6 +5,8 @@ import Home from './components/Home.js'
 import ErrorRoute from './components/ErrorRoute';
 import SpeciesForm from './containers/SpeciesForm.js';
 import LocationForm from './containers/LocationForm.js';
+import LocationDetail from './components/LocationDetail.js';
+import SpeciesDetail from './components/SpeciesDetail.js';
 
 class Routes extends Component {
   render() {
@@ -12,10 +14,12 @@ class Routes extends Component {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/species-form" component={SpeciesForm} />
-<Route exact path="/location-form" component={LocationForm} />
+        <Route exact path="/location-form" component={LocationForm} />
+        <Route path="/location-detail/:id" component={LocationDetail} />
+        <Route path="/species-detail/:id" component={SpeciesDetail} />
         <Route component={ErrorRoute} />
       </Switch>
-      )
+        )
 }
 };
 

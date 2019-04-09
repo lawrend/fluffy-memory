@@ -1,7 +1,8 @@
 class LocationsController < ApiController
-  before_action :set_location, only: [:show, :update, :destroy]
+  before_action :set_location, only: [:show ]
 
   # GET /locations
+  # either get all the species/locations records or make them
   def index
     if Location.all.count > 1
       @locations = Location.all
@@ -37,18 +38,18 @@ class LocationsController < ApiController
   end
 
   # PATCH/PUT /locations/1
-  def update
-    if @location.update(location_params)
-      render json: @location
-    else
-      render json: @location.errors, status: :unprocessable_entity
-    end
-  end
+  # def update
+  #   if @location.update(location_params)
+  #     render json: @location
+  #   else
+  #     render json: @location.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   # DELETE /locations/1
-  def destroy
-    @location.destroy
-  end
+  # def destroy
+  #   @location.destroy
+  # end
 
   private
   # Use callbacks to share common setup or constraints between actions.

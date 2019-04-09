@@ -1,6 +1,6 @@
 class SpeciesController < ApiController
 
-  before_action :set_species, only: [:show, :update, :destroy]
+  before_action :set_species, only: [:show ]
 
   # GET /species
   # either get all the species/locations records or make them
@@ -39,18 +39,18 @@ class SpeciesController < ApiController
   end
 
   # PATCH/PUT /species/1
-  def update
-    if @species.update(species_params)
-      render json: @species
-    else
-      render json: @species.errors, status: :unprocessable_entity
-    end
-  end
+  # def update
+  #   if @species.update(species_params)
+  #     render json: @species
+  #   else
+  #     render json: @species.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   # DELETE /species/1
-  def destroy
-    @species.destroy
-  end
+  # def destroy
+  #   @species.destroy
+  # end
 
   private
   # Use callbacks to share common setup or constraints between actions.

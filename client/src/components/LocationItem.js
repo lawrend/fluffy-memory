@@ -5,3 +5,4 @@ export default props => (
       Name: {props.loc}
   </div>
 )
+
