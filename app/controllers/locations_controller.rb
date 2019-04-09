@@ -3,11 +3,11 @@ class LocationsController < ApiController
 
   # GET /locations
   def index
-    if Locations.all.count > 1
-      @locations = Locations.all
+    if Location.all.count > 1
+      @locations = Location.all
       render json: @locations
     else
-      @locations = Locations.get_enigma_dataset("f2778fbc-47fd-45e3-a01a-936040650096")
+      @locations = Location.get_enigma_dataset("f2778fbc-47fd-45e3-a01a-936040650096")
       @rows = @locations['table_rows']['rows']
       @names = @rows.collect {|r| r[1,5]}
       @names.each do |n| 

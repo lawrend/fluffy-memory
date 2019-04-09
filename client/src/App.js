@@ -19,7 +19,7 @@ class App extends Component {
               Home
             </Menu.Item>
 
-            <Menu.Item href="/species-data" >
+            <Menu.Item href="/species-form" >
                 Species Data
             </Menu.Item>
             <Menu.Item href="#" >

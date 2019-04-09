@@ -4,3 +4,7 @@ module GoogleMaps
   module ClassMethods
     def get_map(term)
       conn = Faraday.new 
+    end
+  end
+end
+

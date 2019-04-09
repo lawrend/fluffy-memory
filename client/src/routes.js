@@ -4,9 +4,7 @@ import { Route, withRouter, Switch } from 'react-router-dom';
 import Home from './components/Home.js'
 import ErrorRoute from './components/ErrorRoute';
 import SpeciesForm from './containers/SpeciesForm.js';
-// import SongSearchBar from './containers/SongSearchBar.js';
-// import SongSpecifics from './components/SongSpecifics.js';
-// import SongOfTheDayContainer from './containers/SongOfTheDayContainer.js';
+import LocationForm from './containers/LocationForm.js';
 
 class Routes extends Component {
   render() {
@@ -14,6 +12,7 @@ class Routes extends Component {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/species-form" component={SpeciesForm} />
+<Route exact path="/location-form" component={LocationForm} />
         <Route component={ErrorRoute} />
       </Switch>
       )
