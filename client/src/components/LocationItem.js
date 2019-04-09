@@ -7,7 +7,7 @@ export default props => (
     <Card.Content>
       <Card.Header>{props.loc}</Card.Header>
       <Card.Meta>{props.state}</Card.Meta>
-      <Card.Description>This thing in trubbs</Card.Description>
+      <Card.Description>things that live here in trubbs</Card.Description>
     </Card.Content>
   </Card>
 )

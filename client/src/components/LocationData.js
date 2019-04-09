@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import LocationItem from '../components/LocationItem.js'
-import { Card, Divider } from 'semantic-ui-react';
 
 const LocationData = (props) => {
   return props.locations.map(spec =>

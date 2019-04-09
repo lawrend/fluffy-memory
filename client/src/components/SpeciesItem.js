@@ -1,7 +1,12 @@
 import React from 'react';
+import { Card } from 'semantic-ui-react';
 
 export default props => (
-  <div>
+  <Card>
+    <Card.Content>
+      <Card.Header>
       Name: {props.name}
-  </div>
+      </Card.Header>
+    </Card.Content>
+  </Card>
 )
