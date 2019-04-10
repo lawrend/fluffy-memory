@@ -1,6 +1,6 @@
 class SpeciesController < ApiController
 
-  before_action :set_species, only: [:show ]
+  before_action :set_species, only: [:show, :show_loc ]
 
   # GET /species
   # either get all the species/locations records or make them
@@ -16,13 +16,18 @@ class SpeciesController < ApiController
         SpeciesLocation.find_or_create_by(species_id: @animal.id, location_id: @location.id)
       end
     end
-    @species = Species.all
+    @species = Species.all.sort_by{|x| x["name"]}
     render json: @species
   end
+
 
   # GET /species/1
   def show
     render json: @species
+  end
+
+  def show_loc
+    render json: @species.locations
   end
 
   # POST /species

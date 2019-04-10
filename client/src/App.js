@@ -4,12 +4,12 @@ import './App.css';
 import { Menu, Container } from 'semantic-ui-react';
 
 class App extends Component {
-  // componentDidMount() {
-  //   window.fetch('/api/countries')
-  //     .then(response => response.json())
-  //     .then(json => console.log(json))
-  //     .catch(error => console.log(error));
-  // }
+  componentDidMount() {
+    window.fetch('/api/species_loc/20')
+      .then(response => response.json())
+      .then(json => console.log(json))
+      .catch(error => console.log(error));
+  }
   render() {
     return (
       <div className="App" >

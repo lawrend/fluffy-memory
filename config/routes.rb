@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
+  get '/api/species_loc/:id', to: 'species#show_loc'
+  
   scope '/api' do
     resources :years, :species, :locations
   end
