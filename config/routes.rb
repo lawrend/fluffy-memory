@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   get '/api/species_loc/:id', to: 'species#show_loc'
+  get '/api/locations/getmap/:id', to: 'locations#getmap'
   
   scope '/api' do
     resources :years, :species, :locations

@@ -1,5 +1,5 @@
 class LocationsController < ApiController
-  before_action :set_location, only: [:show ]
+  before_action :set_location, only: [:show, :getmap]
 
   # GET /locations
   # either get all the species/locations records or make them
@@ -23,6 +23,12 @@ class LocationsController < ApiController
   def show
     @location_map = Location.get_coordinates(@location.loc) 
     render json: @location_map
+  end
+
+  # GET /locations/getmap/1
+  def getmap
+    @map_location = Location.get_map(@location.lat, @location.long)
+    render json: @map_location
   end
 
   # POST /locations

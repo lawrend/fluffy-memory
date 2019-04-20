@@ -16,8 +16,14 @@ class LocationForm extends Component {
       })
   }
 
-  handleClick(place) {
-    console.log(place)
+  handleClick(id) {
+    axios.get('/api/locations/getmap/' + id)
+      .then(response => {
+        console.log(response)
+      // .then(response => {
+      //   console.log(response.data.results)
+      })
+      .catch(error => console.log(error));
   }
 
   render(){
@@ -27,10 +33,10 @@ class LocationForm extends Component {
           this is the location data container
         <Divider />
         <Card.Group centered>
-        <LocationData handleClick={this.handleClick} locations={this.state.locations}/>
-      </Card.Group>
+          <LocationData handleClick={this.handleClick} locations={this.state.locations}/>
+        </Card.Group>
       </div>
-    )
+        )
   }
 }
 
