@@ -3,7 +3,7 @@ import { Card } from 'semantic-ui-react';
 
 export default props => (
 
-  <Card>
+  <Card onClick={() => props.handleClick(props.loc)}>
     <Card.Content>
       <Card.Header>{props.loc}</Card.Header>
       <Card.Meta>{props.state}</Card.Meta>

@@ -20,8 +20,8 @@ class SpeciesForm extends Component {
     console.log(this.state.species)
     return(
       <div>
-        <Divider />
           this is the species data container
+        <Divider />
         <Card.Group centered>
           <SpeciesData species={this.state.species}/>
         </Card.Group>

@@ -4,8 +4,8 @@ module Maps
   module ClassMethods
     def get_map(name)
       map_name = name.gsub(" ", "+")
-      conn = Faraday.new "https://maps.googleapis.com/maps/api/geocode/json?"
-      resp = conn.get("address= #{map_name}&components=country:US&key=#{ENV['MAPS_KEY']}")
+      conn = Faraday.new "https://maps.googleapis.com/maps/api/"
+      resp = conn.get("geocode/json?address= #{map_name}&components=country:US&key=#{ENV['MAPS_KEY']}")
       @place = JSON.parse(resp.body)
     end
   end

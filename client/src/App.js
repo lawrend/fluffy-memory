@@ -5,9 +5,9 @@ import { Menu, Container } from 'semantic-ui-react';
 
 class App extends Component {
   componentDidMount() {
-    window.fetch('/api/species_loc/20')
+    window.fetch('/api/locations/2')
       .then(response => response.json())
-      .then(json => console.log(json))
+      .then(json => console.log(json.results[0]['geometry']))
       .catch(error => console.log(error));
   }
   render() {

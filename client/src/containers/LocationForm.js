@@ -16,6 +16,10 @@ class LocationForm extends Component {
       })
   }
 
+  handleClick(place) {
+    console.log(place)
+  }
+
   render(){
     console.log(this.state.locations)
     return(
@@ -23,7 +27,7 @@ class LocationForm extends Component {
           this is the location data container
         <Divider />
         <Card.Group centered>
-        <LocationData locations={this.state.locations}/>
+        <LocationData handleClick={this.handleClick} locations={this.state.locations}/>
       </Card.Group>
       </div>
     )

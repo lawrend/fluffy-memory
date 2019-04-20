@@ -21,7 +21,8 @@ class LocationsController < ApiController
 
   # GET /locations/1
   def show
-    render json: @location
+    @location_map = Location.get_coordinates(@location.loc) 
+    render json: @location_map
   end
 
   # POST /locations
