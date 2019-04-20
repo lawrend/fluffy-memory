@@ -1,5 +1,5 @@
 class AddLongToLocations < ActiveRecord::Migration[5.2]
   def change
-    add_column :locations, :long, :integer
+    add_column :locations, :long, :float
   end
 end

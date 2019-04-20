@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 2019_04_20_064812) do
     t.string "other_states"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "lat"
-    t.integer "long"
+    t.float "lat"
+    t.float "long"
   end
 
   create_table "species", force: :cascade do |t|

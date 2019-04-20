@@ -27,8 +27,13 @@ class LocationsController < ApiController
 
   # GET /locations/getmap/1
   def getmap
-    @map_location = Location.get_map(@location.lat, @location.long)
-    render json: @map_location
+    @coordinates = Location.get_coordinates(@location.loc)
+    @lat = @coordinates['results'][0]['geometry']['location']['lat']
+    @long = @coordinates['results'][0]['geometry']['location']['lng']
+    @location.lat = @lat
+    @location.long = @long
+    @center = @coordinates['results'][0]['geometry']['location']
+    render json: @center
   end
 
   # POST /locations

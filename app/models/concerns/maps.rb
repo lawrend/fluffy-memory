@@ -9,8 +9,9 @@ module Maps
       @place = JSON.parse(resp.body)
     end
 
-    def get_map(lat, long)
-      j = "get right"
+    def get_map(center)
+
+      
     end
 
   end
