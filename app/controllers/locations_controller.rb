@@ -27,7 +27,7 @@ class LocationsController < ApiController
 
   # GET /locations/getmap/1
   def getmap
-    @coordinates = Location.get_coordinates(@location.loc)
+    @coordinates = Location.get_coordinates(@location.loc) #get_coordinates is Maps concern method 
     @lat = @coordinates['results'][0]['geometry']['location']['lat']
     @long = @coordinates['results'][0]['geometry']['location']['lng']
     @location.lat = @lat

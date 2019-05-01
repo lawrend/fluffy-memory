@@ -28,13 +28,7 @@ class App extends Component {
                 Location Data
             </Menu.Item>
 
-            <Menu.Item href="https://developer.spotify.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              floated='right'>
-              Check out Spotify's API
-            </Menu.Item>
-          </Container>
+            </Container>
         </Menu>
 
       <div id="map1"></div>
