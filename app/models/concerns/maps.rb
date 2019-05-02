@@ -10,6 +10,7 @@ module Maps
     end
 
     def get_map(center)
+      new_map = new google.maps.map(zoom: 4, center: center)
 
       
     end

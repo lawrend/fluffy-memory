@@ -6,19 +6,19 @@ import { Menu, Container } from 'semantic-ui-react';
 class App extends Component {
   componentDidMount() {
     window.fetch('/api/locations/2')
-      // .then(response => console.log("response to json addy ", response.body))
+    // .then(response => console.log("response to json addy ", response.body))
       .then(response => response.json())
       .then(json => console.log('response.json is: ', json))
-      // .then(json => console.log(json.results[0]['geometry']['location']['lat']))
+    // .then(json => console.log(json.results[0]['geometry']['location']['lat']))
       .catch(error => console.log(error));
   }
   render() {
-        return (
+    return (
       <div className="App" >
         <Menu fixed='top' inverted>
           <Container>
             <Menu.Item href="/" header>
-              Home
+                Home
             </Menu.Item>
 
             <Menu.Item href="/species-form" >
@@ -28,18 +28,16 @@ class App extends Component {
                 Location Data
             </Menu.Item>
 
-            </Container>
+          </Container>
         </Menu>
 
-      <div id="map1"></div>
+        <div id="map1"></div>
         <Container>
           <Routes />
         </Container>
- <script async defer src="https://maps.googleapis.com/maps/api/js?key=#{ENV['MAPS_KEY']}&callback=initMap"> type="text/javascript"></script>
-
 
       </div>
-      );
+        );
   }
 
 }
