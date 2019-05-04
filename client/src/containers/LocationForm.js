@@ -4,29 +4,25 @@ import { Card, Divider } from 'semantic-ui-react';
 import axios from 'axios';
 import {MAPS_KEY} from '../config.js';
 
-const MAPS_API_KEY = MAPS_KEY;
-console.log(MAPS_API_KEY);
+const loadScript = () => {
+  var script  = document.createElement("script");
+  // script.defer = true;
+  script.async = true;
+  script.type = "text/javascript";
+  script.src  = "http://maps.googleapis.com/maps/api/js?key=" + MAPS_KEY + "&callback=initMap";
+  let firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(script, firstScriptTag);
+  console.log("loadScript was called");
+};
+
 //FUNCTION TO LOAD THE GOOGLE MAPS API
 //
 
-// <script async defer src="https://maps.googleapis.com/maps/api/js?key=#{ENV['MAPS_KEY']}&callback=initMap"> type="text/javascript"></script>
+// let map = new google.maps.Map(document.getElementById('map1'), {
+//   center: center,
+//   zoom: 8
+// });
 
-
-const initMap = center => {
-  // let one_map = new google.maps.Map(document.getElementById('map1'), {
-  //   center: center,
-  //   zoom: 8
-  // })
-  console.log("initMap was called and this is center: ", center)
-}
-
-const loadScript = () => {
-    var script  = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "http://maps.googleapis.com/maps/api/js?key=" + MAPS_API_KEY + "&callback=initMap";
-  console.log(script.src);
-    document.body.appendChild(script);
-  }
 
 class LocationForm extends Component {
   state = {
@@ -35,44 +31,37 @@ class LocationForm extends Component {
 
 
   componentDidMount() {
+    loadScript();
     axios.get('/api/locations')
       .then(resp => {
         const locations = resp.data;
         this.setState({locations})
       })
-
   }
-
-  // let map = new google.maps.Map(document.getElementById('map1'), {
-  //   center: center,
-  //   zoom: 8
-  // });
-
 
 
   handleClick(id) {
+    let map;
+    function initMap(center) {
+      let mapOptions = {
+        zoom: 8,
+        center: center,
+      }
+      // map = new google.maps.Map(document.getElementById('map1'), mapOptions );
 
-    loadScript();
+      console.log("initMap was called and this is center: ", center)
+    };
 
     let cent = axios.get('/api/locations/getmap/' + id)
       .then(response => {
-        return response
+        console.log(response.data);
+        initMap(response.data);
+        // return response.data;
         // .then(response => {
-        //   console.log(response.data.results)
       })
       .catch(error => console.log(error));
+    // initMap(cent);
 
-    initMap(cent)
-
-    // let mapper = new google.maps.Map(document.getElementById('map1'), {
-    //   center: cent,
-    //   zoom: 8
-    // })
-
-    // let map = new google.maps.Map(document.getElementById('map1'), {
-    //   center: cent,
-    //   zoom: 8,
-    // })
   }
 
   render(){

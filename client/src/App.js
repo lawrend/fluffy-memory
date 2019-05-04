@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import Routes from './routes';
 import './App.css';
 import { Menu, Container } from 'semantic-ui-react';
+import {MAPS_KEY} from './config.js';
 
 class App extends Component {
   componentDidMount() {
-    window.fetch('/api/locations/2')
+    // window.fetch('/api/locations/2')
     // .then(response => console.log("response to json addy ", response.body))
-      .then(response => response.json())
-      .then(json => console.log('response.json is: ', json))
+    // .then(response => response.json())
+    // .then(json => console.log('response.json is: ', json))
     // .then(json => console.log(json.results[0]['geometry']['location']['lat']))
-      .catch(error => console.log(error));
+    // .catch(error => console.log(error));
   }
   render() {
     return (
@@ -31,7 +32,7 @@ class App extends Component {
           </Container>
         </Menu>
 
-        <div id="map1"></div>
+        <div className="maps" id="map1">map?</div>
         <Container>
           <Routes />
         </Container>
