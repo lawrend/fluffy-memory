@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import Routes from './routes';
 import './App.css';
 import { Menu, Container } from 'semantic-ui-react';
-import {MAPS_KEY} from './config.js';
-
+import MapsContainer from './containers/MapsContainer';
 class App extends Component {
   componentDidMount() {
     // window.fetch('/api/locations/2')
