@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Routes from './routes';
 import './App.css';
 import { Menu, Container } from 'semantic-ui-react';
-import MapsContainer from './containers/MapsContainer';
 class App extends Component {
   componentDidMount() {
     // window.fetch('/api/locations/2')
@@ -31,7 +30,7 @@ class App extends Component {
           </Container>
         </Menu>
 
-        <div className="maps" id="map1">map?</div>
+        <div className="maps" id="map1"></div>
         <Container>
           <Routes />
         </Container>
