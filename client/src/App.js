@@ -4,6 +4,7 @@ import './App.css';
 import { Menu, Container } from 'semantic-ui-react';
 class App extends Component {
   componentDidMount() {
+    console.log("app component mounted")
     // window.fetch('/api/locations/2')
     // .then(response => console.log("response to json addy ", response.body))
     // .then(response => response.json())
@@ -29,8 +30,6 @@ class App extends Component {
 
           </Container>
         </Menu>
-
-        <div className="maps" id="map1"></div>
         <Container>
           <Routes />
         </Container>

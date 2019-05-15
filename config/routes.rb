@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get '/api/species_loc/:id', to: 'species#show_loc'
   get '/api/locations/getmap/:id', to: 'locations#getmap'
+  get '/api/locations/getspecies/:id', to: 'locations#getspecies'
   
   scope '/api' do
     resources :years, :species, :locations

@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import LocationData from '../components/LocationData.js';
+import SpeciesData from '../components/SpeciesData.js';
 import { Card, Divider } from 'semantic-ui-react';
 import axios from 'axios';
-
+import LocationDetail from '../components/LocationDetail';
 
 class LocationForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      locations: [],
       center: {},
+      selected_location_species: [],
+      locations: [],
     }
     this.handleClick = this.handleClick.bind(this);
   }
@@ -20,6 +22,14 @@ class LocationForm extends Component {
         const locations = resp.data;
         this.setState({locations})
       })
+
+    // axios.get('/api/species')
+    //   .then(resp => {
+    //     const species = resp.data;
+    //     this.setState({species})
+    //   })
+
+
   }
 
   handleClick(id) {
@@ -31,14 +41,24 @@ class LocationForm extends Component {
         )
       })
       .catch(error => console.log(error));
+
+    axios.get('/api/locations/getspecies/' + id )
+      .then(response => {
+        let specs = response.data;
+        this.setState((specs) => {return {...this.state, selected_location_species: response.data}}
+        )
+      })
+      .catch(error => console.log(error));
   }
 
   render(){
+    console.log(this.state.selected_location_species);
     return(
       <div>
           this is the location data container
+        <LocationDetail center={this.state.center} />
+
         <Divider />
-          {this.state.center === {} ? null : <LocationDetail center={this.state.center} />}
         <Card.Group centered>
           <LocationData handleClick={this.handleClick} locations={this.state.locations} center={this.state.center} />
         </Card.Group>

@@ -9,9 +9,6 @@ export class MapsContainer extends React.Component {
         } else {
           return (
             <Map google={this.props.google} zoom={14} center={this.props.center} >
-                <div>
-                  <h1>Map?</h1>
-                </div>
             </Map>
               )
         }

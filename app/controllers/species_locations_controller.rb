@@ -9,8 +9,10 @@ class SpeciesLocationsController < ApplicationController
   end
 
   # GET /species_locations/1
+  # use location id
   def show
-    render json: @species_location
+    @to_be_shown = @species_location.getSpecies
+    render json: @to_be_shown 
   end
 
   # POST /species_locations
