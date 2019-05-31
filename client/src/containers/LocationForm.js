@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import LocationData from '../components/LocationData.js';
 import SpeciesData from '../components/SpeciesData.js';
-import { Card, Divider } from 'semantic-ui-react';
+import { List, Item, Card, Divider } from 'semantic-ui-react';
 import axios from 'axios';
 import LocationDetail from '../components/LocationDetail';
 
@@ -56,13 +56,13 @@ class LocationForm extends Component {
     return(
       <div>
           this is the location data container
+        <div className='maps'>
         <LocationDetail center={this.state.center} />
-
+      </div>
         <Divider />
-        <Card.Group centered>
-          <LocationData handleClick={this.handleClick} locations={this.state.locations} center={this.state.center} />
-        </Card.Group>
-
+          <List>
+          <LocationData handleClick={this.handleClick} locations={this.state.locations} center={this.state.center} selected_location_species={this.selected_location_species}/>
+      </List>
       </div>
         )
   }

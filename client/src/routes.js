@@ -13,11 +13,11 @@ class Routes extends Component {
     return (
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/species-form" component={SpeciesForm} />
-        <Route exact path="/location-form" component={LocationForm} />
-        <Route path="/location-detail/:id" component={LocationDetail} />
-        <Route path="/species-detail/:id" component={SpeciesDetail} />
-        <Route component={ErrorRoute} />
+          <Route path="/species-form" component={SpeciesForm} />
+          <Route exact path="/location-form" component={LocationForm} />
+          <Route path="/location-detail/:id" component={LocationDetail} />
+          <Route path="/species-detail/:id" component={SpeciesDetail} />
+          <Route component={ErrorRoute} />
       </Switch>
         )
 }

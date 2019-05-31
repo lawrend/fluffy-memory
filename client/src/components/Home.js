@@ -1,10 +1,11 @@
 import React from 'react';
-import { Divider } from 'semantic-ui-react';
+import { Container, Divider } from 'semantic-ui-react';
 
 export default props => (
-  <div className="home">
-    <h1>Select from the menu bar above</h1>
-    <Divider/>
+  <div className="landing-page">
+    <Container>
+      <h1>Home Page</h1>
+  </Container>
   </div>
 )
 

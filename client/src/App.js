@@ -1,39 +1,25 @@
 import React, { Component } from 'react';
 import Routes from './routes';
-import './App.css';
+import TopMenu from './containers/menus/TopMenu.js';
+import LeftSideMenu from './containers/menus/LeftSideMenu.js';
 import { Menu, Container } from 'semantic-ui-react';
+
 class App extends Component {
   componentDidMount() {
     console.log("app component mounted")
-    // window.fetch('/api/locations/2')
-    // .then(response => console.log("response to json addy ", response.body))
-    // .then(response => response.json())
-    // .then(json => console.log('response.json is: ', json))
-    // .then(json => console.log(json.results[0]['geometry']['location']['lat']))
-    // .catch(error => console.log(error));
   }
+
   render() {
     return (
       <div className="App" >
-        <Menu fixed='top' inverted>
-          <Container>
-            <Menu.Item href="/" header>
-                Home
-            </Menu.Item>
+          <LeftSideMenu />
 
-            <Menu.Item href="/species-form" >
-                Species Data
-            </Menu.Item>
-            <Menu.Item href="/location-form" >
-                Location Data
-            </Menu.Item>
-
+        <div className="homepage">
+          <TopMenu />
+          <Container >
+            <Routes />
           </Container>
-        </Menu>
-        <Container>
-          <Routes />
-        </Container>
-
+        </div>
       </div>
         );
   }
@@ -41,3 +27,29 @@ class App extends Component {
 }
 
 export default App;
+
+// <div class="ui right fixed vertical menu">
+//   <div class="item">
+//     <img class="ui mini image" src="/images/logo.png">
+//   </div>
+//   <a class="item">Features</a>
+//   <a class="item">Testimonials</a>
+//   <a class="item">Sign-in</a>
+// </div>
+//
+// <Menu fixed='left' vertical inverted>
+//           <Container>
+//             <Menu.Item href="/" header>
+//                 Home
+//             </Menu.Item>
+
+//             <Menu.Item href="/species-form" >
+//                 Species Data
+//             </Menu.Item>
+//             <Menu.Item href="/location-form" >
+//                 Location Data
+//             </Menu.Item>
+
+//           </Container>
+//         </Menu>
+
