@@ -1,47 +1,72 @@
+/*landing page*/
+.landing-page {
+  background-image: 
+  radial-gradient(
+  circle at top center, 
+  #444 10px, #000 20%, beige
+  );
+  min-height: 100vh;
+}
+
+.landing-page-text {
+  color: #bbb;
+  transition: color 3s;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 23px;
+  letter-spacing: 3px; 
+  font-weight: lighter;
+}
+
+.landing-page-text-div a:hover {
+  color: #222;
+  transition: color 7s;
+}
+
+.landing-page-text-div {
+  padding-top: 200px;
+  padding-right: 300px;
+}
+
+.homepage {
+  margin-left: 210px;
+}
+
 .App {
-  /* padding-top: 7em; */ 
   padding-bottom: 7em;
   text-align: center;
   background-image : 
     radial-gradient(
       circle at top center,
-      #fdfffc, #cdedff);
-  color: #314;
+  #eee 10px, #333 20%, #eee
+      );
+  color: #ded;
+  font-size: 23px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
 "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: lighter;
+  letter-spacing: 1.2px; 
   min-height: 100vh;
 }
 
-.maps {
-  height: 100%;
-  width: 100%;
-  margin-left: 240px;
-  /* position: relative; */
-}
-
-/* body { */
-/*   margin: 0; */
-/*   padding: 0; */
-/*   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", */
-/*     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", */
-/*     sans-serif; */
-/*   -webkit-font-smoothing: antialiased; */
-/*   -moz-osx-font-smoothing: grayscale; */
-/* } */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-.homepage {
-  margin-left: 210px;
-
-  /* padding-left: 210px; */
+.maps {
+  height: 100%;
+  width: 100%;
+  margin-left: 240px;
 }
+
 
 
 /*old green #81f18d */

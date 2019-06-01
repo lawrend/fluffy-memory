@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import Routes from './routes';
-import TopMenu from './containers/menus/TopMenu.js';
-import LeftSideMenu from './containers/menus/LeftSideMenu.js';
-import { Menu, Container } from 'semantic-ui-react';
+// import TopMenu from './containers/menus/TopMenu.js';
+// import LeftSideMenu from './containers/menus/LeftSideMenu.js';
+// import { Menu, Container } from 'semantic-ui-react';
+import Home from './components/Home.js';
+import Blackness from './components/Blackness.js';
 
 class App extends Component {
   componentDidMount() {
@@ -11,15 +13,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App" >
-          <LeftSideMenu />
-
-        <div className="homepage">
-          <TopMenu />
-          <Container >
-            <Routes />
-          </Container>
-        </div>
+      <div className="App">
+        <Routes />
       </div>
         );
   }
