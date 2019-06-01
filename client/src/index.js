@@ -4,8 +4,8 @@ import { Router } from 'react-router-dom';
 import BrowserHistory from 'history/createBrowserHistory';
 import App from './App';
 import 'semantic-ui-css/semantic.css';
-
-import './index.css';
+import './App.css';
+// import './index.css';
 
 // commenting out for activeadmin
 // import * as serviceWorker from './serviceWorker';

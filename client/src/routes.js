@@ -14,7 +14,7 @@ class Routes extends Component {
       <Switch>
         <Route exact path="/" component={Home} />
           <Route path="/species-form" component={SpeciesForm} />
-          <Route exact path="/location-form" component={LocationForm} />
+          <Route path="/location-form" component={LocationForm} />
           <Route path="/location-detail/:id" component={LocationDetail} />
           <Route path="/species-detail/:id" component={SpeciesDetail} />
           <Route component={ErrorRoute} />
