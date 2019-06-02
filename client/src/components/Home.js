@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Transition } from 'react-transition-group';
 import TopMenu from '../containers/menus/TopMenu.js';
 import LeftSideMenu from '../containers/menus/LeftSideMenu.js';
 import { Container } from 'semantic-ui-react';
@@ -11,12 +12,10 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="homepage">
-        <Container>
-            Home Page
-          <TopMenu />
-          <LeftSideMenu />
-        </Container>
+      <div className="App homepage">
+        <TopMenu />
+        <LeftSideMenu />
+
       </div>
         )
   }

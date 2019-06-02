@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Routes from './routes';
-// import TopMenu from './containers/menus/TopMenu.js';
-// import LeftSideMenu from './containers/menus/LeftSideMenu.js';
+import TopMenu from './containers/menus/TopMenu.js';
+import LeftSideMenu from './containers/menus/LeftSideMenu.js';
 // import { Menu, Container } from 'semantic-ui-react';
 import Home from './components/Home.js';
 import Blackness from './components/Blackness.js';
@@ -13,10 +13,10 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Routes />
+      <div>
+         <Routes />
       </div>
-        );
+    )
   }
 
 }

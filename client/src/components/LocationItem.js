@@ -1,9 +1,10 @@
 import React from 'react';
 import {List, Item, Card } from 'semantic-ui-react';
 import LocationDetail from './LocationDetail';
+import '../containers/css/location-item.css';
 
 export default props => (
-
+  <div className="location-detail-card">
   <Card onClick={() => props.handleClick(props.id)}>
     <Card.Content>
       <Card.Header>{props.loc}</Card.Header>
@@ -12,5 +13,5 @@ export default props => (
     </Card.Description>
     </Card.Content>
   </Card>
-
+</div>
 )
