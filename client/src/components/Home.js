@@ -1,71 +1,37 @@
 import React, { Component } from 'react';
-import { Transition } from 'react-transition-group';
 import TopMenu from '../containers/menus/TopMenu.js';
 import LeftSideMenu from '../containers/menus/LeftSideMenu.js';
+import Blackness from '../components/Blackness.js';
 import { Container } from 'semantic-ui-react';
 
-
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    }
+
   componentDidMount() {
     console.log("home component mounted")
   }
 
   render() {
-    return (
-      <div className="App homepage">
-        <TopMenu />
-        <LeftSideMenu />
-
-      </div>
-        )
-  }
-
+        return (
+          <div >
+         </div>
+    )
+}
 }
 
 export default Home;
 
 
-// export default props => (
-// <div className="landing-page">
-//   <Container>
-//     <h1>Home Page</h1>
-// </Container>
-// </div>
-// )
-
-// class Home extends Component {
-//   componentDidMount() {
-//     console.log("app component mounted")
+// this.state = {
+//       showMenu: true,
+//     }
+//     this.toggleMenu = this.toggleMenu.bind(this);
+// toggleMenu() {
+//     this.setState({
+//       showMenu: !this.state.showMenu,
+//     })
 //   }
 
-//   render() {
-//     return (
-//       <div className="App" >
-//           <LeftSideMenu />
-
-//         <div className="homepage">
-//           <TopMenu />
-//           <Container >
-//             <Routes />
-//           </Container>
-//         </div>
-//       </div>
-//         );
-//   }
-
-// }
-
-// export default Home;
-
-// original Home code below...
-// import React from 'react';
-// import { Container, Divider } from 'semantic-ui-react';
-
-// export default props => (
-//   <div className="landing-page">
-//     <Container>
-//       <h1>Home Page</h1>
-//   </Container>
-//   </div>
-// )
 

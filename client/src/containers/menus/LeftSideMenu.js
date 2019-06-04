@@ -1,30 +1,47 @@
 import React, { Component } from 'react';
 import { Menu } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 export default class LeftSideMenu extends Component {
-  state = { activeItem: 'species' }
+  //default
+  state = { activeItem: 'home' }
 
+  //changes active menu item
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   render() {
     const { activeItem } = this.state
 
     return (
-      <div>
-        <Menu vertical fixed='left' inverted>
+      <Menu vertical fixed='left' inverted>
+
+        <Link  to={"/"}>
           <Menu.Item
-            name='species'
-            active={activeItem === 'species'}
+            name='home'
+            active={activeItem === 'home'}
             onClick={this.handleItemClick}
           />
+          </Link>
+
+          <Link to={"/species-form"}>
             <Menu.Item
-              name='locations'
-              active={activeItem === 'locations'}
+              name='species'
+              active={activeItem === 'species'}
               onClick={this.handleItemClick}
             />
+            </Link>
+
+
+            <Link to={"/location-form"}>
+              <Menu.Item
+                name='locations'
+                active={activeItem === 'locations'}
+                onClick={this.handleItemClick}
+              />
+              </Link>
+
             </Menu>
-          </div>
-            )
+              )
 }
 }
 

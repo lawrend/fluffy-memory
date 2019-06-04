@@ -5,5 +5,8 @@
 }
 
 .ui.cards > .card > .content, .ui.card > .content > .description {
-  color: red !important;
+  /* color: red !important; */
+  letter-spacing: normal; 
+  line-height: normal;
+
 }

@@ -5,8 +5,9 @@ export default props => (
   <Card>
     <Card.Content>
       <Card.Header>
-      Name: {props.name}
+          Name:
       </Card.Header>
+      {props.name}
     </Card.Content>
   </Card>
 )

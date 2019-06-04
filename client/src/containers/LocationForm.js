@@ -22,20 +22,13 @@ class LocationForm extends Component {
         const locations = resp.data;
         this.setState({locations})
       })
-
-    // axios.get('/api/species')
-    //   .then(resp => {
-    //     const species = resp.data;
-    //     this.setState({species})
-    //   })
-
-
   }
 
   handleClick(id) {
 
     axios.get('/api/locations/getmap/' + id)
       .then(response => {
+//console
         console.log(response.data);
         this.setState((center) => {return {...this.state, center: response.data}}
         )
@@ -52,10 +45,10 @@ class LocationForm extends Component {
   }
 
   render(){
+//console
     console.log(this.state.selected_location_species);
     return(
-      <div>
-          this is the location data container
+      <div className='homepage'>
         <div className='maps'>
         <LocationDetail center={this.state.center} />
       </div>

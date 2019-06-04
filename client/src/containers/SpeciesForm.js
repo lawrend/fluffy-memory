@@ -3,6 +3,7 @@ import SpeciesData from '../components/SpeciesData.js';
 import axios from 'axios';
 import { Card, Divider } from 'semantic-ui-react';
 
+//species are stored with a name, id, and status
 class SpeciesForm extends Component {
   state = {
     species: [],
@@ -19,7 +20,7 @@ class SpeciesForm extends Component {
   render(){
     console.log(this.state.species)
     return(
-      <div>
+      <div className="homepage">
           this is the species data container
         <Divider />
         <Card.Group centered>

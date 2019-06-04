@@ -15,4 +15,10 @@
 /* } */
 
 
+.show {
+  visibility: visible; 
+}
 
+.hidden {
+  visibility: hidden;
+}
