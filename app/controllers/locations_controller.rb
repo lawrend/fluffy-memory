@@ -11,12 +11,17 @@ class LocationsController < ApiController
       @names = @rows.collect {|r| r[1,5]}
       @names.each do |n| 
         @species = Species.find_or_create_by(name: n[0], status: n[1] )
-        @location = Location.find_or_create_by(loc: n[2], state: n[3], other_states: n[4])
-        SpeciesLocation.find_or_create_by(species_id: @species.id, location_id: @location.id)
+        @modded_loc = n[2].gsub("NWR", "National Wildlife Refuge")
+        @modded_loc2 = @modded_loc.gsub("WMA", "Wildlife Management Area")
+        @location = Location.find_or_create_by(loc: @modded_loc2, state: n[3], other_states: n[4])
+       SpeciesLocation.find_or_create_by(species_id: @species.id, location_id: @location.id)
       end
     end
-    @locations = Location.all.sort_by{|x| x["state"]}
-    render json: @locations
+
+
+    @locations= Location.all.sort_by{|x| x["state"]}
+
+    render json:@locations 
   end
 
   # GET /locations/1

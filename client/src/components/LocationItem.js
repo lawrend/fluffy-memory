@@ -1,7 +1,7 @@
 import React from 'react';
 import {List, Item, Card } from 'semantic-ui-react';
 import LocationDetail from './LocationDetail';
-import '../containers/css/location-item.css';
+import '../css/location-item.css';
 
 export default props => (
   <div className="location-detail-card">

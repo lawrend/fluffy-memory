@@ -1,0 +1,49 @@
+.App {
+  /* padding-top: .7em; */
+  padding-bottom: 7em;
+  text-align: center;
+  background-image : 
+    radial-gradient(
+      circle,
+  #27A73A 10px, #373737 50%, beige 
+      );
+  color: #222;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: lighter;
+  letter-spacing: 1.2px; 
+  min-height: 100vh;
+}
+
+body {
+  background: beige;
+}
+
+.homepage {
+  padding-left: 210px;
+}
+
+.show {
+  visibility: visible; 
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.maps {
+  height: 100%;
+  width: 100%;
+  opacity: .6;
+}
+
+
+

@@ -15,34 +15,40 @@ export default class LeftSideMenu extends Component {
     return (
       <Menu vertical fixed='left' inverted>
 
-        <Link  to={"/"}>
+        <Link  to={"/"}
+          name='home'
+          onClick={this.handleItemClick}
+        >
           <Menu.Item
-            name='home'
             active={activeItem === 'home'}
-            onClick={this.handleItemClick}
+            name='home'
           />
           </Link>
 
-          <Link to={"/species-form"}>
+          <Link to={"/species-form"}
+            name='species'
+            onClick={this.handleItemClick}
+          >
             <Menu.Item
               name='species'
               active={activeItem === 'species'}
-              onClick={this.handleItemClick}
             />
             </Link>
 
 
-            <Link to={"/location-form"}>
+            <Link to={"/location-form"}
+              name='locations'
+              onClick={this.handleItemClick}
+            >
               <Menu.Item
                 name='locations'
                 active={activeItem === 'locations'}
-                onClick={this.handleItemClick}
               />
               </Link>
 
             </Menu>
               )
-}
+  }
 }
 
 //   <Menu fixed='left' vertical inverted>

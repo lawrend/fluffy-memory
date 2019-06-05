@@ -1,7 +1,7 @@
 // import all relevant pieces of react-router-dom, and all components rendered by routes
 import React, { Component } from 'react';
 import { Route, withRouter, Switch } from 'react-router-dom';
-import Home from './components/Home.js'
+import Home from './containers/Home.js'
 import Blackness from './components/Blackness.js';
 import App from './App.js'
 import ErrorRoute from './components/ErrorRoute';

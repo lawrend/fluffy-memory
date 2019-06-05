@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 
 const MainPortal = (props) => {
   return(
-  <div className="landing-page">
-    <div className="landing-page-text-div">
-      <Link className="landing-page-text" to="/home">
-          end anger ed
-      </Link>
+    <div className="landing-page">
+      <div className="landing-page-text-div">
+        <Link className="landing-page-text" to="/home">
+            end anger ed
+        </Link>
+      </div>
     </div>
-  </div>
-)
+  )
 }
 export default MainPortal

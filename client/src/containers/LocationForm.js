@@ -17,26 +17,32 @@ class LocationForm extends Component {
   }
 
   componentDidMount() {
+    //get all locations and set state.locations
     axios.get('/api/locations')
       .then(resp => {
+//console
+        console.log("result of locations: ", resp.data);
         const locations = resp.data;
         this.setState({locations})
       })
   }
 
   handleClick(id) {
-
+    //get lat/long of given location and set state.center
     axios.get('/api/locations/getmap/' + id)
       .then(response => {
 //console
-        console.log(response.data);
+        console.log("result of getmap + id: ", response.data);
         this.setState((center) => {return {...this.state, center: response.data}}
         )
       })
       .catch(error => console.log(error));
 
+    //retrieve all species from a given location set state
     axios.get('/api/locations/getspecies/' + id )
       .then(response => {
+//console
+        console.log("result of getspecies + id: ", response.data);
         let specs = response.data;
         this.setState((specs) => {return {...this.state, selected_location_species: response.data}}
         )
@@ -46,11 +52,12 @@ class LocationForm extends Component {
 
   render(){
 //console
-    console.log(this.state.selected_location_species);
+    console.log("selected location species: ", this.state.selected_location_species);
+    //LocationDetail displays current map; LocationData is a container for all the locations
     return(
       <div className='homepage'>
         <div className='maps'>
-        <LocationDetail center={this.state.center} />
+        <LocationDetail center={this.state.center} selected_location_species={this.selected_location_species} />
       </div>
         <Divider />
           <List>

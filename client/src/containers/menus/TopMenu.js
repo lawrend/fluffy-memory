@@ -12,13 +12,12 @@ export default class TopMenu extends Component {
     return (
 
         <Menu pointing secondary>
-           <Menu.Menu position='right'>
               <Menu.Item
                 name='about'
                 active={activeItem === 'about'}
                 onClick={this.handleItemClick}
+                position='right'
               />
-              </Menu.Menu>
             </Menu>
             )
 }

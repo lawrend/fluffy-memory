@@ -3,15 +3,27 @@ import { Container, Divider } from 'semantic-ui-react';
 import { Map, Marker, InfoWindow, GoogleApiWrapper } from 'google-maps-react';
 import { MAPS_KEY } from '../config.js';
 
-export class MapsContainer extends React.Component {
+export class MapsContainer extends Component {
 
   render () {
+    console.log("maps locations format: ", this.props.locations)
     const styles =
-      [{featureType: 'poi.business',
-        stylers: [{
-          visibility: 'off',
-        }]
-      },
+      [
+        {featureType: 'poi.business',
+          stylers: [{
+            visibility: 'off',
+          }]
+        },
+        {featureType: 'all',
+          stylers: [{
+            saturation: -100,
+          }]},
+        {featureType: 'poi.park',
+          elementType: 'geometry',
+          stylers: [{
+            color: '#27e73A',
+            opacity: 1,
+          }]},
         // {featureType: 'poi.park',
         //   elementType: 'geometry',
         //   stylers: [{
@@ -27,6 +39,7 @@ export class MapsContainer extends React.Component {
       height: '100vh',
     }
 
+    const data = this.props.locations;
 
     if (!this.props.loaded) {
       return (
@@ -35,11 +48,14 @@ export class MapsContainer extends React.Component {
         </Container>
           )
     } else {
-
       return (
-        <Map google={this.props.google} zoom={11} center={this.props.center} styles={styles}>
-          <Marker title={"They in trubbs!!!"} name={'Right Here'} position={this.props.center} />
+        <div>
+        <Map google={this.props.google} zoom={5} initialCenter={this.props.center} center={this.props.center} styles={styles}>
+          <Marker
+            position={this.props.center}
+          />
         </Map>
+      </div>
           )
 }
 }
