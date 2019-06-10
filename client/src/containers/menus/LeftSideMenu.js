@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { Menu } from 'semantic-ui-react';
+import { Dropdown, Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import SpeciesStates from '../SpeciesStates.js';
 
 export default class LeftSideMenu extends Component {
   //default
-  state = { activeItem: 'home' }
+  state = {
+    activeItem: 'home',
+    stnames: ["Georgia"],
+  }
 
   //changes active menu item
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
@@ -36,19 +40,21 @@ export default class LeftSideMenu extends Component {
             </Link>
 
 
-            <Link to={"/location-form"}
-              name='locations'
-              onClick={this.handleItemClick}
-            >
               <Menu.Item
                 name='locations'
                 active={activeItem === 'locations'}
-              />
-              </Link>
 
-            </Menu>
-              )
-  }
+              onClick={this.handleLocationClick}
+              >
+                <Dropdown text="Locations">
+                  <Dropdown.Menu>
+                    <SpeciesStates stnames={this.state.stnames} />
+                  </Dropdown.Menu>
+                </Dropdown>
+              </Menu.Item>
+          </Menu>
+            )
+}
 }
 
 //   <Menu fixed='left' vertical inverted>

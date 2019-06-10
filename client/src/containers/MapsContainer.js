@@ -6,7 +6,7 @@ import { MAPS_KEY } from '../config.js';
 export class MapsContainer extends Component {
 
   render () {
-    console.log("maps locations format: ", this.props.locations)
+    console.log("maps center: ", this.props.center)
     const styles =
       [
         {featureType: 'poi.business',
@@ -39,7 +39,7 @@ export class MapsContainer extends Component {
       height: '100vh',
     }
 
-    const data = this.props.locations;
+    // const data = this.props.locations;
 
     if (!this.props.loaded) {
       return (

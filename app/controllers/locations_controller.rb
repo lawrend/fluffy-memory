@@ -14,7 +14,7 @@ class LocationsController < ApiController
         @modded_loc = n[2].gsub("NWR", "National Wildlife Refuge")
         @modded_loc2 = @modded_loc.gsub("WMA", "Wildlife Management Area")
         @location = Location.find_or_create_by(loc: @modded_loc2, state: n[3], other_states: n[4])
-       SpeciesLocation.find_or_create_by(species_id: @species.id, location_id: @location.id)
+        SpeciesLocation.find_or_create_by(species_id: @species.id, location_id: @location.id)
       end
     end
 
@@ -37,8 +37,10 @@ class LocationsController < ApiController
     @long = @coordinates['results'][0]['geometry']['location']['lng']
     @location.lat = @lat
     @location.long = @long
+    @location.save
     @center = @coordinates['results'][0]['geometry']['location']
     render json: @center
+    # render json: @location
   end
 
   # GET /locations/species/1

@@ -16,7 +16,7 @@ class Home extends Component {
       locations: [],
     }
 
-    this.handleClick = this.handleClick.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
 
   }
 
@@ -38,28 +38,28 @@ class Home extends Component {
   }
 
 
-  handleClick(id) {
-    //get lat/long of given location and set state.center
-    axios.get('/api/locations/getmap/' + id)
-      .then(response => {
-        //console
-        console.log("result of getmap + id: ", response.data);
-        this.setState((center) => {return {...this.state, center: response.data}}
-        )
-      })
-      .catch(error => console.log(error));
+  //handleClick(id) {
+  //  //get lat/long of given location and set state.center
+  //  axios.get('/api/locations/getmap/' + id)
+  //    .then(response => {
+  //      //console
+  //      console.log("result of getmap + id: ", response.data);
+  //      // this.setState((center) => {return {...this.state, center: response.data}}
+  //      // )
+  //    })
+  //    .catch(error => console.log(error));
 
-    //retrieve all species from a given location set state
-    axios.get('/api/locations/getspecies/' + id )
-      .then(response => {
-        //console
-        console.log("result of getspecies + id: ", response.data);
-        let specs = response.data;
-        this.setState((specs) => {return {...this.state, selected_location_species: response.data}}
-        )
-      })
-      .catch(error => console.log(error));
-  }
+  //  //retrieve all species from a given location set state
+  //  axios.get('/api/locations/getspecies/' + id )
+  //    .then(response => {
+  //      //console
+  //      console.log("result of getspecies + id: ", response.data);
+  //      let specs = response.data;
+  //      this.setState((specs) => {return {...this.state, selected_location_species: response.data}}
+  //      )
+  //    })
+  //    .catch(error => console.log(error));
+  //}
 
   render() {
     console.log("home locations", this.state.locations)
