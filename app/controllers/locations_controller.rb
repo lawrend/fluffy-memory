@@ -40,12 +40,16 @@ class LocationsController < ApiController
     @location.save
     @center = @coordinates['results'][0]['geometry']['location']
     render json: @center
-    # render json: @location
   end
 
   # GET /locations/species/1
   def getspecies
     render json: @location.species 
+  end
+
+  def locationsbystate
+    @locations=Location.select(:state).map(&:state).uniq.sort
+    render json: @locations
   end
 
 

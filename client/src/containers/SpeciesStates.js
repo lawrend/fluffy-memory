@@ -1,11 +1,19 @@
 import React from 'react';
-import {Dropdown, Item } from 'semantic-ui-react';
+import {Menu, Dropdown, Item } from 'semantic-ui-react';
 
 const SpeciesStates = (props) => {
 
-  return props.stnames.map(st =>
-    <Dropdown.Item>{st}</Dropdown.Item>  )
-}
+  return (
+
+    <Dropdown text="Locations">
+      <Dropdown.Menu>
+          {props.stnames.map(st =>
+        <Dropdown.Item>{st}</Dropdown.Item>  )}
+      </Dropdown.Menu>
+
+    </Dropdown>
+      )
+};
 
 export default SpeciesStates;
 

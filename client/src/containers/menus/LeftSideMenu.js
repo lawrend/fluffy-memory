@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 import SpeciesStates from '../SpeciesStates.js';
 
 export default class LeftSideMenu extends Component {
-  //default
-  state = {
-    activeItem: 'home',
-    stnames: ["Georgia"],
+  constructor(props) {
+    super(props)
+    this.state = {
+      activeItem: 'home',
+    }
   }
 
   //changes active menu item
@@ -40,18 +41,14 @@ export default class LeftSideMenu extends Component {
             </Link>
 
 
-              <Menu.Item
-                name='locations'
-                active={activeItem === 'locations'}
+            <Menu.Item
+              name='locations'
+              active={activeItem === 'locations'}
 
               onClick={this.handleLocationClick}
-              >
-                <Dropdown text="Locations">
-                  <Dropdown.Menu>
-                    <SpeciesStates stnames={this.state.stnames} />
-                  </Dropdown.Menu>
-                </Dropdown>
-              </Menu.Item>
+            >
+              <SpeciesStates stnames={this.props.stnames} />
+            </Menu.Item>
           </Menu>
             )
 }

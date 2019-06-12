@@ -14,9 +14,9 @@ class Home extends Component {
       center: {lat: 36.8097343, lng: -91.5556199},
       selected_location_species: [],
       locations: [],
+      stnames: [],
     }
 
-    // this.handleClick = this.handleClick.bind(this);
 
   }
 
@@ -29,6 +29,14 @@ class Home extends Component {
       })
       .catch(error => console.log(error));
 
+    axios.get('/api/locationsbystate')
+      .then(resp => {
+        console.log("api locationsbystate resp: ", resp.data)
+        const stnames = resp.data;
+        this.setState({stnames})
+      })
+      .catch(error => console.log(error));
+
     axios.get('/api/species')
       .then(resp => {
         const species = resp.data;
@@ -36,30 +44,6 @@ class Home extends Component {
       })
       .catch(error => console.log(error));
   }
-
-
-  //handleClick(id) {
-  //  //get lat/long of given location and set state.center
-  //  axios.get('/api/locations/getmap/' + id)
-  //    .then(response => {
-  //      //console
-  //      console.log("result of getmap + id: ", response.data);
-  //      // this.setState((center) => {return {...this.state, center: response.data}}
-  //      // )
-  //    })
-  //    .catch(error => console.log(error));
-
-  //  //retrieve all species from a given location set state
-  //  axios.get('/api/locations/getspecies/' + id )
-  //    .then(response => {
-  //      //console
-  //      console.log("result of getspecies + id: ", response.data);
-  //      let specs = response.data;
-  //      this.setState((specs) => {return {...this.state, selected_location_species: response.data}}
-  //      )
-  //    })
-  //    .catch(error => console.log(error));
-  //}
 
   render() {
     console.log("home locations", this.state.locations)
@@ -70,7 +54,7 @@ class Home extends Component {
               endangered
           </div>
         </Header>
-        <LeftSideMenu />
+        <LeftSideMenu locations={this.state.locations} stnames={this.state.stnames} />
         <div className='maps homepage'>
           <MapsContainer center={this.state.center} locations={this.state.locations}/>
           <Divider />
@@ -81,16 +65,5 @@ class Home extends Component {
 }
 
 export default Home;
-
-
-// this.state = {
-//       showMenu: true,
-//     }
-//     this.toggleMenu = this.toggleMenu.bind(this);
-// toggleMenu() {
-//     this.setState({
-//       showMenu: !this.state.showMenu,
-//     })
-//   }
 
 
