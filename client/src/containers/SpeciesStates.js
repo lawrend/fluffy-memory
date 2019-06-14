@@ -5,7 +5,7 @@ const SpeciesStates = (props) => {
 
   return (
 
-    <Dropdown text="Locations">
+    <Dropdown placeholder="State">
       <Dropdown.Menu>
           {props.stnames.map(st =>
         <Dropdown.Item>{st}</Dropdown.Item>  )}

@@ -14,8 +14,11 @@ export default class LeftSideMenu extends Component {
   //changes active menu item
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
+
   render() {
     const { activeItem } = this.state
+
+    console.log("stnames: ", this.props.stnames)
 
     return (
       <Menu vertical fixed='left' inverted>

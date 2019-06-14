@@ -1,4 +1,6 @@
 class LocationsController < ApiController
+  include ApplicationHelper
+
   before_action :set_location, only: [:show, :getmap, :getspecies]
 
   # GET /locations
@@ -49,6 +51,7 @@ class LocationsController < ApiController
 
   def locationsbystate
     @locations=Location.select(:state).map(&:state).uniq.sort
+    @locations.map! {|l| convert_state_abbrev(l)}
     render json: @locations
   end
 
