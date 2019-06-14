@@ -4,8 +4,8 @@
   text-align: center;
   background-image : 
     radial-gradient(
-      circle,
-  #27A73A 10px, #373737 50%, beige 
+      circle at top center,
+  #27A73A 10px, #373737 30%, beige 
       );
   color: #222;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
