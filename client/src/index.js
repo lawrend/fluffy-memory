@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import BrowserHistory from 'history/createBrowserHistory';
 import App from './App';
+import store from './store/index.js'
 import 'semantic-ui-css/semantic.css';
 import './css/App.css';
 import './css/index.css';
