@@ -20,7 +20,6 @@ class LocationsController < ApiController
       end
     end
 
-
     @locations= Location.all.sort_by{|x| x["state"]}
 
     render json:@locations 
@@ -28,7 +27,6 @@ class LocationsController < ApiController
 
   # GET /locations/1
   def show
-    # @location_map = Location.get_coordinates(@location.loc) 
     render json: @location
   end
 
@@ -51,8 +49,11 @@ class LocationsController < ApiController
 
   def locationsbystate
     @locations=Location.select(:state).map(&:state).uniq.sort
-    @locations.map! {|l| convert_state_abbrev(l)}
-    render json: @locations
+
+    @locations_with_abbrev = @locations.map do |l| 
+      {"key" => l, "value" => convert_state_abbrev(l), "text" => convert_state_abbrev(l)}
+    end
+    render json: @locations_with_abbrev
   end
 
 

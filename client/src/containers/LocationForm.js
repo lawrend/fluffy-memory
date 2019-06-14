@@ -38,7 +38,7 @@ class LocationForm extends Component {
     axios.get('/api/locations/getspecies/' + id )
       .then(response => {
         let specs = response.data;
-        this.setState((specs) => {return {...this.state, selected_location_species: response.data}}
+        this.setState((selected_location_species) => {return {...this.state, selected_location_species: response.data}}
         )
       })
       .catch(error => console.log(error));

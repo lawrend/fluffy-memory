@@ -5,16 +5,17 @@ const SpeciesStates = (props) => {
 
   return (
 
-    <Dropdown placeholder="State">
-      <Dropdown.Menu>
-          {props.stnames.map(st =>
-        <Dropdown.Item>{st}</Dropdown.Item>  )}
-      </Dropdown.Menu>
+    <Dropdown
+      onChange={props.handleLocationChange}
+      placeholder="Select State"
+      clearable
+      selection
+      fluid
+      options={props.stnames}
+    />
 
-    </Dropdown>
       )
 };
 
 export default SpeciesStates;
-
 
