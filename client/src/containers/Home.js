@@ -38,10 +38,11 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    getLocations();
       }
 
   render() {
-    console.log("home locations", this.state.locations)
+    console.log("home locations", this.props.locations)
     return (
       <div>
         <Header>
@@ -49,7 +50,7 @@ class Home extends Component {
               endangered
           </div>
         </Header>
-        <LeftSideMenu locations={this.state.locations} stnames={this.state.stnames} />
+        <LeftSideMenu locations={this.props.locations} stnames={this.state.stnames} />
         <div className='maps homepage'>
           <MapsContainer center={this.state.center} locations={this.state.locations}/>
           <Divider />

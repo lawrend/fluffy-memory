@@ -8,12 +8,14 @@ const setLocations = locations => ({
   payload: locations,
 })
 
-export const getLocations = () => dispatch => {
+export const getLocations = () => {
+  console.log("getLocatoins called")
   axios.get('/api/locations')
     .then(resp => {
       console.log("api locations response", resp.data)
       const locations = resp.data;
-      dispatch(setLocations({locations}))
+    }).then(locations => {
+      // dispatch(setLocations(locations))
     })
     .catch(error => console.log(error));
 
