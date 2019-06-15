@@ -31,21 +31,21 @@ export default class LeftSideMenu extends Component {
 
         <Link  to={"/"}
           name='home'
-          onClick={this.handleItemClick}
         >
           <Menu.Item
             active={activeItem === 'home'}
             name='home'
+            onClick={this.handleItemClick}
           />
           </Link>
 
           <Link to={"/species-form"}
             name='species'
-            onClick={this.handleItemClick}
           >
             <Menu.Item
               name='species'
               active={activeItem === 'species'}
+              onClick={this.handleItemClick}
             />
             </Link>
 

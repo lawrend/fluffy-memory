@@ -2,9 +2,26 @@ import React, { Component } from 'react';
 import LocationDetail from '../components/LocationDetail';
 import LeftSideMenu from './menus/LeftSideMenu.js';
 import MapsContainer from '../containers/MapsContainer';
+import { getLocations } from '../store/actions/getLocations.js';
 import axios from 'axios';
+import { connect } from 'react-redux';
 import { Header, Divider, Container } from 'semantic-ui-react';
 import '../css/header.css';
+
+//subscribes to state; will update upon state change
+const mapStateToProps = state => ({
+  locations: state.locations.locations,
+  species: state.species.species,
+})
+
+//subscribes to the action(s); dispatch the action to the reducer
+const mapDispatchToProps = dispatch => ({
+  locationGetter(){
+    return dispatch(getLocations())
+  },
+})
+
+
 
 class Home extends Component {
   constructor(props) {
