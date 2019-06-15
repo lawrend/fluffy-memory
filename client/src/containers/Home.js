@@ -38,29 +38,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    axios.get('/api/locations')
-      .then(resp => {
-        console.log("api locations response", resp.data)
-        const locations = resp.data;
-        this.setState({locations})
-      })
-      .catch(error => console.log(error));
-
-    axios.get('/api/locationsbystate')
-      .then(resp => {
-        console.log("api locationsbystate resp: ", resp.data)
-        const stnames = resp.data;
-        this.setState({stnames})
-      })
-      .catch(error => console.log(error));
-
-    axios.get('/api/species')
-      .then(resp => {
-        const species = resp.data;
-        this.setState({species})
-      })
-      .catch(error => console.log(error));
-  }
+      }
 
   render() {
     console.log("home locations", this.state.locations)
@@ -81,6 +59,28 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
+// axios.get('/api/locations')
+//       .then(resp => {
+//         console.log("api locations response", resp.data)
+//         const locations = resp.data;
+//         this.setState({locations})
+//       })
+//       .catch(error => console.log(error));
+
+//     axios.get('/api/locationsbystate')
+//       .then(resp => {
+//         console.log("api locationsbystate resp: ", resp.data)
+//         const stnames = resp.data;
+//         this.setState({stnames})
+//       })
+//       .catch(error => console.log(error));
+
+//     axios.get('/api/species')
+//       .then(resp => {
+//         const species = resp.data;
+//         this.setState({species})
+//       })
+//       .catch(error => console.log(error));
 

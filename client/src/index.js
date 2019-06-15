@@ -15,9 +15,12 @@ import './css/index.css';
 const history = BrowserHistory();
 
 ReactDOM.render(
-  <Router history={history}>
-    <App />
-  </Router>, document.getElementById('root'));
+
+  <Provider store= {store}>
+    <Router history={history}>
+      <App />
+    </Router>
+    </Provider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
