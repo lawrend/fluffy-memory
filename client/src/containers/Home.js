@@ -12,12 +12,13 @@ import '../css/header.css';
 const mapStateToProps = state => ({
   locations: state.locations.locations,
   species: state.species.species,
+  stnames: state.locations.stnames,
 })
 
 //subscribes to the action(s); dispatch the action to the reducer
 const mapDispatchToProps = dispatch => ({
-  locationGetter(){
-    return dispatch(getLocations())
+  locationGetter (){
+    return dispatch(getLocations)
   },
 })
 
@@ -31,18 +32,17 @@ class Home extends Component {
       center: {lat: 36.8097343, lng: -91.5556199},
       selected_location_species: [],
       locations: [],
-      stnames: [],
     }
 
 
   }
 
   componentDidMount() {
-    getLocations();
       }
 
   render() {
     console.log("home locations", this.props.locations)
+    console.log("all props", this.props)
     return (
       <div>
         <Header>
@@ -50,7 +50,7 @@ class Home extends Component {
               endangered
           </div>
         </Header>
-        <LeftSideMenu locations={this.props.locations} stnames={this.state.stnames} />
+        <LeftSideMenu locations={this.props.locations} stnames={this.props.stnames} getLocations={this.props.locationGetter}/>
         <div className='maps homepage'>
           <MapsContainer center={this.state.center} locations={this.state.locations}/>
           <Divider />

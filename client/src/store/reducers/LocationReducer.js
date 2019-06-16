@@ -19,6 +19,9 @@ export default function manageLocation (state = initialState, action) {
       return {...state, locations: action.payload}
     case 'SET_SPECIES':
       return {...state, species: action.payload}
+    case 'SET_STNAMES':
+      return {...state, stnames: action.payload}
+
     default:
       return state
   }

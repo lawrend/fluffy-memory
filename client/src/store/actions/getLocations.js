@@ -1,5 +1,4 @@
 import axios from 'axios';
-let request = require('request');
 
 export const SET_LOCATIONS = "SET_LOCATIONS";
 
@@ -8,15 +7,28 @@ const setLocations = locations => ({
   payload: locations,
 })
 
-export const getLocations = () => {
-  console.log("getLocatoins called")
+export const SET_STNAMES = "SET_STNAMES";
+
+const setStnames = stnames => ({
+  type: SET_STNAMES,
+  payload: stnames,
+})
+
+export const getLocations = dispatch => {
   axios.get('/api/locations')
     .then(resp => {
       console.log("api locations response", resp.data)
       const locations = resp.data;
-    }).then(locations => {
-      // dispatch(setLocations(locations))
+      dispatch(setLocations(locations))
     })
     .catch(error => console.log(error));
+
+    axios.get('/api/locationsbystate')
+      .then(resp => {
+        console.log("api locationsbystate resp: ", resp.data)
+        const stnames = resp.data;
+        dispatch(setStnames(stnames))
+      })
+      .catch(error => console.log(error));
 
 }

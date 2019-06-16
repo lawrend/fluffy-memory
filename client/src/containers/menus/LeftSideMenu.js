@@ -17,6 +17,9 @@ export default class LeftSideMenu extends Component {
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
   handleLocationChange = (e, { value }) => this.setState({ selectedState: value })
 
+  componentDidMount() {
+    this.props.getLocations();
+  }
 
   render() {
     const { activeItem } = this.state
