@@ -17,7 +17,6 @@ const setStnames = stnames => ({
 export const getLocations = dispatch => {
   axios.get('/api/locations')
     .then(resp => {
-      console.log("api locations response", resp.data)
       const locations = resp.data;
       dispatch(setLocations(locations))
     })

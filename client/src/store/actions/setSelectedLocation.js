@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const SET_SELECTED_LOCATION = "SET_SELECTED_LOCATION";
 
 export const setSelectedLocation = selectedLocation => ({
@@ -6,3 +8,10 @@ export const setSelectedLocation = selectedLocation => ({
 })
 
 
+
+export const SET_MAP_CENTER = "SET_MAP_CENTER";
+
+export const setMapCenter = center => ({
+  type: SET_MAP_CENTER,
+  payload: center,
+})

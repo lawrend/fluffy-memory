@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PropTypes, Component } from 'react';
 import { Container, Divider } from 'semantic-ui-react';
 import { Map, Marker, InfoWindow, GoogleApiWrapper } from 'google-maps-react';
 import { MAPS_KEY } from '../config.js';
@@ -6,7 +6,6 @@ import { MAPS_KEY } from '../config.js';
 export class MapsContainer extends Component {
 
   render () {
-    console.log("maps center: ", this.props.center)
     const styles =
       [
         {featureType: 'poi.business',
@@ -51,9 +50,6 @@ export class MapsContainer extends Component {
       return (
         <div>
         <Map google={this.props.google} zoom={5} initialCenter={this.props.center} center={this.props.center} styles={styles}>
-          <Marker
-            position={this.props.center}
-          />
         </Map>
       </div>
           )

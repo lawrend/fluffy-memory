@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import LocationDetail from '../components/LocationDetail';
 import LeftSideMenu from './menus/LeftSideMenu.js';
 import MapsContainer from '../containers/MapsContainer';
 import { getLocations } from '../store/actions/getLocations.js';
@@ -16,6 +15,7 @@ const mapStateToProps = state => ({
   species: state.species.species,
   stnames: state.locations.stnames,
   selectedLocation: state.locations.selectedLocation,
+  center: state.locations.center,
 })
 
 //subscribes to the action(s); dispatch the action to the reducer
@@ -35,10 +35,8 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      species: [],
       center: {lat: 36.8097343, lng: -91.5556199},
       selected_location_species: [],
-      locations: [],
     }
   }
 
@@ -48,8 +46,6 @@ class Home extends Component {
   }
 
   render() {
-    console.log("home locations", this.props.locations)
-    console.log("all props", this.props)
     return (
       <div>
         <Header>
@@ -59,7 +55,7 @@ class Home extends Component {
         </Header>
         <LeftSideMenu locations={this.props.locations} stnames={this.props.stnames} selectedLocation={this.props.selectedLocation} setSelectedLocation={this.props.selectedLocationSetter}/>
         <div className='maps homepage'>
-          <MapsContainer center={this.state.center} locations={this.props.locations}/>
+          <MapsContainer center={this.props.center} locations={this.props.locations}/>
           <Divider />
         </div>
       </div>
