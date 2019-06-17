@@ -3,6 +3,7 @@ import LocationDetail from '../components/LocationDetail';
 import LeftSideMenu from './menus/LeftSideMenu.js';
 import MapsContainer from '../containers/MapsContainer';
 import { getLocations } from '../store/actions/getLocations.js';
+import { getSpecies } from '../store/actions/getSpecies.js';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Header, Divider, Container } from 'semantic-ui-react';
@@ -17,12 +18,13 @@ const mapStateToProps = state => ({
 
 //subscribes to the action(s); dispatch the action to the reducer
 const mapDispatchToProps = dispatch => ({
-  locationGetter (){
+  locationGetter() {
     return dispatch(getLocations)
   },
+  speciesGetter() {
+    return dispatch(getSpecies)
+  }
 })
-
-
 
 class Home extends Component {
   constructor(props) {
@@ -33,12 +35,7 @@ class Home extends Component {
       selected_location_species: [],
       locations: [],
     }
-
-
   }
-
-  componentDidMount() {
-      }
 
   render() {
     console.log("home locations", this.props.locations)
@@ -50,9 +47,9 @@ class Home extends Component {
               endangered
           </div>
         </Header>
-        <LeftSideMenu locations={this.props.locations} stnames={this.props.stnames} getLocations={this.props.locationGetter}/>
+        <LeftSideMenu locations={this.props.locations} stnames={this.props.stnames} getLocations={this.props.locationGetter} getSpecies={this.props.speciesGetter} />
         <div className='maps homepage'>
-          <MapsContainer center={this.state.center} locations={this.state.locations}/>
+          <MapsContainer center={this.state.center} locations={this.props.locations}/>
           <Divider />
         </div>
       </div>

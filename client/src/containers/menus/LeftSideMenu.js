@@ -19,6 +19,7 @@ export default class LeftSideMenu extends Component {
 
   componentDidMount() {
     this.props.getLocations();
+    this.props.getSpecies();
   }
 
   render() {

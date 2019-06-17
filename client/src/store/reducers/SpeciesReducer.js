@@ -1,9 +1,10 @@
 // RECEIVES ACTIONS, UPDATES STORE: sets initial state which is an object
 const initialState = { species: [],
-      center: {lat: 36.8097343, lng: -91.5556199},
-      selected_location_species: [],
-      locations: [],
-  stnames: []
+  center: {lat: 36.8097343, lng: -91.5556199},
+  selected_location_species: [],
+  locations: [],
+  stnames: [],
+  stspecies: []
 };
 
 // exports function which sets initial state and takes in the action passed and uses switch to determine the action to perform
@@ -15,9 +16,9 @@ export default function manageSpecies (state = initialState, action) {
       return {...state, selected_location_species: action.payload}
     case 'SET_MAP_CENTER':
       return {...state, center: action.payload}
-    case 'GET_LOCATIONS':
-      return {...state, locations: action.payload}
-    case 'GET_SPECIES':
+    case 'SET_STSPECIES':
+      return {...state, stspecies: action.payload}
+    case 'SET_SPECIES':
       return {...state, species: action.payload}
     default:
       return state
