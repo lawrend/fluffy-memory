@@ -2,7 +2,7 @@
 const initialState = { species: [],
   center: {lat: 36.8097343, lng: -91.5556199},
   selected_location_species: [],
-  selected_location: [],
+  selectedLocation: "None",
   locations: [],
   stnames: [],
 };
@@ -15,7 +15,7 @@ export default function manageLocation (state = initialState, action) {
     case 'SET_SELECTED_LOCATION_SPECIES':
       return {...state, selected_location_species: action.payload}
     case 'SET_SELECTED_LOCATION':
-      return {...state, selected_location: action.payload}
+      return {...state, selectedLocation: action.payload}
     case 'SET_MAP_CENTER':
       return {...state, center: action.payload}
     case 'SET_LOCATIONS':

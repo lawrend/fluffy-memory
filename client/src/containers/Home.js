@@ -4,6 +4,7 @@ import LeftSideMenu from './menus/LeftSideMenu.js';
 import MapsContainer from '../containers/MapsContainer';
 import { getLocations } from '../store/actions/getLocations.js';
 import { getSpecies } from '../store/actions/getSpecies.js';
+import { setSelectedLocation } from '../store/actions/setSelectedLocation.js';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Header, Divider, Container } from 'semantic-ui-react';
@@ -14,6 +15,7 @@ const mapStateToProps = state => ({
   locations: state.locations.locations,
   species: state.species.species,
   stnames: state.locations.stnames,
+  selectedLocation: state.locations.selectedLocation,
 })
 
 //subscribes to the action(s); dispatch the action to the reducer
@@ -23,6 +25,9 @@ const mapDispatchToProps = dispatch => ({
   },
   speciesGetter() {
     return dispatch(getSpecies)
+  },
+  selectedLocationSetter(loc) {
+    return dispatch(setSelectedLocation(loc))
   }
 })
 
@@ -37,6 +42,11 @@ class Home extends Component {
     }
   }
 
+  componentDidMount() {
+    this.props.locationGetter()
+    this.props.speciesGetter()
+  }
+
   render() {
     console.log("home locations", this.props.locations)
     console.log("all props", this.props)
@@ -47,7 +57,7 @@ class Home extends Component {
               endangered
           </div>
         </Header>
-        <LeftSideMenu locations={this.props.locations} stnames={this.props.stnames} getLocations={this.props.locationGetter} getSpecies={this.props.speciesGetter} />
+        <LeftSideMenu locations={this.props.locations} stnames={this.props.stnames} selectedLocation={this.props.selectedLocation} setSelectedLocation={this.props.selectedLocationSetter}/>
         <div className='maps homepage'>
           <MapsContainer center={this.state.center} locations={this.props.locations}/>
           <Divider />

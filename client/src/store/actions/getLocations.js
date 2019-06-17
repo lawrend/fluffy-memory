@@ -23,12 +23,12 @@ export const getLocations = dispatch => {
     })
     .catch(error => console.log(error));
 
-    axios.get('/api/locationsbystate')
-      .then(resp => {
-        console.log("api locationsbystate resp: ", resp.data)
-        const stnames = resp.data;
-        dispatch(setStnames(stnames))
-      })
-      .catch(error => console.log(error));
+  axios.get('/api/locationsbystate')
+    .then(resp => {
+      console.log("api locationsbystate resp: ", resp.data)
+      const stnames = resp.data;
+      dispatch(setStnames(stnames))
+    })
+    .catch(error => console.log(error));
 
 }
