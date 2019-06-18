@@ -6,7 +6,6 @@ class LocationsController < ApiController
   # GET /locations
   # either get all the species/locations records or make them
   def index
-
     if Location.all.count < 2
       @new_locations = Location.get_enigma_dataset("f2778fbc-47fd-45e3-a01a-936040650096")
       @rows = @new_locations['table_rows']['rows']
@@ -15,13 +14,13 @@ class LocationsController < ApiController
         @species = Species.find_or_create_by(name: n[0], status: n[1] )
         @modded_loc = n[2].gsub("NWR", "National Wildlife Refuge")
         @modded_loc2 = @modded_loc.gsub("WMA", "Wildlife Management Area")
-        @location = Location.find_or_create_by(loc: @modded_loc2, state: n[3], other_states: n[4])
+        @long_state_name = convert_state_abbrev(n[3])
+        @location = Location.find_or_create_by(loc: @modded_loc2, st_abbrev: n[3], state: @long_state_name, other_states: n[4])
         SpeciesLocation.find_or_create_by(species_id: @species.id, location_id: @location.id)
       end
     end
 
     @locations= Location.all.sort_by{|x| x["state"]}
-
     render json:@locations 
   end
 
@@ -51,7 +50,7 @@ class LocationsController < ApiController
     @locations=Location.select(:state).map(&:state).uniq.sort
 
     @locations_with_abbrev = @locations.map do |l| 
-      {"key" => l, "value" => convert_state_abbrev(l), "text" => convert_state_abbrev(l)}
+      {"key" => l, "value" => l, "text" => convert_state_abbrev(l) }
     end
     render json: @locations_with_abbrev
   end

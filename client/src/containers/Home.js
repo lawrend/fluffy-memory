@@ -34,11 +34,7 @@ const mapDispatchToProps = dispatch => ({
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      center: {lat: 36.8097343, lng: -91.5556199},
-      selected_location_species: [],
     }
-  }
 
   componentDidMount() {
     this.props.locationGetter()
@@ -46,6 +42,7 @@ class Home extends Component {
   }
 
   render() {
+    console.log(this.props.locations)
     return (
       <div>
         <Header>

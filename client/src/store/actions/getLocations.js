@@ -30,4 +30,9 @@ export const getLocations = dispatch => {
     })
     .catch(error => console.log(error));
 
+
+
+
 }
+
+

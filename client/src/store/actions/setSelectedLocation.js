@@ -15,3 +15,5 @@ export const setMapCenter = center => ({
   type: SET_MAP_CENTER,
   payload: center,
 })
+
+
