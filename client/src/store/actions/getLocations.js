@@ -22,7 +22,7 @@ export const getLocations = dispatch => {
     })
     .catch(error => console.log(error));
 
-  axios.get('/api/locationsbystate')
+  axios.get('/api/states/locationsdropdown')
     .then(resp => {
       console.log("api locationsbystate resp: ", resp.data)
       const stnames = resp.data;

@@ -20,6 +20,7 @@ To do:
    - each card is active link
    - when clicked, info about that species comes up
      - all locations where it is endangered
+         - each should be a link to the map of that location like above
      - status
      - picture
      - wikipedia link and or info
