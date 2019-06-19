@@ -8,7 +8,6 @@ export const setSelectedLocation = selectedLocation => ({
 })
 
 
-
 export const SET_MAP_CENTER = "SET_MAP_CENTER";
 
 export const setMapCenter = center => ({
@@ -16,4 +15,6 @@ export const setMapCenter = center => ({
   payload: center,
 })
 
-
+export const getMapCenter = loc => dispatch => {
+  axios.get('/api/locations/getmap')
+}

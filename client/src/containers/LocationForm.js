@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import LocationData from '../components/LocationData.js';
-import SpeciesData from '../components/SpeciesData.js';
 import LocationDetail from '../components/LocationDetail';
-import MapsContainer from './MapsContainer';
-import { List, Item, Card, Divider } from 'semantic-ui-react';
+import { List, Divider } from 'semantic-ui-react';
 
 class LocationForm extends Component {
   constructor(props) {

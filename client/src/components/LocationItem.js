@@ -1,5 +1,5 @@
 import React from 'react';
-import {List, Item, Card } from 'semantic-ui-react';
+import { Card } from 'semantic-ui-react';
 import '../css/location-item.css';
 
 export default props => (

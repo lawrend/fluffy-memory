@@ -11,16 +11,17 @@ class LocationsController < ApiController
       @rows = @new_locations['table_rows']['rows']
       @names = @rows.collect {|r| r[1,5]}
       @names.each do |n| 
-        @species = Species.find_or_create_by(name: n[0], status: n[1] )
         @modded_loc = n[2].gsub("NWR", "National Wildlife Refuge")
         @modded_loc2 = @modded_loc.gsub("WMA", "Wildlife Management Area")
         @long_state_name = convert_state_abbrev(n[3])
-        @location = Location.find_or_create_by(loc: @modded_loc2, st_abbrev: n[3], state: @long_state_name, other_states: n[4])
+        @species = Species.find_or_create_by(name: n[0], status: n[1] )
+        @state = State.find_or_create_by(name: @long_state_name, abbrev: n[3])
+        @location = Location.find_or_create_by(loc: @modded_loc2, st_abbrev: n[3], st: @long_state_name, other_states: n[4], state_id: @state.id)
         SpeciesLocation.find_or_create_by(species_id: @species.id, location_id: @location.id)
       end
     end
 
-    @locations= Location.all.sort_by{|x| x["state"]}
+    @locations= Location.all.sort_by{|x| x["st"]}
     render json:@locations 
   end
 
@@ -47,12 +48,11 @@ class LocationsController < ApiController
   end
 
   def locationsbystate
-    @locations=Location.select(:state).map(&:state).uniq.sort
-
-    @locations_with_abbrev = @locations.map do |l| 
-      {"key" => l, "value" => l, "text" => convert_state_abbrev(l) }
+    @states = State.all.order("name")
+    @states_options = @states.map do |l|
+      {"key" => l.id, "value" => l.name, "text" => l.name}
     end
-    render json: @locations_with_abbrev
+    render json: @states_options
   end
 
 

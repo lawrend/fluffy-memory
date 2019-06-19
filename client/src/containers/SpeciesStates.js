@@ -1,5 +1,5 @@
 import React from 'react';
-import {Menu, Dropdown, Item } from 'semantic-ui-react';
+import {Dropdown } from 'semantic-ui-react';
 
 const SpeciesStates = (props) => {
   console.log(props)

@@ -4,9 +4,8 @@ import MapsContainer from '../containers/MapsContainer';
 import { getLocations } from '../store/actions/getLocations.js';
 import { getSpecies } from '../store/actions/getSpecies.js';
 import { setSelectedLocation } from '../store/actions/setSelectedLocation.js';
-import axios from 'axios';
 import { connect } from 'react-redux';
-import { Header, Divider, Container } from 'semantic-ui-react';
+import { Header, Divider } from 'semantic-ui-react';
 import '../css/header.css';
 
 //subscribes to state; will update upon state change
@@ -32,9 +31,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    }
 
   componentDidMount() {
     this.props.locationGetter()

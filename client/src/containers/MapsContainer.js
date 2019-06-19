@@ -1,6 +1,6 @@
-import React, { PropTypes, Component } from 'react';
-import { Container, Divider } from 'semantic-ui-react';
-import { Map, Marker, InfoWindow, GoogleApiWrapper } from 'google-maps-react';
+import React, { Component } from 'react';
+import { Container } from 'semantic-ui-react';
+import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { MAPS_KEY } from '../config.js';
 
 export class MapsContainer extends Component {
@@ -32,13 +32,6 @@ export class MapsContainer extends Component {
         // {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
         // {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
       ]
-
-    const style = {
-      width: '100vw',
-      height: '100vh',
-    }
-
-    // const data = this.props.locations;
 
     if (!this.props.loaded) {
       return (
