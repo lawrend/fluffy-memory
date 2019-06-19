@@ -8,10 +8,10 @@ To do:
 
  - loading page to pull all data at first site visit
  - when state is selected:
-   - pull center, 
+   - pull center 
    - add lat, long to state
    - render map of state
-   - pull all locations for state
+   - pull all locations for state DONE
    - add lat, long to each location
    - drop marker on map for each location
    - each marker is active link for that location

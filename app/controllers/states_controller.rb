@@ -1,5 +1,8 @@
 class StatesController < ApiController
+  include ApplicationHelper
+
   before_action :set_state, only: [:show]
+
 
   def index
     @states = State.all.order("name")
@@ -18,6 +21,12 @@ class StatesController < ApiController
   def show
     render json: @state
   end
+
+  def state_map
+    @new_center = generate_state_map(params[:name])
+    render json: @new_center
+  end
+
 
   def state_locations
     @state = State.find_by(name: params[:name])

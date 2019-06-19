@@ -20,9 +20,24 @@ export class MapsContainer extends Component {
         {featureType: 'poi.park',
           elementType: 'geometry',
           stylers: [{
-            color: '#27e73A',
-            opacity: 1,
-          }]},
+            'color': '#97B1AA'},
+            {'opacity': 1
+            },
+          ]},
+        {featureType: 'administrative.locality',
+          elementType: 'labels.text',
+          stylers: [{
+            'saturation': 9},
+            {'weight': .2},
+            {'color': '#0D7263'
+          }]
+        },
+        {featureType: 'water',
+          stylers: [{
+            'color': '#719BCD'
+
+          }]}
+
         // {featureType: 'poi.park',
         //   elementType: 'geometry',
         //   stylers: [{
@@ -42,7 +57,7 @@ export class MapsContainer extends Component {
     } else {
       return (
         <div>
-        <Map google={this.props.google} zoom={5} initialCenter={this.props.center} center={this.props.center} styles={styles}>
+        <Map google={this.props.google} zoom={this.props.zoom} initialCenter={this.props.center} center={this.props.center} styles={styles}>
         </Map>
       </div>
           )

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/api/locations/getspecies/:id', to: 'locations#get_species'
   get '/api/locationsbystate', to: 'locations#locations_by_state'
   get '/api/states/locations/:name', to: 'states#state_locations'
+  get '/api/states/sel_st_map/:name', to: 'states#state_map'
   get '/api/states/locationsdropdown', to: 'states#states_for_dropdown'
 
   scope '/api' do

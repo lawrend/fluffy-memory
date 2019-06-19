@@ -15,7 +15,8 @@ const mapStateToProps = state => ({
   stnames: state.locations.stnames,
   selectedSt: state.locations.selectedSt,
   center: state.locations.center,
-  selectedStLocations: state.locations.selectedStLocations
+  selectedStLocations: state.locations.selectedStLocations,
+  zoom: state.locations.zoom
 })
 
 //subscribes to the action(s); dispatch the action to the reducer
@@ -40,6 +41,7 @@ class Home extends Component {
 
   render() {
     console.log(this.props.selectedStLocations)
+    console.log("current center: ", this.props.center)
     return (
       <div>
         <Header>
@@ -49,7 +51,7 @@ class Home extends Component {
         </Header>
         <LeftSideMenu locations={this.props.locations} stnames={this.props.stnames} selectedSt={this.props.selectedSt} setSelectedSt={this.props.selectedStSetter}/>
         <div className='maps homepage'>
-          <MapsContainer center={this.props.center} locations={this.props.locations}/>
+          <MapsContainer zoom={this.props.zoom} center={this.props.center} locations={this.props.locations}/>
           <Divider />
         </div>
       </div>

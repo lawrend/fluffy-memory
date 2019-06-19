@@ -1,5 +1,14 @@
 module ApplicationHelper
 
+  def generate_state_map(name)
+    map_name = name.gsub(" ", "+")
+    conn = Faraday.new "https://maps.googleapis.com/maps/api/"
+    resp = conn.get("geocode/json?address= #{map_name}&components=country:US&key=#{ENV['MAPS_KEY']}")
+    @place = JSON.parse(resp.body)
+    @new_place = @place['results'][0]['geometry']['location']
+
+  end
+
   def get_coordinates(name)
     map_name = name.gsub(" ", "+")
     conn = Faraday.new "https://maps.googleapis.com/maps/api/"
