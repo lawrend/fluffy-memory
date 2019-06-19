@@ -7,8 +7,19 @@ both servers start according to rules in the procfile.dev
 To do:
 
  - case sensitivity when creating species/locations
- - incorporate google maps to locations
- - locations routes/components to display like species
- - Redux store?
- - search?
- -
+ - when state is selected:
+   - pull center, 
+   - add lat, long to state
+   - render map of state
+   - pull all locations for state
+   - add lat, long to each location
+   - drop marker on map for each location
+   - each marker is active link for that location
+   - when clicked, render map of location
+   - render cards of each species
+   - each card is active link
+   - when clicked, info about that species comes up
+     - all locations where it is endangered
+     - status
+     - picture
+     - wikipedia link and or info

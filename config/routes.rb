@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   get '/api/species_loc/:id', to: 'species#show_loc'
-  get '/api/locations/getmap/:id', to: 'locations#getmap'
-  get '/api/locations/getspecies/:id', to: 'locations#getspecies'
-  get '/api/locationsbystate', to: 'locations#locationsbystate'
+  get '/api/locations/getmap/:id', to: 'locations#get_map'
+  get '/api/locations/getspecies/:id', to: 'locations#get_species'
+  get '/api/locationsbystate', to: 'locations#locations_by_state'
   get '/api/states/locations/:id', to: 'states#state_locations'
 
   scope '/api' do

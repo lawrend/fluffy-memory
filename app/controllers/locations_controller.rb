@@ -31,7 +31,7 @@ class LocationsController < ApiController
   end
 
   # GET /locations/getmap/1
-  def getmap
+  def get_map
     @coordinates = Location.get_coordinates(@location.loc) #get_coordinates is Maps concern method 
     @lat = @coordinates['results'][0]['geometry']['location']['lat']
     @long = @coordinates['results'][0]['geometry']['location']['lng']
@@ -43,11 +43,11 @@ class LocationsController < ApiController
   end
 
   # GET /locations/species/1
-  def getspecies
+  def get_species
     render json: @location.species 
   end
 
-  def locationsbystate
+  def locations_by_state
     @states = State.all.order("name")
     @states_options = @states.map do |l|
       {"key" => l.id, "value" => l.name, "text" => l.name}
