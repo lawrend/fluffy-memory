@@ -2,16 +2,27 @@ import axios from 'axios';
 
 export const SET_SELECTED_ST = "SET_SELECTED_ST";
 
-const setSelLoc = selectedLocation => ({
+const setSelSt = selectedSt => ({
   type: SET_SELECTED_ST,
-  payload: selectedLocation,
+  payload: selectedSt,
 })
 
-export const setSelectedSt = selectedLocation => dispatch => {
-  axios.get('/api/states/locations/' + selectedLocation)
+export const SET_SELECTED_ST_LOCATIONS = "SET_SELECTED_ST_LOCATIONS";
+
+const setSelStLoc = selectedStLocations => ({
+  type: SET_SELECTED_ST_LOCATIONS,
+  payload: selectedStLocations,
+})
+
+
+export const setSelectedSt = selectedSt => dispatch => {
+
+  dispatch(setSelSt(selectedSt))
+
+  axios.get('/api/states/locations/' + selectedSt)
     .then(resp => {
       const locations = resp.data;
-      dispatch(setSelLoc(selectedLocation))
+      dispatch(setSelStLoc(locations))
     })
     .catch(error => console.log(error));
 }

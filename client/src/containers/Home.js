@@ -15,6 +15,7 @@ const mapStateToProps = state => ({
   stnames: state.locations.stnames,
   selectedSt: state.locations.selectedSt,
   center: state.locations.center,
+  selectedStLocations: state.locations.selectedStLocations
 })
 
 //subscribes to the action(s); dispatch the action to the reducer
@@ -38,7 +39,7 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.props.locations)
+    console.log(this.props.selectedStLocations)
     return (
       <div>
         <Header>
