@@ -14,7 +14,7 @@ export default class LeftSideMenu extends Component {
   //changes active menu item
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
-  handleLocationChange = (e, { value }) => this.props.setSelectedLocation( value )
+  handleLocationChange = (e, { value }) => this.props.setSelectedSt(value)
 
   render() {
     const { activeItem } = this.state
@@ -22,7 +22,7 @@ export default class LeftSideMenu extends Component {
     return (
       <Menu vertical fixed='left' inverted >
 
-        <Menu.Item name={this.props.selectedLocation} />
+        <Menu.Item name={this.props.selectedSt} />
 
         <Link  to={"/"}
           name='home'

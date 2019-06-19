@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/api/locations/getmap/:id', to: 'locations#get_map'
   get '/api/locations/getspecies/:id', to: 'locations#get_species'
   get '/api/locationsbystate', to: 'locations#locations_by_state'
-  get '/api/states/locations/:id', to: 'states#state_locations'
+  get '/api/states/locations/:name', to: 'states#state_locations'
   get '/api/states/locationsdropdown', to: 'states#states_for_dropdown'
 
   scope '/api' do

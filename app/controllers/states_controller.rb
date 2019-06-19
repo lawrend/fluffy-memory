@@ -1,5 +1,5 @@
 class StatesController < ApiController
-  before_action :set_state, only: [:state_locations, :show]
+  before_action :set_state, only: [:show]
 
   def index
     @states = State.all.order("name")
@@ -20,6 +20,7 @@ class StatesController < ApiController
   end
 
   def state_locations
+    @state = State.find_by(name: params[:name])
     @locations = @state.locations
     render json: @locations
   end

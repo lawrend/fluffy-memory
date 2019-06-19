@@ -6,7 +6,7 @@ both servers start according to rules in the procfile.dev
 
 To do:
 
- - case sensitivity when creating species/locations
+ - loading page to pull all data at first site visit
  - when state is selected:
    - pull center, 
    - add lat, long to state

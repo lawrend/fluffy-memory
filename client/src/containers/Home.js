@@ -3,7 +3,7 @@ import LeftSideMenu from './menus/LeftSideMenu.js';
 import MapsContainer from '../containers/MapsContainer';
 import { getLocations } from '../store/actions/getLocations.js';
 import { getSpecies } from '../store/actions/getSpecies.js';
-import { setSelectedLocation } from '../store/actions/setSelectedLocation.js';
+import { setSelectedSt } from '../store/actions/setSelectedLocation.js';
 import { connect } from 'react-redux';
 import { Header, Divider } from 'semantic-ui-react';
 import '../css/header.css';
@@ -13,7 +13,7 @@ const mapStateToProps = state => ({
   locations: state.locations.locations,
   species: state.species.species,
   stnames: state.locations.stnames,
-  selectedLocation: state.locations.selectedLocation,
+  selectedSt: state.locations.selectedSt,
   center: state.locations.center,
 })
 
@@ -25,8 +25,8 @@ const mapDispatchToProps = dispatch => ({
   speciesGetter() {
     return dispatch(getSpecies)
   },
-  selectedLocationSetter(loc) {
-    return dispatch(setSelectedLocation(loc))
+  selectedStSetter(loc) {
+    return dispatch(setSelectedSt(loc))
   }
 })
 
@@ -46,7 +46,7 @@ class Home extends Component {
               endangered
           </div>
         </Header>
-        <LeftSideMenu locations={this.props.locations} stnames={this.props.stnames} selectedLocation={this.props.selectedLocation} setSelectedLocation={this.props.selectedLocationSetter}/>
+        <LeftSideMenu locations={this.props.locations} stnames={this.props.stnames} selectedSt={this.props.selectedSt} setSelectedSt={this.props.selectedStSetter}/>
         <div className='maps homepage'>
           <MapsContainer center={this.props.center} locations={this.props.locations}/>
           <Divider />
@@ -57,27 +57,4 @@ class Home extends Component {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
-
-// axios.get('/api/locations')
-//       .then(resp => {
-//         console.log("api locations response", resp.data)
-//         const locations = resp.data;
-//         this.setState({locations})
-//       })
-//       .catch(error => console.log(error));
-
-//     axios.get('/api/locationsbystate')
-//       .then(resp => {
-//         console.log("api locationsbystate resp: ", resp.data)
-//         const stnames = resp.data;
-//         this.setState({stnames})
-//       })
-//       .catch(error => console.log(error));
-
-//     axios.get('/api/species')
-//       .then(resp => {
-//         const species = resp.data;
-//         this.setState({species})
-//       })
-//       .catch(error => console.log(error));
 
