@@ -4,6 +4,7 @@ const initialState = { species: [],
   selected_location_species: [],
   selectedSt: "None",
   selectedStLocations: [],
+  selectedStSpecies: [],
   locations: [],
   stnames: [],
 };

@@ -11,3 +11,9 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: right;
 }
+
+.ui.header > .header-tabs {
+  text-align: left;
+  padding-left: 200px;
+
+}

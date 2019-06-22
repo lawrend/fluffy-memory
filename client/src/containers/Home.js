@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import LeftSideMenu from './menus/LeftSideMenu.js';
+import TopMenu from './menus/TopMenu.js';
 import MapsContainer from '../containers/MapsContainer';
 import { getStNames } from '../store/actions/getLocations.js';
-import { getSpecies } from '../store/actions/getSpecies.js';
-import { setMapCenter, setSelectedStMap, setSelectedSt, setSelectedStLocations, setMapZoom } from '../store/actions/setSelectedLocation.js';
+import { setMapCenter, setSelectedStMap, setSelectedSt, getSelectedStLocations, setMapZoom } from '../store/actions/setSelectedLocation.js';
 import { connect } from 'react-redux';
 import { Header, Divider } from 'semantic-ui-react';
 import '../css/header.css';
@@ -18,6 +18,7 @@ const mapStateToProps = state => ({
   selectedSt: state.locations.selectedSt,
   center: state.locations.center,
   selectedStLocations: state.locations.selectedStLocations,
+  selectedStSpecies: state.locations.selectedStSpecies,
   zoom: state.locations.zoom
 })
 
@@ -25,14 +26,17 @@ const mapDispatchToProps = dispatch => ({
   stNamesGetter() {
     return dispatch(getStNames)
   },
-  speciesGetter() {
-    return dispatch(getSpecies)
-  },
+  // selectedStSpeciesGetter() {
+  //   return dispatch(setSelectedStSpecies)
+  // },
   selectedStMapSetter(loc) {
     return dispatch(setSelectedStMap(loc))
   },
   selectedStSetter(loc) {
     return dispatch(setSelectedSt(loc))
+  },
+  selectedStLocationsGetter(st) {
+    return dispatch(getSelectedStLocations(st))
   },
   zoomSetter(zoom) {
     return dispatch(setMapZoom(zoom))
@@ -52,9 +56,8 @@ class Home extends Component {
     this.props.zoomSetter(HIGH_ZOOM);
     this.props.centerSetter(USA_CENTER)
     this.props.selectedStSetter("None");
+    this.props.selectedStLocationsGetter(null)
   }
-
-
 
   componentDidMount() {
     this.props.stNamesGetter();
@@ -69,8 +72,11 @@ class Home extends Component {
           <div className="header-text">
               endangered
           </div>
+          <div className="header-tabs">
+              species
+          </div>
         </Header>
-        <LeftSideMenu locations={this.props.locations} stnames={this.props.stnames} selectedSt={this.props.selectedSt} setSelectedStMap={this.props.selectedStMapSetter} resetMap={this.resetMap} />
+        <LeftSideMenu locations={this.props.locations} stnames={this.props.stnames} selectedSt={this.props.selectedSt} selectedStLocations={this.props.selectedStLocations} setSelectedStMap={this.props.selectedStMapSetter} getSelectedStLocations={this.props.selectedStLocationsGetter} resetMap={this.resetMap} />
         <div className='maps homepage'>
           <MapsContainer zoom={this.props.zoom} center={this.props.center} locations={this.props.locations}/>
           <Divider />
@@ -81,4 +87,15 @@ class Home extends Component {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
+
+
+// Copy of Header above before change
+// <Header>
+//           <div className="header-text">
+//               endangered
+//           </div>
+//           <div className="header-tabs">
+//               species
+//           </div>
+//         </Header>
 
