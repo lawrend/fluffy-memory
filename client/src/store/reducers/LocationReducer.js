@@ -14,11 +14,11 @@ export default function manageLocation (state = initialState, action) {
       return {...state, selected_location_species: action.payload}
     case 'SET_SELECTED_ST':
       return {...state, selectedSt: action.payload}
-     case 'SET_SELECTED_ST_LOCATIONS':
+    case 'SET_SELECTED_ST_LOCATIONS':
       return {...state, selectedStLocations: action.payload}
-case 'SET_MAP_ZOOM':
+    case 'SET_MAP_ZOOM':
       return {...state, zoom: action.payload}
-case 'SET_MAP_CENTER':
+    case 'SET_MAP_CENTER':
       return {...state, center: action.payload}
     case 'SET_LOCATIONS':
       return {...state, locations: action.payload}

@@ -1,15 +1,13 @@
 import axios from 'axios';
 
 export const SET_LOCATIONS = "SET_LOCATIONS";
-
 const setLocations = locations => ({
   type: SET_LOCATIONS,
   payload: locations,
 })
 
 export const SET_STNAMES = "SET_STNAMES";
-
-const setStnames = stnames => ({
+export const setStnames = stnames => ({
   type: SET_STNAMES,
   payload: stnames,
 })
@@ -21,15 +19,16 @@ export const getLocations = dispatch => {
       dispatch(setLocations(locations))
     })
     .catch(error => console.log(error));
+}
 
+export const getStNames = dispatch => {
   axios.get('/api/states/locationsdropdown')
     .then(resp => {
       console.log("api locationsbystate resp: ", resp.data)
       const stnames = resp.data;
-      dispatch(setStnames(stnames))
+dispatch(setStnames(stnames))
     })
     .catch(error => console.log(error));
-
 }
 
 

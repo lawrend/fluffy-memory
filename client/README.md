@@ -7,6 +7,8 @@ both servers start according to rules in the procfile.dev
 To do:
 
  - loading page to pull all data at first site visit
+   - have components check for state - if not, route to home page
+   - loading screen/animation/transition while data pulled
  - when state is selected:
    - pull center 
    - add lat, long to state
