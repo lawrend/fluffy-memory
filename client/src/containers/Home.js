@@ -4,6 +4,7 @@ import TopMenu from './menus/TopMenu.js';
 import MapsContainer from '../containers/MapsContainer';
 import { getStNames } from '../store/actions/getLocations.js';
 import { setMapCenter, setSelectedStMap, setSelectedSt, getSelectedStLocations, setMapZoom } from '../store/actions/setSelectedLocation.js';
+import { getSelectedStSpecies } from '../store/actions/setLocationSpecies.js';
 import { connect } from 'react-redux';
 import { Header, Divider } from 'semantic-ui-react';
 import '../css/header.css';
@@ -26,9 +27,9 @@ const mapDispatchToProps = dispatch => ({
   stNamesGetter() {
     return dispatch(getStNames)
   },
-  // selectedStSpeciesGetter() {
-  //   return dispatch(setSelectedStSpecies)
-  // },
+  selectedStSpeciesGetter(st) {
+    return dispatch(getSelectedStSpecies(st))
+  },
   selectedStMapSetter(loc) {
     return dispatch(setSelectedStMap(loc))
   },
@@ -72,11 +73,8 @@ class Home extends Component {
           <div className="header-text">
               endangered
           </div>
-          <div className="header-tabs">
-              species
-          </div>
         </Header>
-        <LeftSideMenu locations={this.props.locations} stnames={this.props.stnames} selectedSt={this.props.selectedSt} selectedStLocations={this.props.selectedStLocations} setSelectedStMap={this.props.selectedStMapSetter} getSelectedStLocations={this.props.selectedStLocationsGetter} resetMap={this.resetMap} />
+        <LeftSideMenu locations={this.props.locations} stnames={this.props.stnames} selectedSt={this.props.selectedSt} selectedStLocations={this.props.selectedStLocations} setSelectedStMap={this.props.selectedStMapSetter} getSelectedStLocations={this.props.selectedStLocationsGetter} getSelectedStSpecies={this.props.selectedStSpeciesGetter} resetMap={this.resetMap} />
         <div className='maps homepage'>
           <MapsContainer zoom={this.props.zoom} center={this.props.center} locations={this.props.locations}/>
           <Divider />

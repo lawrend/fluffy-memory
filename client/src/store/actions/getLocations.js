@@ -24,7 +24,6 @@ export const getLocations = dispatch => {
 export const getStNames = dispatch => {
   axios.get('/api/states/locationsdropdown')
     .then(resp => {
-      console.log("api locationsbystate resp: ", resp.data)
       const stnames = resp.data;
 dispatch(setStnames(stnames))
     })

@@ -20,6 +20,7 @@ export default class LeftSideMenu extends Component {
   handleLocationChange (e, {value}) {
     this.props.setSelectedStMap(value)
     this.props.getSelectedStLocations(value)
+    this.props.getSelectedStSpecies(value)
 }
 
 

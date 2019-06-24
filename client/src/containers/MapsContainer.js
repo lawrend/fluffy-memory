@@ -62,7 +62,7 @@ export class MapsContainer extends Component {
     } else {
       return (
         <div>
-          <Map google={this.props.google} zoom={this.props.zoom} initialCenter={this.props.center} center={this.props.center} styles={styles}>
+          <Map google={this.props.google} zoom={this.props.zoom} mapType={'terrain'} mapTypeControl={false} initialCenter={this.props.center} center={this.props.center} styles={styles}>
           <Marker name="HERE" position={this.props.center} />
           </Map>
         </div>
@@ -77,3 +77,5 @@ export default GoogleApiWrapper({
 
 // lat={33.0892941} lng={87.0623622}
 //maps
+//
+//to make map un navigatable use gestureHandling={'none'}

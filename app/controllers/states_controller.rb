@@ -34,6 +34,12 @@ class StatesController < ApiController
     render json: @locations
   end
 
+  def state_species
+    @state = State.find_by(name: params[:name])
+    @species = @state.species.uniq
+    render json: @species
+  end
+
   # POST /locations
   def create
     @state = State.new(state_params)
