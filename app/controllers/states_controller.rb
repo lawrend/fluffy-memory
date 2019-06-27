@@ -30,9 +30,25 @@ class StatesController < ApiController
 
   def state_locations
     @state = State.find_by(name: params[:name])
-    @locations = @state.locations
-    render json: @locations
+    @protected_areas = @state.locations
+    # @protected_areas.each do |pa| 
+    #   State.add_lat_lng(pa)
+    # end
+    render json: @protected_areas
   end
+
+  def add_cords_to_st_locations
+    @state = State.find_by(name: params[:name])
+    @state_locs = @state.locations
+    @state_locs.each do |pa|
+      add_lat_lng(pa)
+    end
+
+    render json: @state_locs
+
+  end
+
+
 
   def state_species
     @state = State.find_by(name: params[:name])

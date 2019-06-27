@@ -13,8 +13,8 @@ module ApiHelper
     @dataset = resp2.body
   end
 
-def add_lat_lng
-    map_name = self.loc.gsub(" ", "+")
+def add_lat_lng(pa)
+    map_name = pa.loc.gsub(" ", "+")
     conn = Faraday.new "https://maps.googleapis.com/maps/api/"
     resp = conn.get("geocode/json?address= #{map_name}&components=country:US&key=#{ENV['MAPS_KEY']}")
     @place = JSON.parse(resp.body)

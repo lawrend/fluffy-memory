@@ -10,19 +10,11 @@ export default class LeftSideMenu extends Component {
     this.state = {
       activeItem: 'home',
     }
-    this.handleLocationChange = this.handleLocationChange.bind(this);
   }
 
   //changes active menu item
   // handleItemClick = (e, { name }) => this.setState({ activeItem: name })
   handleItemClick = (e) => this.props.resetMap()
-
-  handleLocationChange (e, {value}) {
-    this.props.setSelectedStMap(value)
-    this.props.getSelectedStLocations(value)
-    this.props.getSelectedStSpecies(value)
-}
-
 
 
   render() {
@@ -33,14 +25,14 @@ export default class LeftSideMenu extends Component {
 
         <Menu.Item
           active={activeItem === 'home'}
-          name='United States'
+          name='All United States'
           onClick={this.handleItemClick}
         />
           <Menu.Item
             name='locations'
             active={activeItem === 'locations'}
           >
-            <SpeciesStates handleLocationChange={this.handleLocationChange} stnames={this.props.stnames} selectedStLocations={this.props.selectedStLocations} />
+            <SpeciesStates stnames={this.props.stnames} selectedStLocations={this.props.selectedStLocations} setSelectedStMap={this.props.setSelectedStMap} getSelectedStLocations={this.props.getSelectedStLocations} />
           </Menu.Item>
         </Menu>
           )

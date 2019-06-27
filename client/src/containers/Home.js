@@ -18,7 +18,7 @@ const mapStateToProps = state => ({
   stnames: state.locations.stnames,
   selectedSt: state.locations.selectedSt,
   center: state.locations.center,
-  selectedStLocations: state.locations.selectedStLocations,
+  // selectedStLocations: state.locations.selectedStLocations,
   selectedStSpecies: state.locations.selectedStSpecies,
   zoom: state.locations.zoom
 })
@@ -74,7 +74,7 @@ class Home extends Component {
               endangered
           </div>
         </Header>
-        <LeftSideMenu locations={this.props.locations} stnames={this.props.stnames} selectedSt={this.props.selectedSt} selectedStLocations={this.props.selectedStLocations} setSelectedStMap={this.props.selectedStMapSetter} getSelectedStLocations={this.props.selectedStLocationsGetter} getSelectedStSpecies={this.props.selectedStSpeciesGetter} resetMap={this.resetMap} />
+        <LeftSideMenu locations={this.props.locations} stnames={this.props.stnames} selectedSt={this.props.selectedSt}  setSelectedStMap={this.props.selectedStMapSetter} getSelectedStLocations={this.props.selectedStLocationsGetter} getSelectedStSpecies={this.props.selectedStSpeciesGetter} resetMap={this.resetMap} />
         <div className='maps homepage'>
           <MapsContainer zoom={this.props.zoom} center={this.props.center} locations={this.props.locations}/>
           <Divider />
