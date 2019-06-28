@@ -1,15 +1,23 @@
 import axios from 'axios';
 
+//sets State from dropdown
+
 export const SET_SELECTED_ST = "SET_SELECTED_ST";
 export const setSelectedSt = selectedSt => ({
   type: SET_SELECTED_ST,
   payload: selectedSt,
 })
+
+// pulls all locations for the selected state
+
 export const SET_SELECTED_ST_LOCATIONS = "SET_SELECTED_ST_LOCATIONS";
 export const setSelectedStLocations = selectedStLocations => ({
   type: SET_SELECTED_ST_LOCATIONS,
   payload: selectedStLocations,
 })
+
+// gereric set center and zoom of the map - should be elsewhere
+
 export const SET_MAP_CENTER = "SET_MAP_CENTER";
 export const setMapCenter = center => ({
   type: SET_MAP_CENTER,
@@ -30,6 +38,7 @@ export const getSelectedStLocations = st => dispatch => {
     .catch(error => console.log(error));
 }
 
+
 export const setSelectedStMap = selectedSt => dispatch => {
   dispatch(setSelectedSt(selectedSt))
 
@@ -48,6 +57,5 @@ export const setSelectedStMap = selectedSt => dispatch => {
     })
     .catch(error => console.log(error));
 }
-
 
 

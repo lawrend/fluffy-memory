@@ -16,9 +16,19 @@ const mapDispatchToProps = dispatch => ({
 
 //spent time messing with transitions; does not work yet and i had other stuff to do but may come back to it.
 class Blackness extends Component {
+  constructor(props) {
+    super(props)
+    this.state={
+      loaded: false,
+    }
+  }
   componentDidMount () {
     this.props.locationGetter()
     this.props.speciesGetter()
+    this.setState({
+      loaded: true
+    })
+
   }
 
   render() {
@@ -30,17 +40,29 @@ class Blackness extends Component {
     // return (
     //   <CSSTransition in={inProp} timeout={timeout} className="landing-transitions" unmountOnExit onEnter={() => {setInProp(true)}} onExited={() => {setInProp(false)}}>
     //     <div>
-    return (
-      <div className="landing-page">
-        <div className="landing-page-text-div">
-          <Link className="landing-page-text" to="/home">
-              end anger ed
-          </Link>
+    if (!this.state.loaded){
+
+      return (
+        <div className="landing-page">
+          <div className="landing-page-text-div">
+            <div className="landing-page-text" >
+                end anger ed
+            </div>
+          </div>
         </div>
-      </div>
-        // </div>
-      //     </CSSTransition>
-    )
+          )
+    } else {
+      return (
+        <div className="landing-page">
+          <div className="landing-page-text-div">
+            <Link className="landing-page-text" to="/home">
+                end anger ed
+            </Link>
+          </div>
+        </div>
+          )}
+    // </div>
+    //     </CSSTransition>
   }
 
 }

@@ -13,4 +13,5 @@ export const getSelectedStSpecies = st => dispatch => {
       console.log("sepecies: ", species)
       dispatch (setSelectedStSpecies(species))
     })
+    .catch(error => console.log(error));
 }

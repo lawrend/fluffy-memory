@@ -13,10 +13,11 @@ class LocationsController < ApiController
       @names.each do |n| 
         @modded_loc = n[2].gsub("NWR", "National Wildlife Refuge")
         @modded_loc2 = @modded_loc.gsub("WMA", "Wildlife Management Area")
+        @modded_loc3 = @modded_loc2.gsub("WMD", "Wetland Management District")
         @long_state_name = convert_state_abbrev(n[3])
         @species = Species.find_or_create_by(name: n[0], status: n[1] )
         @state = State.find_or_create_by(name: @long_state_name, abbrev: n[3])
-        @location = Location.find_or_create_by(loc: @modded_loc2, st_abbrev: n[3], st: @long_state_name, other_states: n[4], state_id: @state.id)
+        @location = Location.find_or_create_by(loc: @modded_loc3, st_abbrev: n[3], st: @long_state_name, other_states: n[4], state_id: @state.id)
         SpeciesLocation.find_or_create_by(species_id: @species.id, location_id: @location.id)
       end
     end

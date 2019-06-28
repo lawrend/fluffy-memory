@@ -18,7 +18,6 @@ const mapStateToProps = state => ({
   stnames: state.locations.stnames,
   selectedSt: state.locations.selectedSt,
   center: state.locations.center,
-  // selectedStLocations: state.locations.selectedStLocations,
   selectedStSpecies: state.locations.selectedStSpecies,
   zoom: state.locations.zoom
 })

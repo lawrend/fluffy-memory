@@ -3,7 +3,7 @@ module ApplicationHelper
   def generate_state_map(name)
     map_name = name.gsub(" ", "+")
     conn = Faraday.new "https://maps.googleapis.com/maps/api/"
-    resp = conn.get("geocode/json?address= #{map_name}&components=country:US&key=#{ENV['MAPS_KEY']}")
+    resp = conn.get("geocode/json?address= #{map_name}&key=#{ENV['MAPS_KEY']}")
     @place = JSON.parse(resp.body)
     @new_place = @place['results'][0]['geometry']['location']
 
@@ -23,7 +23,7 @@ module ApplicationHelper
   def add_lat_lng(pa)
     map_name = pa.loc.gsub(" ", "+")
     conn = Faraday.new "https://maps.googleapis.com/maps/api/"
-    resp = conn.get("geocode/json?address= #{map_name}&components=country:US&key=#{ENV['MAPS_KEY']}")
+    resp = conn.get("geocode/json?address= #{map_name}&key=#{ENV['MAPS_KEY']}")
     @place = JSON.parse(resp.body)
     if (@place['results'][0]['geometry']['location']['lat'])     && (@place['results'][0]['geometry']['location']['lng']) 
       @lat = @place['results'][0]['geometry']['location']['lat'] 
@@ -126,7 +126,7 @@ module ApplicationHelper
     when "TX"
       return "Texas"
     when "UM"
-      return "Unknown"
+      return "United States Minor Outlying Islands"
     when "UT"
       return "Utah"
     when "VA"
