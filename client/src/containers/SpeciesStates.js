@@ -27,9 +27,12 @@ class SpeciesStates extends Component {
   }
 
   handleLocationChange (e, {value}) {
-    this.props.setSelectedStMap(value)
-    this.props.getSelectedStLocations(value)
-    this.props.markerMaker(value)
+    console.log("loc change value: ", value)
+    if (value != null) {
+      this.props.getSelectedStLocations(value)
+      this.props.markerMaker(value)
+      this.props.setSelectedStMap(value)
+    }
   }
 
   render() {
@@ -42,6 +45,7 @@ class SpeciesStates extends Component {
           placeholder="Select State"
           fluid
           scrolling
+          clearable
           options={this.props.stnames}
         />
           <Divider />

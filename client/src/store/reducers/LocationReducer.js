@@ -15,6 +15,8 @@ export default function manageLocation (state = initialState, action) {
       return {...state, selected_location_species: action.payload}
     case 'SET_SELECTED_ST':
       return {...state, selectedSt: action.payload}
+    case 'RESET_SELECTED_ST':
+      return {...state, selectedSt: "None"}
     case 'SET_SELECTED_ST_LOCATIONS':
       return {...state, selectedStLocations: action.payload}
     case 'SET_MAP_ZOOM':

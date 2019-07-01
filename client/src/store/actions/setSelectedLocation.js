@@ -3,10 +3,20 @@ import axios from 'axios';
 //sets State from dropdown
 
 export const SET_SELECTED_ST = "SET_SELECTED_ST";
-export const setSelectedSt = selectedSt => ({
-  type: SET_SELECTED_ST,
-  payload: selectedSt,
-})
+export const RESET_SELECTED_ST = "RESET_SELECTED_ST";
+
+export function setSelectedSt(selectedSt) {
+  if (selectedSt != null) {
+    return {
+      type: SET_SELECTED_ST,
+      payload: selectedSt,
+    }
+  } else {
+    return {
+      type: RESET_SELECTED_ST
+    }
+  }
+}
 
 // pulls all locations for the selected state
 
@@ -30,14 +40,18 @@ export const setMapZoom = zoom => ({
 })
 
 export const getSelectedStLocations = st => dispatch => {
-  axios.get('/api/states/locations/' + st)
-    .then(resp => {
-      const locations = resp.data;
-      dispatch(setSelectedStLocations(locations))
-    })
-    .catch(error => console.log(error));
+  if(st != null) {
+    axios.get('/api/states/locations/' + st)
+      .then(resp => {
+        const locations = resp.data;
+        dispatch(setSelectedStLocations(locations))
+      })
+      .catch(error => console.log(error));
+  }
+  else {
+    dispatch(setSelectedStLocations([]))
+  }
 }
-
 
 export const setSelectedStMap = selectedSt => dispatch => {
   dispatch(setSelectedSt(selectedSt))

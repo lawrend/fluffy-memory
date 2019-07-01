@@ -6,6 +6,11 @@ import { MAPS_KEY } from '../config.js';
 export class MapsContainer extends Component {
 
   render () {
+    console.log("these are the markers: ", this.props.locations)
+
+    let markers = this.props.locations.map(l => <Marker name={l.name} position={{lat: l.lat, lng: l.long}} /> )
+
+    console.log("markers are: ", markers)
     const styles =
       [
         {featureType: 'poi.business',
@@ -46,12 +51,6 @@ export class MapsContainer extends Component {
           ]
         },
       ]
-    // {featureType: 'poi.park',
-    //   elementType: 'geometry',
-    //   stylers: [{
-    //     color: '#e21244',
-    //   }]}
-    // {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
 
     if (!this.props.loaded) {
       return (
@@ -63,7 +62,7 @@ export class MapsContainer extends Component {
       return (
         <div>
           <Map google={this.props.google} zoom={this.props.zoom} mapType={'terrain'} mapTypeControl={false} initialCenter={this.props.center} center={this.props.center} styles={styles}>
-          <Marker name="HERE" position={this.props.center} />
+              {markers}
           </Map>
         </div>
           )

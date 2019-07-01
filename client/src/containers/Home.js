@@ -19,7 +19,8 @@ const mapStateToProps = state => ({
   selectedSt: state.locations.selectedSt,
   center: state.locations.center,
   selectedStSpecies: state.locations.selectedStSpecies,
-  zoom: state.locations.zoom
+  zoom: state.locations.zoom,
+  selectedStLocations: state.locations.selectedStLocations,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -55,7 +56,7 @@ class Home extends Component {
   resetMap() {
     this.props.zoomSetter(HIGH_ZOOM);
     this.props.centerSetter(USA_CENTER)
-    this.props.selectedStSetter("None");
+    this.props.selectedStSetter(null);
     this.props.selectedStLocationsGetter(null)
   }
 
@@ -68,14 +69,14 @@ class Home extends Component {
     console.log("current center: ", this.props.center)
     return (
       <div>
-        <Header>
+        <Header fixed='top' >
           <div className="header-text">
               endangered
           </div>
         </Header>
         <LeftSideMenu locations={this.props.locations} stnames={this.props.stnames} selectedSt={this.props.selectedSt}  setSelectedStMap={this.props.selectedStMapSetter} getSelectedStLocations={this.props.selectedStLocationsGetter} getSelectedStSpecies={this.props.selectedStSpeciesGetter} resetMap={this.resetMap} />
         <div className='maps homepage'>
-          <MapsContainer zoom={this.props.zoom} center={this.props.center} locations={this.props.locations}/>
+          <MapsContainer zoom={this.props.zoom} center={this.props.center} locations={this.props.selectedStLocations}/>
           <Divider />
         </div>
       </div>
