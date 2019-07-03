@@ -5,7 +5,6 @@ import { getSelectedStLocationsMarkers } from '../store/actions/setMarkers.js';
 
 const mapStateToProps = state => ({
   selectedStLocations: state.locations.selectedStLocations,
-
 })
 
 const mapDispatchToProps = dispatch => ({
