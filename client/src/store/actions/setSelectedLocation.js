@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-//sets State from dropdown
-
+//set Selected State of the U.S. from dropdown
+//or resets selected state to "None"
 export const SET_SELECTED_ST = "SET_SELECTED_ST";
 export const RESET_SELECTED_ST = "RESET_SELECTED_ST";
 
@@ -18,8 +18,7 @@ export function setSelectedSt(selectedSt) {
   }
 }
 
-// pulls all locations for the selected state
-
+// set all protected areas for the selected state
 export const SET_SELECTED_ST_LOCATIONS = "SET_SELECTED_ST_LOCATIONS";
 export const setSelectedStLocations = selectedStLocations => ({
   type: SET_SELECTED_ST_LOCATIONS,
@@ -39,8 +38,9 @@ export const setMapZoom = zoom => ({
   payload: zoom,
 })
 
+// pull and set all protected areas for selected state
 export const getSelectedStLocations = st => dispatch => {
-  if(st != null) {
+  if(st != null && st != "None") {
     axios.get('/api/states/locations/' + st)
       .then(resp => {
         const locations = resp.data;
@@ -53,6 +53,7 @@ export const getSelectedStLocations = st => dispatch => {
   }
 }
 
+//set map for selected state
 export const setSelectedStMap = selectedSt => dispatch => {
   dispatch(setSelectedSt(selectedSt))
 

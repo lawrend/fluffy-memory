@@ -5,6 +5,7 @@ import { getSelectedStLocationsMarkers } from '../store/actions/setMarkers.js';
 
 const mapStateToProps = state => ({
   selectedStLocations: state.locations.selectedStLocations,
+
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -26,13 +27,18 @@ class SpeciesStates extends Component {
   }
 
   handleLocationChange (e, {value}) {
-    console.log("loc change value: ", value)
-    if (value != null) {
+    if (value != null && value != "") {
+      console.log("handle location changed tripped with value of: ", value)
       this.props.getSelectedStLocations(value)
-      this.props.markerMaker(value)
       this.props.setSelectedStMap(value)
+      this.props.markerMaker(value)
+    } else {
+      this.props.getSelectedStLocations(null)
+      console.log("handle location change tripped on dropdown with null or empty")
     }
   }
+
+
 
   render() {
     let places = this.props.selectedStLocations.map(l => <div><List.Icon name="leaf" /> <List.Item content={l.loc} /></div> )

@@ -65,8 +65,6 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.props.selectedStLocations)
-    console.log("current center: ", this.props.center)
     return (
       <div>
         <Header fixed='top' >

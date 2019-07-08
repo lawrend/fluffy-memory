@@ -40,8 +40,7 @@ export class MapsContainer extends Component {
     let markers = this.props.locations.map(l=> { return <Marker icon={icon_url} onClick={this.onMarkerClick} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc}>
       </Marker>})
 
-    console.log("these are the markers: ", markers)
-    console.log("state is: ", this.state)
+    console.log("local map state is: ", this.state)
     const styles =
       [
         {featureType: 'poi.business',
@@ -96,7 +95,7 @@ export class MapsContainer extends Component {
         <div>
           <Map google={this.props.google} zoom={this.props.zoom} mapType={'terrain'} mapTypeControl={false} initialCenter={this.props.center} center={this.props.center} styles={styles} onClick={this.onMapClicked} >
               {markers}
-            <InfoWindow marker={this.state.activeMarker} visible={this.state.showingInfoWindow} > <div><h1><a href={locationRouteLink}>{this.state.selectedPlace.name}</a></h1></div></InfoWindow>
+            <InfoWindow marker={this.state.activeMarker} visible={this.state.showingInfoWindow} > <div><h1><a href={'/home'}>{this.state.selectedPlace.name}</a></h1></div></InfoWindow>
 </Map>
         </div>
           )

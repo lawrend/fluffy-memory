@@ -6,7 +6,7 @@ const initialState = { species: [],
   stspecies: []
 };
 
-export default function manageSpecies (state = initialState, action) {
+export default function manageMap (state = initialState, action) {
   switch (action.type) {
     case 'SET_SELECTED_LOCATION_SPECIES':
       return {...state, selected_location_species: action.payload}
