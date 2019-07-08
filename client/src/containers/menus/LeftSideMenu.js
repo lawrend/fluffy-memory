@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Divider, Menu } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Menu } from 'semantic-ui-react';
 import SpeciesStates from '../SpeciesStates.js';
-import TopMenu from './TopMenu.js';
 
 export default class LeftSideMenu extends Component {
   constructor(props) {

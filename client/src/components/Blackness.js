@@ -1,7 +1,7 @@
 import React, { Component }from 'react';
 import { Link } from 'react-router-dom';
-import { getLocations } from '../store/actions/getLocations.js';
-import { getSpecies } from '../store/actions/getSpecies.js';
+import { getLocations } from '../store/actions/locations/getLocations.js';
+import { getSpecies } from '../store/actions/species/getSpecies.js';
 import { connect } from 'react-redux';
 import '../css/front-page.css';
 

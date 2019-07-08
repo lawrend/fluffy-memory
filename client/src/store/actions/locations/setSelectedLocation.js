@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { setSelectedStMap, setMapCenter, setMapZoom } from '../maps/getMap.js'
 
 //set Selected State of the U.S. from dropdown
 //or resets selected state to "None"
@@ -26,19 +25,6 @@ export const setSelectedStLocations = selectedStLocations => ({
   payload: selectedStLocations,
 })
 
-// generic set center and zoom of the map - should be elsewhere
-
-// export const SET_MAP_CENTER = "SET_MAP_CENTER";
-// export const setMapCenter = center => ({
-//   type: SET_MAP_CENTER,
-//   payload: center,
-// })
-// export const SET_MAP_ZOOM = "SET_MAP_ZOOM";
-// export const setMapZoom = zoom => ({
-//   type: SET_MAP_ZOOM,
-//   payload: zoom,
-// })
-
 // pull and set all protected areas for selected state
 export const getSelectedStLocations = st => dispatch => {
   if(st !== null && st !== "None") {
@@ -53,25 +39,4 @@ export const getSelectedStLocations = st => dispatch => {
     dispatch(setSelectedStLocations([]))
   }
 }
-
-//set map for selected state
-// export const setSelectedStMap = selectedSt => dispatch => {
-//   dispatch(setSelectedSt(selectedSt))
-
-//   axios.get('/api/states/locations/' + selectedSt)
-//     .then(resp => {
-//       const locations = resp.data;
-//       dispatch(setSelectedStLocations(locations))
-//     })
-//     .catch(error => console.log(error));
-//   axios.get('/api/states/sel_st_map/' + selectedSt)
-//     .then(resp => {
-//       const center = resp.data;
-//       dispatch(setMapCenter(center))
-
-//       dispatch(setMapZoom(7))
-//     })
-//     .catch(error => console.log(error));
-// }
-
 

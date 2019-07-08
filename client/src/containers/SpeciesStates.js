@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import { List, Icon, Divider, Dropdown } from 'semantic-ui-react';
+import { List, Divider, Dropdown } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { getSelectedStLocationsMarkers } from '../store/actions/setMarkers.js';
+import { getSelectedStLocationsMarkers } from '../store/actions/maps/setMarkers.js';
 
 const mapStateToProps = state => ({
   selectedStLocations: state.locations.selectedStLocations,
 
 })
-
 const mapDispatchToProps = dispatch => ({
   markerMaker(locs) {
     return dispatch(getSelectedStLocationsMarkers(locs))
@@ -27,7 +26,7 @@ class SpeciesStates extends Component {
   }
 
   handleLocationChange (e, {value}) {
-    if (value != null && value != "") {
+    if (value !== null && value !== "") {
       console.log("handle location changed tripped with value of: ", value)
       this.props.getSelectedStLocations(value)
       this.props.setSelectedStMap(value)

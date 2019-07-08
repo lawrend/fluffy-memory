@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import LeftSideMenu from './menus/LeftSideMenu.js';
-import TopMenu from './menus/TopMenu.js';
 import MapsContainer from '../containers/MapsContainer';
-import { getStNames } from '../store/actions/getLocations.js';
-import { setMapCenter, setSelectedStMap, setSelectedSt, getSelectedStLocations, setMapZoom } from '../store/actions/setSelectedLocation.js';
-import { getSelectedStSpecies } from '../store/actions/setLocationSpecies.js';
+import { setMapCenter, setSelectedStMap, setMapZoom } from '../store/actions/maps/getMap.js'
+import { getStNames } from '../store/actions/locations/getLocations.js';
+import { setSelectedSt, getSelectedStLocations } from '../store/actions/locations/setSelectedLocation.js';
+import { getSelectedStSpecies } from '../store/actions/species/setLocationSpecies.js';
 import { connect } from 'react-redux';
 import { Header, Divider } from 'semantic-ui-react';
 import '../css/header.css';
@@ -17,9 +17,9 @@ const mapStateToProps = state => ({
   species: state.species.species,
   stnames: state.locations.stnames,
   selectedSt: state.locations.selectedSt,
-  center: state.locations.center,
+  center: state.maps.center,
   selectedStSpecies: state.locations.selectedStSpecies,
-  zoom: state.locations.zoom,
+  zoom: state.maps.zoom,
   selectedStLocations: state.locations.selectedStLocations,
 })
 
