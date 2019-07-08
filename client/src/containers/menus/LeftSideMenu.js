@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Menu } from 'semantic-ui-react';
-import SpeciesStates from '../SpeciesStates.js';
+import StatesDropdown from '../StatesDropdown.js';
 
 export default class LeftSideMenu extends Component {
   constructor(props) {
@@ -30,7 +30,7 @@ export default class LeftSideMenu extends Component {
             name='locations'
             active={activeItem === 'locations'}
           >
-            <SpeciesStates stnames={this.props.stnames} selectedStLocations={this.props.selectedStLocations} setSelectedStMap={this.props.setSelectedStMap} getSelectedStLocations={this.props.getSelectedStLocations} />
+            <StatesDropdown stnames={this.props.stnames} selectedStLocations={this.props.selectedStLocations} setSelectedStMap={this.props.setSelectedStMap} getSelectedStLocations={this.props.getSelectedStLocations} />
           </Menu.Item>
         </Menu>
           )
