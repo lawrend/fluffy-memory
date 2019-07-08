@@ -95,7 +95,7 @@ export class MapsContainer extends Component {
         <div>
           <Map google={this.props.google} zoom={this.props.zoom} mapType={'terrain'} mapTypeControl={false} initialCenter={this.props.center} center={this.props.center} styles={styles} onClick={this.onMapClicked} >
               {markers}
-            <InfoWindow marker={this.state.activeMarker} visible={this.state.showingInfoWindow} > <div><h1><a href={'/home'}>{this.state.selectedPlace.name}</a></h1></div></InfoWindow>
+            <InfoWindow marker={this.state.activeMarker} visible={this.state.showingInfoWindow} > <div><h1><a href={'/location-detail/'+this.state.selectedPlace.name}>{this.state.selectedPlace.name}</a></h1></div></InfoWindow>
 </Map>
         </div>
           )

@@ -37,15 +37,3 @@ export default class LeftSideMenu extends Component {
 }
 }
 
-// moved from menu above
-//         <Link to={"/species-form"}
-//           name='species'
-//         >
-//           <Menu.Item
-//             name='species'
-//             active={activeItem === 'species'}
-//             onClick={this.handleItemClick}
-//           />
-//           </Link>
-
-
