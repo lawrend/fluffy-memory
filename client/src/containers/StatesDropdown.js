@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { List, Divider, Dropdown } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { getSelectedStLocationsMarkers } from '../store/actions/maps/setMarkers.js';
+import { setSelectedProtectedArea } from '../store/actions/locations/setSelectedProtectedArea.js'
 
 const mapStateToProps = state => ({
   selectedStLocations: state.locations.selectedStLocations,
@@ -11,10 +12,10 @@ const mapDispatchToProps = dispatch => ({
   markerMaker(locs) {
     return dispatch(getSelectedStLocationsMarkers(locs))
   },
-})
+  })
 
 
-class SpeciesStates extends Component {
+class StatesDropdown extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -58,16 +59,10 @@ class SpeciesStates extends Component {
                 {places}
             </List.Content>
           </List>
-          <Dropdown
-            placeholder="Species"
-            fluid
-            scrolling
-            options={this.props.species}
-          />
-          </div>
+        </div>
 
-            )
+          )
 };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SpeciesStates);
+export default connect(mapStateToProps, mapDispatchToProps)(StatesDropdown);

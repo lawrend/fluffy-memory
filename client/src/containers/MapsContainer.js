@@ -17,25 +17,27 @@ export class MapsContainer extends Component {
     }
   }
 
-  onMarkerClick = (props, marker, e) =>
+  onMarkerClick = (props, marker, e) => {
     this.setState({
       activeMarker: marker,
       showingInfoWindow: true,
       selectedPlace: props,
-    });
+    })
+
+    this.props.setSelectedProtectedArea(this.state.selectedPlace.name)
+  };
 
   onMapClicked = (props) => {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
         activeMarker: null,
-      })
+      });
+      this.props.setSelectedProtectedArea(null)
     }
   }
 
-
   render () {
-
     const icon_url = {url: iboga, scaledSize: new this.props.google.maps.Size(64, 64)}
     let markers = this.props.locations.map(l=> { return <Marker icon={icon_url} onClick={this.onMarkerClick} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc}>
       </Marker>})
@@ -96,9 +98,9 @@ export class MapsContainer extends Component {
           <Map google={this.props.google} zoom={this.props.zoom} mapType={'terrain'} mapTypeControl={false} initialCenter={this.props.center} center={this.props.center} styles={styles} onClick={this.onMapClicked} >
               {markers}
             <InfoWindow marker={this.state.activeMarker} visible={this.state.showingInfoWindow} > <div><h1><a href={'/location-detail/'+this.state.selectedPlace.name}>{this.state.selectedPlace.name}</a></h1></div></InfoWindow>
-</Map>
-        </div>
-          )
+  </Map>
+</div>
+  )
 }
 }
 }

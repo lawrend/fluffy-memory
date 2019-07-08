@@ -1,7 +1,7 @@
 const initialState = {
   selected_location_species: [],
   selectedSt: "None",
-  selectedProtectedArea: null,
+  selectedProtectedArea: "",
   selectedStLocations: [],
   selectedStSpecies: [],
   locations: [],

@@ -9,20 +9,9 @@ module Maps
       @place = JSON.parse(resp.body)
     end
 
-    def get_map(center)
-      new_map = new google.maps.map(zoom: 4, center: center)
-    end
-
-    def generate_coordinates_for_all
-      @locations = Location.all
-      @locations.each do |l|
-        @coordinates = Location.get_coordinates(l.loc)
-        l.lat = @coordinates['results'][0]['geometry']['location']['lat']
-        l.long = @coordinates['results'][0]['geometry']['location']['lng']
-        l.save
-      end
-    end
-
+    # def get_map(center)
+    #   new_map = new google.maps.map(zoom: 4, center: center)
+    # end
 
   end
 end
