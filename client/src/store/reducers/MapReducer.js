@@ -1,5 +1,5 @@
 const initialState = {
-  center: {lat: 36.8097343, lng: -71.5556199},
+  center: {lat: 36.8097343, lng: -91.5556199},
   zoom: 5,
 };
 
