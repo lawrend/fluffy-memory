@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { setSelectedStLocations } from './setSelectedLocation.js';
+import { setSelectedStLocations } from '../locations/setSelectedLocation.js';
 
 // updates all of a State's locations with lat and long to be used as markers
 export const SET_ST_LOCATIONS_MARKERS = 'SET_ST_LOCATIONS_MARKERS';
