@@ -40,7 +40,7 @@ export const setMapZoom = zoom => ({
 
 // pull and set all protected areas for selected state
 export const getSelectedStLocations = st => dispatch => {
-  if(st != null && st != "None") {
+  if(st !== null && st !== "None") {
     axios.get('/api/states/locations/' + st)
       .then(resp => {
         const locations = resp.data;
