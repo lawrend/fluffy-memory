@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Container, Card } from 'semantic-ui-react';
+import { Grid, Container, Card } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { getSelectedStSpecies } from '../store/actions/species/setLocationSpecies.js';
 import SpeciesDetail from './SpeciesDetail';

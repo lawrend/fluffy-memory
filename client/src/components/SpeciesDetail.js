@@ -1,8 +1,10 @@
 import React from 'react';
-import { Card } from 'semantic-ui-react';
+import { Grid, Card } from 'semantic-ui-react';
 
 export default props => (
-  <Card id={props.id}>
+  <Grid.Row columns={1}>
+    <Grid.Column>
+  <Card id={props.id} >
     <Card.Content>
       <Card.Header>
       Name: {props.name}
@@ -10,4 +12,6 @@ export default props => (
         Having Trubbs!
     </Card.Content>
   </Card>
+</Grid.Column>
+</Grid.Row>
 )
