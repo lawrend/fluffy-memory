@@ -1,8 +1,13 @@
 import React from 'react';
+import { Card } from 'semantic-ui-react';
 
 export default props => (
-  <div>
-      Detail
+  <Card id={props.id}>
+    <Card.Content>
+      <Card.Header>
       Name: {props.name}
-  </div>
+      </Card.Header>
+        Having Trubbs!
+    </Card.Content>
+  </Card>
 )

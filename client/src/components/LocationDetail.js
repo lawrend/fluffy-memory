@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { List } from 'semantic-ui-react';
+import { Container, Card } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import { getSelectedStSpecies } from '../store/actions/species/setLocationSpecies.js';
+import SpeciesDetail from './SpeciesDetail';
 
 const mapStateToProps = state  => ({
   selectedLocationSpecies: state.species.selected_location_species,
@@ -26,14 +28,16 @@ class LocationDetail extends Component {
 
   render() {
 
-    let species = this.props.selectedLocationSpecies.map(s => <div><List.Icon name="leaf" /> <List.Item content={s.name} id={s.id} /></div> )
+    // let species = this.props.selectedLocationSpecies.map(s => <div><List.Icon name="leaf" /> <List.Item content={s.name} id={s.id} /></div> )
+    // let species = this.props.selectedLocationSpecies.map(s => <Link to='/'><Card id={s.id} onClick={this.sendToSpeciesPage}><Card.Content><Card.Header>{s.name}</Card.Header></Card.Content></Card></Link> )
+
+    let species = this.props.selectedLocationSpecies.map(s => <Link to='/'><SpeciesDetail name={s.name} id={s.id} /></Link> )
     return(
       <div>
-        <h1>STILL HERE BRUH!!!!</h1>
-        <h2>{this.placeName}</h2>
-        <List>
+        <h1>{this.placeName}</h1>
+        <Card.Group centered itemsPerRow={1}>
           {species}
-        </List>
+        </Card.Group>
         <h4><a href='/home'>Home</a></h4>
       </div>
         )
