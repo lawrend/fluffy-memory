@@ -4,7 +4,6 @@ class SpeciesLocationsController < ApplicationController
   # GET /species_locations
   def index
     @species_locations = SpeciesLocation.all
-
     render json: @species_locations
   end
 

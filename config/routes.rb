@@ -5,11 +5,11 @@ Rails.application.routes.draw do
       :species_locations
   end
   #species
-  get '/api/species_loc/:id', to: 'species#show_loc'
+  get '/api/species/locations/:id', to: 'species#show_loc'
 
   #locations
   get '/api/locations/getmap/:id', to: 'locations#get_map'
-  get '/api/locations/getspecies/:id', to: 'locations#get_species'
+  get '/api/locations/getspecies/:name', to: 'locations#get_species'
   get '/api/locationsbystate', to: 'locations#locations_by_state'
 
   #states

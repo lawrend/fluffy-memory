@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import LocationData from '../components/LocationData.js';
-import LocationDetail from '../components/LocationDetail';
 import { List, Divider } from 'semantic-ui-react';
 
 class LocationForm extends Component {
@@ -49,12 +47,8 @@ class LocationForm extends Component {
     return(
       <div >
         <div className="maps homepage">
-      <LocationDetail center={this.state.center} selected_location_species={this.selected_location_species} />
     </div>
     <Divider />
-    <List>
-      <LocationData handleClick={this.handleClick} locations={this.state.locations} center={this.state.center} selected_location_species={this.selected_location_species}/>
-    </List>
   </div>
     )
   }

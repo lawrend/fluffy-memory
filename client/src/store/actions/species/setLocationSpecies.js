@@ -6,11 +6,11 @@ const setSelectedStSpecies = locationSpecies => ({
   payload: locationSpecies,
 })
 
-export const getSelectedStSpecies = st => dispatch => {
-  axios.get('/api/states/species/' + st)
+export const getSelectedStSpecies = name => dispatch => {
+  axios.get('/api/locations/getspecies/' + name)
     .then(resp => {
       const species = resp.data;
-      console.log("sepecies: ", species)
+      console.log("species from location: ", species)
       dispatch (setSelectedStSpecies(species))
     })
     .catch(error => console.log(error));

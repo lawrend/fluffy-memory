@@ -41,7 +41,8 @@ class StatesDropdown extends Component {
 
 
   render() {
-    let places = this.props.selectedStLocations.map(l => <div><List.Icon name="leaf" /> <List.Item content={l.loc} /></div> )
+    console.log("sel st locations", this.props.selectedStLocations)
+    let places = this.props.selectedStLocations.map(l => <div><List.Icon name="leaf" /> <List.Item content={l.loc} id={l.id} /></div> )
 
     return (
       <div>

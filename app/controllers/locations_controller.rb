@@ -1,7 +1,7 @@
 class LocationsController < ApiController
   include ApplicationHelper
 
-  before_action :set_location, only: [:show, :getmap, :getspecies]
+  before_action :set_location, only: [:show, :getmap ]
 
   # GET /locations
   # either get all the species/locations records or make them
@@ -45,6 +45,7 @@ class LocationsController < ApiController
 
   # GET /locations/species/1
   def get_species
+    @location = Location.find_by(loc: params[:name])
     render json: @location.species 
   end
 
