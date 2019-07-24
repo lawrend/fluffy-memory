@@ -1,5 +1,5 @@
 class StatesController < ApiController
-  include ApplicationHelper
+  include ApiHelper
 
   before_action :set_state, only: [:show]
 

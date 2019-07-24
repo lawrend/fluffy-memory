@@ -41,7 +41,6 @@ export class MapsContainer extends Component {
     let markers = this.props.locations.map(l=> { return <Marker icon={icon_url} onClick={this.onMarkerClick} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc} id={l.id} >
       </Marker>})
     let locationRouteLink = "/location-detail/" + this.state.selectedPlace.id;
-    console.log("local map state is: ", this.state)
 
     //map styles
     const styles =
@@ -116,7 +115,4 @@ export default GoogleApiWrapper({
   apiKey: MAPS_KEY,
 })(MapsContainer)
 
-// lat={33.0892941} lng={87.0623622}
-//maps
-//
 //to make map un navigatable use gestureHandling={'none'}

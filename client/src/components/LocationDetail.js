@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Item, Grid, Container, Card } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { getSelectedStSpecies } from '../store/actions/species/setLocationSpecies.js';
-import SpeciesDetail from './SpeciesDetail';
 import SpeciesItem from './SpeciesItem';
 
 const mapStateToProps = state  => ({

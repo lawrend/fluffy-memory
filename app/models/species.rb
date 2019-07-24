@@ -1,5 +1,5 @@
 class Species < ApplicationRecord
-  include Enigma
+  # include Enigma, Wiki
 
   has_many :species_locations
   has_many :locations, through: :species_locations

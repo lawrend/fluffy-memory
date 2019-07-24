@@ -1,5 +1,5 @@
 class LocationsController < ApiController
-  include ApplicationHelper
+  include ApiHelper
 
   before_action :set_location, only: [:show, :getmap ]
 
@@ -33,7 +33,7 @@ class LocationsController < ApiController
 
   # GET /locations/getmap/1
   def get_map
-    @coordinates = Location.get_coordinates(@location.loc) #get_coordinates is Maps concern method 
+    @coordinates = Location.get_coordinates(@location.loc) #get_coordinates is apiHelper method 
     @lat = @coordinates['results'][0]['geometry']['location']['lat']
     @long = @coordinates['results'][0]['geometry']['location']['lng']
     @location.lat = @lat

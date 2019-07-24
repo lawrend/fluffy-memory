@@ -10,7 +10,6 @@ export const getSelectedStSpecies = name => dispatch => {
   axios.get('/api/locations/getspecies/' + name)
     .then(resp => {
       const species = resp.data;
-      console.log("species from location: ", species)
       dispatch (setSelectedStSpecies(species))
     })
     .catch(error => console.log(error));

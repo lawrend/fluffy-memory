@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Card, Divider } from 'semantic-ui-react';
 
 //species are stored with a name, id, and status
+//not currently used
 class SpeciesForm extends Component {
   state = {
     species: [],

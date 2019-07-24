@@ -1,5 +1,5 @@
 class Location < ApplicationRecord
-  include Enigma, Maps
+  # include Enigma, Maps, Wiki
 
   belongs_to :state
   has_many :species_locations
