@@ -3,8 +3,9 @@ import { Container } from 'semantic-ui-react';
 import { InfoWindow, Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { MAPS_KEY } from '../config.js';
 import { Route } from 'react-router-dom';
-import shelter from '../resources/shelter.png';
+import pinwheel from '../resources/pinwheel.svg';
 import iboga from '../resources/iboga.png';
+import pointer from '../resources/pointer.svg';
 
 export class MapsContainer extends Component {
 
@@ -37,7 +38,7 @@ export class MapsContainer extends Component {
   }
 
   render () {
-    const icon_url = {url: iboga, scaledSize: new this.props.google.maps.Size(64, 64)}
+    const icon_url = {url: pointer, scaledSize: new this.props.google.maps.Size(103, 103)}
     let markers = this.props.locations.map(l=> { return <Marker icon={icon_url} onClick={this.onMarkerClick} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc} id={l.id} >
       </Marker>})
     let locationRouteLink = "/location-detail/" + this.state.selectedPlace.id;

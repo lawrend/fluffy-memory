@@ -2,6 +2,7 @@ class StatesController < ApiController
   include ApiHelper
 
   before_action :set_state, only: [:show]
+  before_action :set_state_by_name, only: [:state_locations, :add_cords_to_st_locations, :state_species]
 
 
   def index
@@ -17,7 +18,6 @@ class StatesController < ApiController
     render json: @states_options
   end
 
-
   def show
     render json: @state
   end
@@ -27,9 +27,7 @@ class StatesController < ApiController
     render json: @new_center
   end
 
-
   def state_locations
-    @state = State.find_by(name: params[:name])
     @protected_areas = @state.locations
     # @protected_areas.each do |pa| 
     #   State.add_lat_lng(pa)
@@ -38,7 +36,6 @@ class StatesController < ApiController
   end
 
   def add_cords_to_st_locations
-    @state = State.find_by(name: params[:name])
     @state_locs = @state.locations
     @state_locs.each do |pa|
       add_lat_lng(pa)
@@ -48,10 +45,7 @@ class StatesController < ApiController
 
   end
 
-
-
   def state_species
-    @state = State.find_by(name: params[:name])
     @species = @state.species.uniq
     render json: @species
   end
@@ -73,6 +67,9 @@ class StatesController < ApiController
     @state = State.find(params[:id])
   end
 
+  def set_state_by_name
+    @state = State.find_by(name: params[:name])
+  end
   # Only allow a trusted parameter "white list" through.
   def state_params
     params.require(:state).permit(:name, :abbrev )
