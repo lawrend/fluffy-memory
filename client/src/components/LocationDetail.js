@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { getSelectedStSpecies } from '../store/actions/species/setLocationSpecies.js';
 import SpeciesItem from './SpeciesItem';
 
-const mapStateToProps = state  => ({
+const mapStateToProps = state => ({
   selectedLocationSpecies: state.species.selected_location_species,
 })
 
