@@ -28,20 +28,6 @@ class LocationDetail extends Component {
 
   render() {
 
-    // let species = this.props.selectedLocationSpecies.map(s => <div><List.Icon name="leaf" /> <List.Item content={s.name} id={s.id} /></div> )
-    // let species = this.props.selectedLocationSpecies.map(s => <Link to='/'><Card id={s.id} onClick={this.sendToSpeciesPage}><Card.Content><Card.Header>{s.name}</Card.Header></Card.Content></Card></Link> )
-
-    // let species = this.props.selectedLocationSpecies.map(s => <SpeciesDetail name={s.name} id={s.id} /> )
-    // return(
-    //   <div>
-    //     <h1>{this.placeName}</h1>
-    //     <Card.Group centered itemsPerRow={1}>
-    //       {species}
-    //     </Card.Group>
-    //     <h4><a href='/home'>Home</a></h4>
-    //   </div>
-    //     )
-
 let species = this.props.selectedLocationSpecies.map(s => <SpeciesItem name={s.name} id={s.id} /> )
     return(
       <div>
@@ -49,14 +35,11 @@ let species = this.props.selectedLocationSpecies.map(s => <SpeciesItem name={s.n
         <Item.Group>
           {species}
         </Item.Group>
-        <h4><a href='/home'>Home</a></h4>
+        <h1><a href='/home'>Home</a></h1>
       </div>
         )
 
   }
 }
-
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(LocationDetail);
