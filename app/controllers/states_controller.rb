@@ -30,9 +30,6 @@ class StatesController < ApiController
 
   def state_locations
     @protected_areas = @state.locations
-    # @protected_areas.each do |pa| 
-    #   State.add_lat_lng(pa)
-    # end
     render json: @protected_areas
   end
 
