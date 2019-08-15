@@ -8,6 +8,7 @@ module Wikipedia
     @info = JSON.parse(resp.body)
     if @info['extract']
       self.update(desc: @info['extract'])
+      self.update(imgsrc: @info['thumbnail']['source'])
     else
       self.update(desc: "Description not found")
     end

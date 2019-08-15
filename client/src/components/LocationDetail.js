@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Item, Grid, Container, Card } from 'semantic-ui-react';
+import { Grid, Container, Card } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { getSelectedStSpecies } from '../store/actions/species/setLocationSpecies.js';
 import SpeciesItem from './SpeciesItem';
@@ -28,13 +28,13 @@ class LocationDetail extends Component {
 
   render() {
 
-let species = this.props.selectedLocationSpecies.map(s => <SpeciesItem name={s.name} id={s.id} desc={s.desc}/> )
+let species = this.props.selectedLocationSpecies.map(s => <SpeciesItem name={s.name} id={s.id} desc={s.desc} imgsrc={s.imgsrc}/> )
     return(
       <div>
         <h1>{this.placeName}</h1>
-        <Item.Group>
+        <Card.Group centered>
           {species}
-        </Item.Group>
+        </Card.Group>
         <h1><a href='/home'>Home</a></h1>
       </div>
         )

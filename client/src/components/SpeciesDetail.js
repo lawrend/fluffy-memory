@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
 
+// not currently used
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
@@ -14,7 +15,6 @@ import { Link } from 'react-router-dom';
 //   },
 // });
 
-// not currently used
 export default props => (
   <Card id={props.id} >
 
