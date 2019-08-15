@@ -1,38 +1,26 @@
 module ApiHelper
 
+  # Use name of state as address and return google map - causes map to zoom in after state selection
   def generate_state_map(name)
     map_name = name.gsub(" ", "+")
     conn = Faraday.new "https://maps.googleapis.com/maps/api/"
     resp = conn.get("geocode/json?address= #{map_name}&key=#{ENV['MAPS_KEY']}")
     @place = JSON.parse(resp.body)
     @new_place = @place['results'][0]['geometry']['location']
-
   end
 
-  def get_coordinates(name)
-    map_name = name.gsub(" ", "+")
-    conn = Faraday.new "https://maps.googleapis.com/maps/api/"
-    resp = conn.get("geocode/json?address= #{map_name}&components=country:US&key=#{ENV['MAPS_KEY']}")
-    @place = JSON.parse(resp.body)
-  end
-
-  def get_map(center)
-    @new_map = new google.maps.map(zoom: 4, center: center)
-  end
-
-  # def get_enigma_dataset(datasetID)
-  #   conn = Faraday.new "https://public.enigma.com/api/"
-  #   resp = conn.get("datasets/#{datasetID}") do |req|
-  #     req.headers['Authorization'] = "Bearer: #{ENV['ENIGMA_API_KEY']}"
-  #   end
-  #   @snapshotID = resp['current_snapshot']['id']
-
-  #   resp2 = conn.get("export/#{@snapshotID}") do |req|
-  #     req.headers['Authorization'] = "Bearer: #{ENV['ENIGMA_API_KEY']}"
-  #   end
-  #   @dataset = resp2.body
+  # def get_coordinates(name)
+  #   map_name = name.gsub(" ", "+")
+  #   conn = Faraday.new "https://maps.googleapis.com/maps/api/"
+  #   resp = conn.get("geocode/json?address= #{map_name}&components=country:US&key=#{ENV['MAPS_KEY']}")
+  #   @place = JSON.parse(resp.body)
   # end
 
+  # # def get_map(center)
+  # #   @new_map = new google.maps.map(zoom: 4, center: center)
+  # # end
+
+  # add lat and lng attributes to location
   def add_lat_lng(pa)
     map_name = pa.loc.gsub(" ", "+")
     conn = Faraday.new "https://maps.googleapis.com/maps/api/"
@@ -45,11 +33,11 @@ module ApiHelper
     end
   end
 
-  def get_info(name)
-    conn = Faraday.new "https://en.wikipedia.org/w/api.php?"
-    resp = conn.get("action=opensearch&format=json&search=#{name}&namespace=0&limit=10")
-    @info = JSON.parse(resp.body)
-  end
+  # def get_info(name)
+  #   conn = Faraday.new "https://en.wikipedia.org/w/api.php?"
+  #   resp = conn.get("action=opensearch&format=json&search=#{name}&namespace=0&limit=10")
+  #   @info = JSON.parse(resp.body)
+  # end
 
 
   def convert_state_abbrev(abbrev)

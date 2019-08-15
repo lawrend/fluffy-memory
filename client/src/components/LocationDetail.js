@@ -28,7 +28,7 @@ class LocationDetail extends Component {
 
   render() {
 
-let species = this.props.selectedLocationSpecies.map(s => <SpeciesItem name={s.name} id={s.id} /> )
+let species = this.props.selectedLocationSpecies.map(s => <SpeciesItem name={s.name} id={s.id} desc={s.desc}/> )
     return(
       <div>
         <h1>{this.placeName}</h1>

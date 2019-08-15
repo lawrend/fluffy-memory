@@ -10,6 +10,7 @@ class StatesController < ApiController
     render json: @states
   end
 
+  # return json state names to use in the dropdown menu
   def states_for_dropdown
     @states = State.all.order("name")
     @states_options = @states.map do |l|

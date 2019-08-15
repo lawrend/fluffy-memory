@@ -1,5 +1,5 @@
 class LocationsController < ApiController
-  include ApiHelper
+  include ApiHelper 
 
   before_action :set_location, only: [:show, :getmap ]
 
@@ -46,12 +46,12 @@ class LocationsController < ApiController
   # GET /locations/species/1
   def get_species
     @location = Location.find_by(loc: params[:name])
-    if !@location.species.first 
-      @location.species.each do |sp|
-        sp.add_desc
-      end
+
+    @location.species.each do |sp|
+        sp.add_desc(sp.name)
     end
     render json: @location.species 
+
   end
 
   def locations_by_state

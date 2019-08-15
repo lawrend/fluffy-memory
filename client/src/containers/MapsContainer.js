@@ -6,6 +6,8 @@ import { Route } from 'react-router-dom';
 import pinwheel from '../resources/pinwheel.svg';
 import iboga from '../resources/iboga.png';
 import pointer from '../resources/pointer.svg';
+import constructioncrane from '../resources/constructioncrane.png';
+import constructioncrane2 from '../resources/constructioncrane2.png';
 
 export class MapsContainer extends Component {
 
@@ -38,7 +40,7 @@ export class MapsContainer extends Component {
   }
 
   render () {
-    const icon_url = {url: pointer, scaledSize: new this.props.google.maps.Size(103, 103)}
+    const icon_url = {url: constructioncrane2, scaledSize: new this.props.google.maps.Size(65, 65)}
     let markers = this.props.locations.map(l=> { return <Marker icon={icon_url} onClick={this.onMarkerClick} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc} id={l.id} >
       </Marker>})
     let locationRouteLink = "/location-detail/" + this.state.selectedPlace.id;
