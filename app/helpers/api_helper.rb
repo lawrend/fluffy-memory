@@ -9,12 +9,12 @@ module ApiHelper
     @new_place = @place['results'][0]['geometry']['location']
   end
 
-  # def get_coordinates(name)
-  #   map_name = name.gsub(" ", "+")
-  #   conn = Faraday.new "https://maps.googleapis.com/maps/api/"
-  #   resp = conn.get("geocode/json?address= #{map_name}&components=country:US&key=#{ENV['MAPS_KEY']}")
-  #   @place = JSON.parse(resp.body)
-  # end
+  def get_coordinates(name)
+    map_name = name.gsub(" ", "+")
+    conn = Faraday.new "https://maps.googleapis.com/maps/api/"
+    resp = conn.get("geocode/json?address= #{map_name}&components=country:US&key=#{ENV['MAPS_KEY']}")
+    @place = JSON.parse(resp.body)
+  end
 
   # # def get_map(center)
   # #   @new_map = new google.maps.map(zoom: 4, center: center)
@@ -24,7 +24,7 @@ module ApiHelper
   def add_lat_lng(pa)
     map_name = pa.loc.gsub(" ", "+")
     conn = Faraday.new "https://maps.googleapis.com/maps/api/"
-    resp = conn.get("geocode/json?address= #{map_name}&components=country:US&key=#{ENV['MAPS_KEY']}")
+    resp = conn.get("geocode/json?address= #{map_name}&key=#{ENV['MAPS_KEY']}")
     @place = JSON.parse(resp.body)
     if (@place['results'][0]['geometry']['location']['lat']) && (@place['results'][0]['geometry']['location']['lng']) 
       @lat = @place['results'][0]['geometry']['location']['lat'] 
@@ -32,13 +32,6 @@ module ApiHelper
       pa.update(lat: @lat, long: @long)
     end
   end
-
-  # def get_info(name)
-  #   conn = Faraday.new "https://en.wikipedia.org/w/api.php?"
-  #   resp = conn.get("action=opensearch&format=json&search=#{name}&namespace=0&limit=10")
-  #   @info = JSON.parse(resp.body)
-  # end
-
 
   def convert_state_abbrev(abbrev)
     case abbrev
