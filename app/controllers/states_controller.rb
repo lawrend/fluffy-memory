@@ -1,6 +1,5 @@
 class StatesController < ApiController
   include ApiHelper
-
   before_action :set_state, only: [:show]
   before_action :set_state_by_name, only: [:state_locations, :add_cords_to_st_locations, :state_species]
 
@@ -38,9 +37,7 @@ class StatesController < ApiController
     @state_locs.each do |pa|
       add_lat_lng(pa)
     end
-
     render json: @state_locs
-
   end
 
   def state_species
@@ -72,6 +69,5 @@ class StatesController < ApiController
   def state_params
     params.require(:state).permit(:name, :abbrev )
   end
-
 
 end

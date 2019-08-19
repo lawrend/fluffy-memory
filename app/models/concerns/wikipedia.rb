@@ -6,11 +6,16 @@ module Wikipedia
     @name = name.capitalize.gsub(" ", "_")
     resp = Faraday.get "https://en.wikipedia.org/api/rest_v1/page/summary/#{@name}"
     @info = JSON.parse(resp.body)
-    if @info['extract']
+    if @info['title'] == 'Not found.'
+      self.update(desc: "Description not found")
+    else
       self.update(desc: @info['extract'])
       self.update(imgsrc: @info['thumbnail']['source'])
-    else
-      self.update(desc: "Description not found")
+    # if @info['extract']
+    #   self.update(desc: @info['extract'])
+    #   self.update(imgsrc: @info['thumbnail']['source'])
+    # else
+    #   self.update(desc: "Description not found")
     end
   end
 end

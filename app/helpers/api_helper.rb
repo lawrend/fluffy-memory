@@ -26,7 +26,8 @@ module ApiHelper
     conn = Faraday.new "https://maps.googleapis.com/maps/api/"
     resp = conn.get("geocode/json?address= #{map_name}&key=#{ENV['MAPS_KEY']}")
     @place = JSON.parse(resp.body)
-    if (@place['results'][0]['geometry']['location']['lat']) && (@place['results'][0]['geometry']['location']['lng']) 
+    # if (@place['results'][0]['geometry']['location']['lat']) && (@place['results'][0]['geometry']['location']['lng']) 
+    if @place['status'] == "OK"
       @lat = @place['results'][0]['geometry']['location']['lat'] 
       @long = @place['results'][0]['geometry']['location']['lng'] 
       pa.update(lat: @lat, long: @long)
