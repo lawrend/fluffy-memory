@@ -17,11 +17,6 @@ module Wikipedia
     else
       self.update(desc: @info['extract'])
       self.update(imgsrc: @info['thumbnail']['source'])
-    # if @info['extract']
-    #   self.update(desc: @info['extract'])
-    #   self.update(imgsrc: @info['thumbnail']['source'])
-    # else
-    #   self.update(desc: "Description not found")
     end
   end
 end
