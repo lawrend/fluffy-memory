@@ -25,6 +25,9 @@ gem 'puma', '~> 3.11'
 # use faraday for api calls
 gem 'faraday', '~> 0.9.2'
 
+#adding nokogiri to patch security issues bc nokogiri is a dependancy
+gem 'nokogiri', '>=1.10.4'
+
 # ActiveAdmin
 gem 'devise'
 gem 'activeadmin'
