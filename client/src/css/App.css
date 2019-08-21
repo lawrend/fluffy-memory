@@ -45,5 +45,12 @@ code {
   opacity: .7;
 }
 
+a {
+  color: #897374;
+}
+
+a:hover {
+  color: #27c73A;
+}
 
 

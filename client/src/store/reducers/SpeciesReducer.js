@@ -3,13 +3,14 @@ const initialState = { species: [],
   selected_location_species: [],
   locations: [],
   stnames: [],
-  stspecies: []
+  stspecies: [],
+  loading: true,
 };
 
 export default function manageSpecies (state = initialState, action) {
   switch (action.type) {
     case 'SET_SELECTED_LOCATION_SPECIES':
-      return {...state, selected_location_species: action.payload}
+      return {...state, selected_location_species: action.payload, loading: false}
     case 'SET_STSPECIES':
       return {...state, locations: action.payload}
     case 'SET_SPECIES':

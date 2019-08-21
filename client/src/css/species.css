@@ -1,5 +1,13 @@
 .ui.centered.cards > .ui.card.species-card {
-  background-color: #D6D7C1;
-  opacity: .9;
+  /* background-color: #D6D7C1; */
+
+  background-color: #869885;
+  opacity: .8;
   /* background: #ff2233; */
 }
+
+
+.ui.centered.cards > .ui.card.species-card > .content > a:hover {
+  color: #27c73A;
+}
+

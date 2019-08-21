@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react';
 import { InfoWindow, Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { MAPS_KEY } from '../config.js';
-import { Route } from 'react-router-dom';
-import pinwheel from '../resources/pinwheel.svg';
 import iboga from '../resources/iboga.png';
-import pointer from '../resources/pointer.svg';
-import constructioncrane from '../resources/constructioncrane.png';
 import constructioncrane2 from '../resources/constructioncrane2.png';
+import smwetland from '../resources/wetland-11.svg';
+import circ from '../resources/circle-stroked-15.svg';
 
 export class MapsContainer extends Component {
 
@@ -40,7 +38,7 @@ export class MapsContainer extends Component {
   }
 
   render () {
-    const icon_url = {url: constructioncrane2, scaledSize: new this.props.google.maps.Size(65, 65)}
+    const icon_url = {url: circ, scaledSize: new this.props.google.maps.Size(35, 35)}
     let markers = this.props.locations.map(l=> { return <Marker icon={icon_url} onClick={this.onMarkerClick} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc} id={l.id} >
       </Marker>})
     let locationRouteLink = "/location-detail/" + this.state.selectedPlace.id;

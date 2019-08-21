@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Grid, Container, Card } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Card } from 'semantic-ui-react';
 import { getSelectedStSpecies } from '../store/actions/species/setLocationSpecies.js';
 import SpeciesItem from './SpeciesItem';
+import Waiter from './Loader.js';
 
 const mapStateToProps = state => ({
   selectedLocationSpecies: state.species.selected_location_species,
+  loading: state.species.loading,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -18,6 +19,7 @@ const mapDispatchToProps = dispatch => ({
 class LocationDetail extends Component {
   constructor(props) {
     super(props)
+    this.state = { loading: true };
     this.placeName = this.props.match.params.name;
   }
 
@@ -27,6 +29,7 @@ class LocationDetail extends Component {
   };
 
   render() {
+    if (this.props.loading) return <Waiter />;
 
 let species = this.props.selectedLocationSpecies.map(s => <SpeciesItem name={s.name} id={s.id} desc={s.desc} imgsrc={s.imgsrc}/> )
     return(

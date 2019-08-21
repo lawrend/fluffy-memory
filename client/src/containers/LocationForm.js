@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { List, Divider } from 'semantic-ui-react';
+import { Divider } from 'semantic-ui-react';
 
 class LocationForm extends Component {
   constructor(props) {
@@ -33,7 +33,6 @@ class LocationForm extends Component {
     //retrieve all species from a given location set state
     axios.get('/api/locations/getspecies/' + id )
       .then(response => {
-        let specs = response.data;
         this.setState((selected_location_species) => {return {...this.state, selected_location_species: response.data}}
         )
       })

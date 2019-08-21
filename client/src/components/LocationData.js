@@ -1,3 +1,5 @@
+// NOT BEING USED - obviously
+//
 // import React from 'react';
 // import LocationItem from '../../scratch/LocationItem.js'
 

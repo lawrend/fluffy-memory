@@ -2,34 +2,6 @@
   color: blue;
 }
 
-/* @BASE: #27A73A; */
-/* @DARK: #3E4A3D; */
-/* @LIGHT: #A1AF9F; */
-/* @COMP_LIGHT: #00AAF3; */
-/* @COMP_DARK: #0075BA; */
-/*landing page transitions*/
-
-/* .landing-transition-enter { */
-/*   opacity: 0; */
-
-/* } */
-
-/* .landing-transition-enter-active { */
-/*   opacity: 1; */
-/*   transition: opacity 300ms; */
-/* } */
-
-/* .landing-transition-exit { */
-/*   opacity: 1; */
-
-/* } */
-
-/* .landing-transition-exit .landing-transition-exit-active { */
-/*   opacity: 0; */
-/*   transition: 300ms; */
-
-/* } */
-
 /*landing page*/
 .landing-page {
   background-image: 
