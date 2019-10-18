@@ -30,7 +30,7 @@ gem 'faraday_middleware'
 gem 'nokogiri', '>=1.10.4'
 
 # ActiveAdmin
-gem 'devise','>= 4.1.7'
+gem 'devise','>= 4.7.1'
 gem 'activeadmin'
 
 # Reduces boot times through caching; required in config/boot.rb
