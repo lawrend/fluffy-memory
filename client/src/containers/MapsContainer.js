@@ -39,7 +39,12 @@ export class MapsContainer extends Component {
 
   render () {
     const icon_url = {url: circ, scaledSize: new this.props.google.maps.Size(35, 35)}
-    let markers = this.props.locations.map(l=> { return <Marker icon={icon_url} onClick={this.onMarkerClick} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc} id={l.id} >
+    const markerStyle = {
+      color: 'blue',
+      border: '20px',
+    }
+
+    let markers = this.props.locations.map(l=> { return <Marker style={markerStyle} icon={icon_url} onClick={this.onMarkerClick} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc} id={l.id} >
       </Marker>})
     let locationRouteLink = "/location-detail/" + this.state.selectedPlace.id;
 
