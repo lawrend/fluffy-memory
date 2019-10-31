@@ -16,7 +16,6 @@ class Routes extends Component {
       <Switch>
         <Route exact path="/" component={Blackness} />
         <Route path="/home" component={Home} />
-        <Route path="/species-form" component={SpeciesForm} />
         <Route path="/location-detail/:name" component={LocationDetail} />
         <Route path="/species-detail/:id" component={SpeciesDetail} />
         <Route component={ErrorRoute} />
@@ -27,3 +26,5 @@ class Routes extends Component {
 
 export default withRouter(Routes);
 
+
+//<Route path="/species-form" component={SpeciesForm} />

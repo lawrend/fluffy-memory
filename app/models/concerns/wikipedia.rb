@@ -16,7 +16,11 @@ module Wikipedia
       self.update(desc: "Description not found")
     else
       self.update(desc: @info['extract'])
+    end
+    if @info['thumbnail']
       self.update(imgsrc: @info['thumbnail']['source'])
+    else
+      self.update(imgsrc: 'images/resize.jpeg')
     end
   end
 end
