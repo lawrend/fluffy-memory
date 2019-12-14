@@ -20,7 +20,6 @@ export default class LeftSideMenu extends Component {
 
     return (
       <Menu vertical fixed='left' inverted >
-
         <Menu.Item
           active={activeItem === 'home'}
           name='All United States'
