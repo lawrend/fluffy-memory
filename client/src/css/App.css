@@ -18,6 +18,11 @@
   min-height: 100vh;
 }
 
+.App > div > h1 {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+
+}
 body {
   background: beige;
 }
