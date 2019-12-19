@@ -10,8 +10,8 @@ const initialState = {
 
 export default function manageLocation (state = initialState, action) {
   switch (action.type) {
-    case 'SET_SELECTED_LOCATION_SPECIES':
-      return {...state, selected_location_species: action.payload}
+    // case 'SET_SELECTED_LOCATION_SPECIES':
+    //   return {...state, selected_location_species: action.payload}
     case 'SET_STNAMES':
       return {...state, stnames: action.payload}
     case 'SET_SELECTED_ST':

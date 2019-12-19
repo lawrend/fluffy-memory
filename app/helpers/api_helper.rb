@@ -9,6 +9,7 @@ module ApiHelper
     @new_place = @place['results'][0]['geometry']['location']
   end
 
+  #provide name to google, get coordinates for place
   def get_coordinates(name)
     map_name = name.gsub(" ", "+")
     conn = Faraday.new "https://maps.googleapis.com/maps/api/"

@@ -11,10 +11,13 @@ class LocationsController < ApiController
       @rows = @new_locations['table_rows']['rows']
       @names = @rows.collect {|r| r[1,5]}
       @names.each do |n| 
+        #change names for google search
         @modded_loc = n[2].gsub("NWR", "National Wildlife Refuge")
         @modded_loc2 = @modded_loc.gsub("WMA", "Wildlife Management Area")
         @modded_loc3 = @modded_loc2.gsub("WMD", "Wetland Management District")
         @long_state_name = convert_state_abbrev(n[3])
+
+        #create species, states, locations, species_locations
         @species = Species.find_or_create_by(name: n[0], status: n[1] )
         @state = State.find_or_create_by(name: @long_state_name, abbrev: n[3])
         @location = Location.find_or_create_by(loc: @modded_loc3, st_abbrev: n[3], st: @long_state_name, other_states: n[4], state_id: @state.id)
@@ -22,6 +25,7 @@ class LocationsController < ApiController
       end
     end
 
+    #sort locations by state
     @locations= Location.all.sort_by{|x| x["st"]}
     render json:@locations 
   end
@@ -39,6 +43,7 @@ class LocationsController < ApiController
     @location.lat = @lat
     @location.long = @long
     @location.save
+    #center contains latitude and longitude but is not an attribute of Location
     @center = @coordinates['results'][0]['geometry']['location']
     render json: @center
   end
