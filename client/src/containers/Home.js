@@ -65,6 +65,15 @@ class Home extends Component {
     this.props.selectedStLocationsGetter(null)
   }
 
+  onClick = (props, marker, e) => {
+    this.setState({
+      activeMarker: marker,
+      showingInfoWindow: true,
+      selectedPlace: props,
+    })
+    this.protectedAreaSelector({name: props.name, id: props.id})
+  };
+
   componentDidMount() {
     this.props.stNamesGetter();
   }
@@ -89,15 +98,4 @@ class Home extends Component {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
-
-
-// Copy of Header above before change
-// <Header>
-//           <div className="header-text">
-//               endangered
-//           </div>
-//           <div className="header-tabs">
-//               species
-//           </div>
-//         </Header>
 
