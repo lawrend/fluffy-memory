@@ -3,7 +3,7 @@ import { Image, Card } from 'semantic-ui-react';
 import '../css/species.css';
 
 export default props => (
-  <Card key={props.id} className="species-card">
+  <Card key={props.id} className="species-card" raised={false}>
     <Image src={props.imgsrc} />
     <Card.Content>
       <Card.Header as='a' href='/'><h2>{props.name}</h2></Card.Header>

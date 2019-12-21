@@ -5,7 +5,7 @@ function Waiter() {
   return (
     <Segment>
     <Dimmer active>
-      <Loader>Loading</Loader>
+      <Loader>Loading - Please Wait</Loader>
     </Dimmer>
   </Segment>
   );

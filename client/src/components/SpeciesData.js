@@ -4,7 +4,8 @@ import SpeciesItem from '../components/SpeciesItem.js'
 
 const SpeciesData = (props) => {
   return props.species.map(spec =>
-    <SpeciesItem name={spec.name} status={spec.status} key={spec.id}/>)
+    <div className={"species-card-css"}>
+    <SpeciesItem name={spec.name} status={spec.status} key={spec.id}/></div>)
 };
 
 
