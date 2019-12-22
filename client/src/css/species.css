@@ -1,9 +1,6 @@
+/* use rgb to set opacity (4th value) leaving text w normal visibility */
 .ui.centered.cards > .ui.card.species-card {
-  /* background-color: #D6D7C1; */
-
-  background-color: #869885;
-  opacity: .8;
-  /* background: #ff2233; */
+  background: rgb(134, 152, 133, .3);
 }
 
 
@@ -15,5 +12,22 @@
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 
+}
+
+div > a > h2 {
+  color: orange;
+
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* all cards displayed selected by selector below */
+#root > div > div > div > div {
+  /* background: red; */
+}
+
+div > div > h3 {
+  /* color: orange; */
+  /* opacity: 1.5; */
 }
 
