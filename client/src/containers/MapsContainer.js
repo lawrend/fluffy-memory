@@ -53,8 +53,8 @@ export class MapsContainer extends Component {
       border: '20px',
     }
 
-    let markers = this.props.locations.map(l=> { return <Marker style={markerStyle} icon={icon_url} onHover={this.onMarkerHover} onClick={this.onMarkerClick} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc} id={l.id} >
-      </Marker>})
+    // let markers = this.props.locations.map(l=> { return <Marker style={markerStyle} icon={icon_url} onHover={this.onMarkerHover} onClick={this.onMarkerClick} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc} id={l.id} >
+      // </Marker>})
     let locationRouteLink = "/location-detail/" + this.state.selectedPlace.id;
 
     //map styles
@@ -109,7 +109,8 @@ export class MapsContainer extends Component {
       return (
         <div>
           <Map google={this.props.google} zoom={this.props.zoom} mapType={'terrain'} mapTypeControl={false} initialCenter={this.props.center} center={this.props.center} styles={styles} onClick={this.onMapClicked} >
-              {markers}
+            {this.props.locations.map(l=> { return <Marker style={markerStyle} icon={icon_url} onHover={this.onMarkerHover} onClick={this.onMarkerClick} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc} id={l.id} >
+      </Marker>})}
 
             <InfoWindow
               marker={this.state.activeMarker}

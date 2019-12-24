@@ -20,7 +20,7 @@ module Wikipedia
     if @info['thumbnail']
       self.update(imgsrc: @info['thumbnail']['source'])
     else
-      self.update(imgsrc: 'images/resize.jpeg')
+      self.update(imgsrc: 'none')
     end
   end
 end

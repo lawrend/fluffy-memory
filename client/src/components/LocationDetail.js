@@ -23,7 +23,6 @@ class LocationDetail extends Component {
     this.placeName = this.props.match.params.name;
   }
 
-
   componentDidMount() {
     this.props.selectedStSpeciesGetter(this.placeName)
   };
@@ -31,18 +30,20 @@ class LocationDetail extends Component {
   render() {
     if (this.props.loading) return <Waiter />;
 
-let species = this.props.selectedLocationSpecies.map(s => <SpeciesItem name={s.name} id={s.id} desc={s.desc} status={s.status} imgsrc={s.imgsrc}/> )
+    let species = this.props.selectedLocationSpecies.map(s => <SpeciesItem name={s.name} id={s.id} desc={s.desc} status={s.status} imgsrc={s.imgsrc} /> )
     return(
       <div>
-        <h1>{this.placeName}</h1>
+        <div className={'location-name'}>
+          {this.placeName}
+        </div>
         <Card.Group centered>
           {species}
         </Card.Group>
-        <h1><a href='/home'>Home</a></h1>
+        <a href='/home'><div className={'home-link'}>Home</div></a>
       </div>
-        )
+      )
 
-  }
+}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LocationDetail);
