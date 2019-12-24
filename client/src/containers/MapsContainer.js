@@ -28,6 +28,15 @@ export class MapsContainer extends Component {
     this.props.setSelectedProtectedArea({name: props.name, id: props.id })
   };
 
+  onMarkerHover = (props, marker, e) => {
+    this.setState({
+      activeMarker: marker,
+      showingInfoWindow: true,
+      selectedPlace: props,
+    })
+    this.props.setSelectedProtectedArea({name: props.name, id: props.id })
+  };
+
   onMapClicked = (props) => {
     if (this.state.showingInfoWindow) {
       this.setState({
@@ -40,11 +49,11 @@ export class MapsContainer extends Component {
   render () {
     const icon_url = {url: circ, scaledSize: new this.props.google.maps.Size(35, 35)}
     const markerStyle = {
-      color: 'blue',
+      color: 'orange',
       border: '20px',
     }
 
-    let markers = this.props.locations.map(l=> { return <Marker style={markerStyle} icon={icon_url} onClick={this.onMarkerClick} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc} id={l.id} >
+    let markers = this.props.locations.map(l=> { return <Marker style={markerStyle} icon={icon_url} onHover={this.onMarkerHover} onClick={this.onMarkerClick} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc} id={l.id} >
       </Marker>})
     let locationRouteLink = "/location-detail/" + this.state.selectedPlace.id;
 

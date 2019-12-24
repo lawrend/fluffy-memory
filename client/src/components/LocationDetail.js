@@ -31,7 +31,7 @@ class LocationDetail extends Component {
   render() {
     if (this.props.loading) return <Waiter />;
 
-let species = this.props.selectedLocationSpecies.map(s => <SpeciesItem name={s.name} id={s.id} desc={s.desc} imgsrc={s.imgsrc}/> )
+let species = this.props.selectedLocationSpecies.map(s => <SpeciesItem name={s.name} id={s.id} desc={s.desc} status={s.status} imgsrc={s.imgsrc}/> )
     return(
       <div>
         <h1>{this.placeName}</h1>

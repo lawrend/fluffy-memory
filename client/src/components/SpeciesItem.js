@@ -7,6 +7,9 @@ export default props => (
     <Image src={props.imgsrc} />
     <Card.Content>
       <Card.Header as='a' href='/'><h2>{props.name}</h2></Card.Header>
+      <Card.Meta>
+        <span className={'status'}>{props.status}</span>
+      </Card.Meta>
       <Card.Description>
         <h3>{props.desc}</h3>
         <h5><a target="_blank" rel="noopener noreferrer" href={"https://www.google.com/search?source=hp&q="+ props.name +"&oq=" + props.name}>Search the web for more info</a></h5>

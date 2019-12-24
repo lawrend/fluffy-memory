@@ -15,7 +15,7 @@
 }
 
 div > a > h2 {
-  color: orange;
+  color: #D9755A;
 
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -26,6 +26,10 @@ div > a > h2 {
   /* background: red; */
 }
 
+.status {
+  color: #D9755A;
+  font-style: italic;
+}
 div > div > h3 {
   /* color: orange; */
   /* opacity: 1.5; */
