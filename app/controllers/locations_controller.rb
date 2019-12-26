@@ -13,7 +13,8 @@ class LocationsController < ApiController
       @names.each do |n| 
         #change names for google search
         @modded_loc = n[2].gsub("NWR", "National Wildlife Refuge")
-        @modded_loc2 = @modded_loc.gsub("WMA", "Wildlife Management Area")
+        @modded_loca = @modded_loc.gsub(".", "")
+        @modded_loc2 = @modded_loca.gsub("WMA", "Wildlife Management Area")
         @modded_loc3 = @modded_loc2.gsub("WMD", "Wetland Management District")
         @long_state_name = convert_state_abbrev(n[3])
 
@@ -21,8 +22,7 @@ class LocationsController < ApiController
         @species = Species.find_or_create_by(name: n[0], status: n[1] )
         @state = State.find_or_create_by(name: @long_state_name, abbrev: n[3])
         @location = Location.find_or_create_by(loc: @modded_loc3, st_abbrev: n[3], st: @long_state_name, other_states: n[4], state_id: @state.id)
-        SpeciesLocation.find_or_create_by(species_id: @species.id, location_id: @location.id)
-      end
+        SpeciesLocation.find_or_create_by(species_id: @species.id, location_id: @location.id) end
     end
 
     #sort locations by state
@@ -52,11 +52,12 @@ class LocationsController < ApiController
   def get_species
     @location = Location.find_by(loc: params[:name])
 
-    @location.species.each do |sp|
+    if @location.species
+      @location.species.each do |sp|
         sp.add_desc(sp.name)
+      end
+      render json: @location.species 
     end
-    render json: @location.species 
-
   end
 
   def locations_by_state
