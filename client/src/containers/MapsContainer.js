@@ -4,7 +4,6 @@ import { InfoWindow, Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { MAPS_KEY } from '../config.js';
 import iboga from '../resources/iboga.png';
 import constructioncrane2 from '../resources/constructioncrane2.png';
-import smwetland from '../resources/wetland-11.svg';
 import circ from '../resources/circle-stroked-15.svg';
 
 export class MapsContainer extends Component {
