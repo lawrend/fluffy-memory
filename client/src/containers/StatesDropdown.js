@@ -9,8 +9,8 @@ const mapStateToProps = state => ({
 
 })
 const mapDispatchToProps = dispatch => ({
-  markerMaker(locs) {
-    return dispatch(getSelectedStLocationsMarkers(locs))
+  areaSelector(loc) {
+    return dispatch(setSelectedProtectedArea(loc))
   },
   })
 
@@ -24,6 +24,7 @@ class StatesDropdown extends Component {
     };
 
     this.handleLocationChange = this.handleLocationChange.bind(this);
+    this.handleOnClick = this.handleOnClick.bind(this);
   }
 
   handleLocationChange (e, {value}) {
@@ -31,18 +32,22 @@ class StatesDropdown extends Component {
       console.log("handle location changed tripped with value of: ", value)
       this.props.getSelectedStLocations(value)
       this.props.setSelectedStMap(value)
-      this.props.markerMaker(value)
     } else {
       this.props.getSelectedStLocations(null)
       console.log("handle location change tripped on dropdown with null or empty")
     }
   }
 
+  handleOnClick (e, value) {
+    console.log("onClick has clicked!!");
+    this.props.areaSelector(value);
+  }
+
 
 
   render() {
     console.log("sel st locations", this.props.selectedStLocations)
-    let places = this.props.selectedStLocations.map(l => <div><List.Icon name="leaf" /> <List.Item content={l.loc} id={l.id} /></div> )
+    let places = this.props.selectedStLocations.map(l => <div><List.Icon name="leaf" /> <List.Item content={l.loc} id={l.id} onClick={this.handleOnClick}/></div> )
 
     return (
       <div>

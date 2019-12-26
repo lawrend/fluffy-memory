@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react';
 import { InfoWindow, Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { MAPS_KEY } from '../config.js';
-import iboga from '../resources/iboga.png';
-import constructioncrane2 from '../resources/constructioncrane2.png';
 import circ from '../resources/circle-stroked-15.svg';
+import lantern from '../resources/laterne.png';
 
 export class MapsContainer extends Component {
 
@@ -46,7 +45,7 @@ export class MapsContainer extends Component {
   }
 
   render () {
-    const icon_url = {url: circ, scaledSize: new this.props.google.maps.Size(35, 35)}
+    const icon_url = {url: lantern, scaledSize: new this.props.google.maps.Size(35, 35)}
     const markerStyle = {
       color: 'orange',
       border: '20px',
@@ -108,7 +107,7 @@ export class MapsContainer extends Component {
       return (
         <div>
           <Map google={this.props.google} zoom={this.props.zoom} mapType={'terrain'} mapTypeControl={false} initialCenter={this.props.center} center={this.props.center} styles={styles} onClick={this.onMapClicked} >
-            {this.props.locations.map(l=> { return <Marker style={markerStyle} icon={icon_url} onHover={this.onMarkerHover} onClick={this.onMarkerClick} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc} id={l.id} >
+            {this.props.locations.map(l=> { return <Marker style={markerStyle} icon={icon_url} onMouseover={this.onMarkerHover} onClick={this.onMarkerClick} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc} id={l.id} >
       </Marker>})}
 
             <InfoWindow
