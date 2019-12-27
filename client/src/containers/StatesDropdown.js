@@ -9,10 +9,13 @@ const mapStateToProps = state => ({
 
 })
 const mapDispatchToProps = dispatch => ({
-  areaSelector(loc) {
+  protectedAreaSetter(loc) {
     return dispatch(setSelectedProtectedArea(loc))
   },
-  })
+  markerMaker(locs) {
+    return dispatch(getSelectedStLocationsMarkers(locs))
+  },
+})
 
 
 class StatesDropdown extends Component {
@@ -27,11 +30,17 @@ class StatesDropdown extends Component {
     this.handleOnClick = this.handleOnClick.bind(this);
   }
 
+  handleOnClick(e, value) {
+    console.log("on click clicked!");
+    this.props.protectedAreaSetter(value);
+  }
+
   handleLocationChange (e, {value}) {
     if (value !== null && value !== "") {
       console.log("handle location changed tripped with value of: ", value)
       this.props.getSelectedStLocations(value)
       this.props.setSelectedStMap(value)
+      this.props.markerMaker(value)
     } else {
       this.props.getSelectedStLocations(null)
       console.log("handle location change tripped on dropdown with null or empty")
@@ -47,27 +56,27 @@ class StatesDropdown extends Component {
 
   render() {
     console.log("sel st locations", this.props.selectedStLocations)
-    let places = this.props.selectedStLocations.map(l => <div><List.Icon name="leaf" /> <List.Item content={l.loc} id={l.id} onClick={this.handleOnClick}/></div> )
+    let places = this.props.selectedStLocations.map(l => <div><List.Icon name="leaf" /> <List.Item content={l.loc} id={l.id} onClick={this.handleOnClick} /></div> )
 
     return (
       <div>
         <Dropdown
-          onChange={this.handleLocationChange}
-          placeholder="Select State"
-          fluid
-          scrolling
-          clearable
-          options={this.props.stnames}
-        />
+        onChange={this.handleLocationChange}
+        placeholder="Select State"
+        fluid
+        scrolling
+        clearable
+        options={this.props.stnames}
+      />
           <Divider />
           <List >
             <List.Content>
-                {places}
+              {places}
             </List.Content>
           </List>
         </div>
 
-          )
+        )
 };
 }
 
