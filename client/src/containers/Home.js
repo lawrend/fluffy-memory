@@ -69,7 +69,7 @@ class Home extends Component {
     this.setState({
       activeMarker: marker,
       showingInfoWindow: true,
-      selectedPlace: props,
+      // selectedPlace: props,
     })
     this.protectedAreaSelector({name: props.name, id: props.id})
   };
@@ -89,7 +89,7 @@ class Home extends Component {
         </Header>
         <LeftSideMenu locations={this.props.locations} stnames={this.props.stnames} selectedSt={this.props.selectedSt}  setSelectedStMap={this.props.selectedStMapSetter} getSelectedStLocations={this.props.selectedStLocationsGetter} getSelectedStSpecies={this.props.selectedStSpeciesGetter} resetMap={this.resetMap} />
         <div className='maps homepage'>
-          <MapsContainer zoom={this.props.zoom} center={this.props.center} locations={this.props.selectedStLocations} setSelectedProtectedArea={this.props.protectedAreaSelector} />
+          <MapsContainer zoom={this.props.zoom} center={this.props.center} locations={this.props.selectedStLocations} setSelectedProtectedArea={this.props.protectedAreaSelector} protectedArea={this.props.selectedProtectedArea}/>
           <Divider />
         </div>
       </div>
