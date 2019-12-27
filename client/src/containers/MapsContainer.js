@@ -45,7 +45,7 @@ export class MapsContainer extends Component {
   }
 
   render () {
-    const icon_url = {url: lantern, scaledSize: new this.props.google.maps.Size(35, 35)}
+    const icon_url = {url: lantern, scaledSize: new this.props.google.maps.Size(54, 54)}
     const markerStyle = {
       color: 'orange',
       border: '20px',

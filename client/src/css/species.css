@@ -38,7 +38,7 @@ div > a > h2:hover {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* font-weight: bold; */
+  font-weight: lighter;
   letter-spacing: 1.2px; 
   /* min-height: 10vh; */
   font-size: 4em;

@@ -47,12 +47,6 @@ class StatesDropdown extends Component {
     }
   }
 
-  handleOnClick (e, value) {
-    console.log("onClick has clicked!!");
-    this.props.areaSelector(value);
-  }
-
-
 
   render() {
     console.log("sel st locations", this.props.selectedStLocations)

@@ -33,9 +33,11 @@ class LocationDetail extends Component {
     let species = this.props.selectedLocationSpecies.map(s => <SpeciesItem name={s.name} id={s.id} desc={s.desc} status={s.status} imgsrc={s.imgsrc} /> )
     return(
       <div>
-        <div className={'location-name'}>
+        <div>
+        <h1 className={'location-name'}>
           {this.placeName}
-        </div>
+        </h1>
+      </div>
         <Card.Group centered>
           {species}
         </Card.Group>
