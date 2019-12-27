@@ -21,7 +21,7 @@ export class MapsContainer extends Component {
     this.setState({
       activeMarker: marker,
       showingInfoWindow: true,
-      selectedPlace: props,
+      // selectedPlace: props,
     })
     this.props.setSelectedProtectedArea({name: props.name, id: props.id })
   };
@@ -30,7 +30,7 @@ export class MapsContainer extends Component {
     this.setState({
       activeMarker: marker,
       showingInfoWindow: true,
-      selectedPlace: props,
+      // selectedPlace: props,
     })
     this.props.setSelectedProtectedArea({name: props.name, id: props.id })
   };
@@ -53,7 +53,7 @@ export class MapsContainer extends Component {
 
     // let markers = this.props.locations.map(l=> { return <Marker style={markerStyle} icon={icon_url} onHover={this.onMarkerHover} onClick={this.onMarkerClick} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc} id={l.id} >
       // </Marker>})
-    let locationRouteLink = "/location-detail/" + this.state.selectedPlace.id;
+    let locationRouteLink = "/location-detail/" + this.props.protectedArea.id;
 
     //map styles
     const styles =
@@ -113,8 +113,8 @@ export class MapsContainer extends Component {
             <InfoWindow
               marker={this.state.activeMarker}
               visible={this.state.showingInfoWindow}>
-            <div><a href={'/location-detail/' + this.state.selectedPlace.name}>
-                <h1>{this.state.selectedPlace.name}</h1>
+            <div><a href={'/location-detail/' + this.props.protectedArea.name}>
+                <h1>{this.props.protectedArea.name}</h1>
             </a></div>
           </InfoWindow>
 
