@@ -13,7 +13,7 @@ export class MapsContainer extends Component {
     this.state = {
       activeMarker: {},
       showingInfoWindow: false,
-      selectedPlace: this.props.protectedArea,
+      // selectedPlace: this.props.protectedArea,
     }
   }
 
