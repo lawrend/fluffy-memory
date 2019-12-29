@@ -10,10 +10,7 @@ export default class LeftSideMenu extends Component {
     }
   }
 
-  //changes active menu item
-  // handleItemClick = (e, { name }) => this.setState({ activeItem: name })
   handleItemClick = (e) => this.props.resetMap()
-
 
   render() {
     const { activeItem } = this.state

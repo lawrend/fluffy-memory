@@ -4,19 +4,6 @@ import { connect } from 'react-redux';
 import { getSelectedStLocationsMarkers } from '../store/actions/maps/setMarkers.js';
 import { setSelectedProtectedArea } from '../store/actions/locations/setSelectedProtectedArea.js'
 
-const mapStateToProps = state => ({
-  selectedStLocations: state.locations.selectedStLocations,
-
-})
-const mapDispatchToProps = dispatch => ({
-  protectedAreaSetter(loc) {
-    return dispatch(setSelectedProtectedArea(loc))
-  },
-  markerMaker(locs) {
-    return dispatch(getSelectedStLocationsMarkers(locs))
-  },
-})
-
 
 class StatesDropdown extends Component {
   constructor(props) {
@@ -49,7 +36,6 @@ class StatesDropdown extends Component {
 
 
   render() {
-    console.log("sel st locations", this.props.selectedStLocations)
     let places = this.props.selectedStLocations.map(l => <div><List.Icon name="leaf" /> <List.Item content={l.loc} id={l.id} onClick={this.handleOnClick} /></div> )
 
     return (
@@ -73,5 +59,19 @@ class StatesDropdown extends Component {
         )
 };
 }
+
+const mapStateToProps = state => ({
+  selectedStLocations: state.locations.selectedStLocations,
+})
+
+const mapDispatchToProps = dispatch => ({
+  protectedAreaSetter(loc) {
+    return dispatch(setSelectedProtectedArea(loc))
+  },
+  markerMaker(locs) {
+    return dispatch(getSelectedStLocationsMarkers(locs))
+  },
+})
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(StatesDropdown);
