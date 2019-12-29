@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { List, Divider, Dropdown } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { getSelectedStLocationsMarkers } from '../store/actions/maps/setMarkers.js';
-import { setSelectedProtectedArea } from '../store/actions/locations/setSelectedProtectedArea.js'
+// import { setSelectedProtectedArea } from '../store/actions/locations/setSelectedProtectedArea.js'
 
 
 class StatesDropdown extends Component {
@@ -18,8 +18,7 @@ class StatesDropdown extends Component {
   }
 
   handleOnClick(e, value) {
-    console.log("on click clicked!");
-    this.props.protectedAreaSetter(value);
+    this.props.protectedAreaSelector(value);
   }
 
   handleLocationChange (e, {value}) {
@@ -65,9 +64,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  protectedAreaSetter(loc) {
-    return dispatch(setSelectedProtectedArea(loc))
-  },
   markerMaker(locs) {
     return dispatch(getSelectedStLocationsMarkers(locs))
   },

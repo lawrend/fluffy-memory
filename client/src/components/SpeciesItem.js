@@ -7,7 +7,7 @@ export default props => (
   <Card key={props.id} className="species-card" raised={false} color='olive'>
     <span className={'species-image'}><Image src={props.imgsrc=='none' ? NotFound : props.imgsrc} /></span>
     <Card.Content>
-      <Card.Header as='a' href='/'>
+      <Card.Header as='a' href={'/species/locations/' + props.name}>
         <h2><span className={'species-name'}>{props.name}</span></h2>
       </Card.Header>
       <Card.Meta>

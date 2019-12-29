@@ -1,6 +1,7 @@
 class SpeciesController < ApiController
 
-  before_action :set_species, only: [:show, :show_loc ]
+  before_action :set_species, only: [:show]
+  before_action :set_species_by_name, only: [:show_loc]
 
   # GET /species
   def index
@@ -48,6 +49,10 @@ class SpeciesController < ApiController
   # Use callbacks to share common setup or constraints between actions.
   def set_species
     @species = Species.find(params[:id])
+  end
+
+  def set_species
+    @species = Species.find_by(name: params[:name])
   end
 
   # Only allow a trusted parameter "white list" through.

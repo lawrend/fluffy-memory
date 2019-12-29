@@ -5,7 +5,8 @@ Rails.application.routes.draw do
       :species_locations
   end
   #species
-  get '/api/species/locations/:id', to: 'species#show_loc'
+  # get '/api/species/locations/:id', to: 'species#show_loc'
+  get '/api/species/locations/:name', to: 'species#show_loc'
 
   #locations
   get '/api/locations/getmap/:id', to: 'locations#get_map'

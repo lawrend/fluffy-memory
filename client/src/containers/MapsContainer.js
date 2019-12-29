@@ -18,21 +18,21 @@ export class MapsContainer extends Component {
   }
 
   onMarkerClick = (props, marker, e) => {
+    this.props.setSelectedProtectedArea({name: props.name, id: props.id })
     this.setState({
       activeMarker: marker,
       showingInfoWindow: true,
       // selectedPlace: props,
     })
-    this.props.setSelectedProtectedArea({name: props.name, id: props.id })
   };
 
   onMarkerHover = (props, marker, e) => {
+    this.props.setSelectedProtectedArea({name: props.name, id: props.id })
     this.setState({
       activeMarker: marker,
       showingInfoWindow: true,
       // selectedPlace: props,
     })
-    this.props.setSelectedProtectedArea({name: props.name, id: props.id })
   };
 
   onMapClicked = (props) => {
@@ -52,8 +52,8 @@ export class MapsContainer extends Component {
     }
 
     // let markers = this.props.locations.map(l=> { return <Marker style={markerStyle} icon={icon_url} onHover={this.onMarkerHover} onClick={this.onMarkerClick} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc} id={l.id} >
-      // </Marker>})
-    let locationRouteLink = "/location-detail/" + this.props.protectedArea.id;
+    // </Marker>})
+    let locationRouteLink = "/location-detail/" + this.props.selectedProtectedArea.id;
 
     //map styles
     const styles =
@@ -102,24 +102,24 @@ export class MapsContainer extends Component {
         <Container>
           <div>Loading...</div>
         </Container>
-          )
+        )
     } else {
       return (
         <div>
           <Map google={this.props.google} zoom={this.props.zoom} mapType={'terrain'} mapTypeControl={false} initialCenter={this.props.center} center={this.props.center} styles={styles} onClick={this.onMapClicked} >
             {this.props.locations.map(l=> { return <Marker style={markerStyle} icon={icon_url} onMouseover={this.onMarkerHover} onClick={this.onMarkerClick} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc} id={l.id} >
-      </Marker>})}
+              </Marker>})}
 
-            <InfoWindow
+              <InfoWindow
               marker={this.state.activeMarker}
               visible={this.state.showingInfoWindow}>
-            <div><a href={'/location-detail/' + this.props.protectedArea.name}>
-                <h1>{this.props.protectedArea.name}</h1>
-            </a></div>
-          </InfoWindow>
+              <div><a href={'/location-detail/' + this.props.selectedProtectedArea.name}>
+                  <h1>{this.props.selectedProtectedArea.name}</h1>
+              </a></div>
+            </InfoWindow>
 
-        </Map>
-      </div>
+          </Map>
+        </div>
         )
 }
 }

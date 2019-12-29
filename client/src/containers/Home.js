@@ -39,9 +39,9 @@ class Home extends Component {
             endangered
           </div>
         </Header>
-        <LeftSideMenu locations={this.props.locations} stnames={this.props.stnames} selectedSt={this.props.selectedSt}  setSelectedStMap={this.props.selectedStMapSetter} getSelectedStLocations={this.props.selectedStLocationsGetter} getSelectedStSpecies={this.props.selectedStSpeciesGetter} resetMap={this.resetMap} />
+        <LeftSideMenu locations={this.props.locations} stnames={this.props.stnames} selectedSt={this.props.selectedSt}  setSelectedStMap={this.props.selectedStMapSetter} getSelectedStLocations={this.props.selectedStLocationsGetter} getSelectedStSpecies={this.props.selectedStSpeciesGetter} resetMap={this.resetMap} protectedAreaSelector={this.props.protectedAreaSelector} selectedProtectedArea={this.props.selectedProtectedArea} />
         <div className='maps homepage'>
-          <MapsContainer zoom={this.props.zoom} center={this.props.center} locations={this.props.selectedStLocations} setSelectedProtectedArea={this.props.protectedAreaSelector} protectedArea={this.props.selectedProtectedArea}/>
+          <MapsContainer zoom={this.props.zoom} center={this.props.center} locations={this.props.selectedStLocations} setSelectedProtectedArea={this.props.protectedAreaSelector} selectedProtectedArea={this.props.selectedProtectedArea}/>
           <Divider />
         </div>
       </div>

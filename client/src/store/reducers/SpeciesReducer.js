@@ -1,6 +1,7 @@
 const initialState = { species: [],
   center: {lat: 36.8097343, lng: -71.5556199},
   selected_location_species: [],
+  species_locations: [],
   locations: [],
   stnames: [],
   stspecies: [],
@@ -15,6 +16,8 @@ export default function manageSpecies (state = initialState, action) {
       return {...state, locations: action.payload}
     case 'SET_SPECIES':
       return {...state, species: action.payload}
+    case 'SET_ALL_LOCATIONS_FOR_SPECIES':
+      return {...state, species_locations: action.payload}
     default:
       return state
   }

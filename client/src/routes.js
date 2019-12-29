@@ -5,6 +5,7 @@ import Home from './containers/Home.js'
 import Blackness from './components/Blackness.js';
 import ErrorRoute from './components/ErrorRoute';
 import LocationDetail from './components/LocationDetail.js';
+import LocationListingsContainer from './containers/LocationListingsContainer';
 
 class Routes extends Component {
   render() {
@@ -13,6 +14,7 @@ class Routes extends Component {
         <Route exact path="/" component={Blackness} />
         <Route path="/home" component={Home} />
         <Route path="/location-detail/:name" component={LocationDetail} />
+        <Route path="/species/locations/:name" component={LocationListingsContainer} />
         <Route component={ErrorRoute} />
       </Switch>
         )

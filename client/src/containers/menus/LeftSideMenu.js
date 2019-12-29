@@ -26,7 +26,7 @@ export default class LeftSideMenu extends Component {
             name='locations'
             active={activeItem === 'locations'}
           >
-            <StatesDropdown stnames={this.props.stnames} selectedStLocations={this.props.selectedStLocations} setSelectedStMap={this.props.setSelectedStMap} getSelectedStLocations={this.props.getSelectedStLocations} />
+            <StatesDropdown stnames={this.props.stnames} selectedStLocations={this.props.selectedStLocations} setSelectedStMap={this.props.setSelectedStMap} getSelectedStLocations={this.props.getSelectedStLocations} protectedAreaSelector={this.props.protectedAreaSelector} selectedProtectedArea={this.props.selectedProtectedArea} />
           </Menu.Item>
         </Menu>
           )
