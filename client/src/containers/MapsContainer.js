@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react';
 import { InfoWindow, Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { MAPS_KEY } from '../config.js';
-import circ from '../resources/circle-stroked-15.svg';
 import lantern from '../resources/laterne.png';
 
 export class MapsContainer extends Component {
@@ -53,7 +52,6 @@ export class MapsContainer extends Component {
 
     // let markers = this.props.locations.map(l=> { return <Marker style={markerStyle} icon={icon_url} onHover={this.onMarkerHover} onClick={this.onMarkerClick} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc} id={l.id} >
     // </Marker>})
-    let locationRouteLink = "/location-detail/" + this.props.selectedProtectedArea.id;
 
     //map styles
     const styles =

@@ -26,7 +26,7 @@ class LocationListingsContainer extends Component {
   render() {
     console.log("species locations: " + this.props.species_locations)
     let species_locations =
-  this.props.species_locations.map(l => <LocationListing name={l.loc} id={l.id} />)
+  this.props.species_locations.map(l => <LocationListing name={l.loc} id={l.id} st={l.st} />)
     return(
       <div>
         <h2>Locations</h2>
