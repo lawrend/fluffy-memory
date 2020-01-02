@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react';
 import { InfoWindow, Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { MAPS_KEY } from '../config.js';
-import lantern from '../resources/laterne.png';
+import Waiter from '../components/Loader.js';
+import cromlech from '../resources/cromlech.png';
 
 export class MapsContainer extends Component {
 
@@ -12,7 +13,7 @@ export class MapsContainer extends Component {
     this.state = {
       activeMarker: {},
       showingInfoWindow: false,
-      // selectedPlace: this.props.protectedArea,
+      selectedPlace: this.props.selectedProtectedArea,
     }
   }
 
@@ -44,14 +45,10 @@ export class MapsContainer extends Component {
   }
 
   render () {
-    const icon_url = {url: lantern, scaledSize: new this.props.google.maps.Size(54, 54)}
-    const markerStyle = {
-      color: 'orange',
-      border: '20px',
-    }
+    const icon_url = {url: cromlech, scaledSize: new this.props.google.maps.Size(54, 54)};
 
-    // let markers = this.props.locations.map(l=> { return <Marker style={markerStyle} icon={icon_url} onHover={this.onMarkerHover} onClick={this.onMarkerClick} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc} id={l.id} >
-    // </Marker>})
+    let markers = this.props.locations.map(l=> { return <Marker icon={icon_url} onMouseover={this.onMarkerHover} onClick={this.onMarkerClick} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc} id={l.id} >
+    </Marker>})
 
     //map styles
     const styles =
@@ -105,14 +102,13 @@ export class MapsContainer extends Component {
       return (
         <div>
           <Map google={this.props.google} zoom={this.props.zoom} mapType={'terrain'} mapTypeControl={false} initialCenter={this.props.center} center={this.props.center} styles={styles} onClick={this.onMapClicked} >
-            {this.props.locations.map(l=> { return <Marker style={markerStyle} icon={icon_url} onMouseover={this.onMarkerHover} onClick={this.onMarkerClick} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc} id={l.id} >
-              </Marker>})}
-
-              <InfoWindow
+            {markers}
+            <InfoWindow
               marker={this.state.activeMarker}
               visible={this.state.showingInfoWindow}>
               <div><a href={'/location-detail/' + this.props.selectedProtectedArea.name}>
                   <h1>{this.props.selectedProtectedArea.name}</h1>
+                  <h5>{this.props.selectedPlace}</h5>
               </a></div>
             </InfoWindow>
 

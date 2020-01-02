@@ -21,6 +21,7 @@ class LocationDetail extends Component {
     super(props)
     this.state = { loading: true };
     this.placeName = this.props.match.params.name;
+    this.stName = this.props.match.params.stName;
   }
 
   componentDidMount() {
@@ -37,6 +38,7 @@ class LocationDetail extends Component {
         <h1 className={'location-name'}>
           {this.placeName}
         </h1>
+        <h2>{this.stName}</h2>
       </div>
         <Card.Group centered>
           {species}
