@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { List, Divider, Dropdown } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { getSelectedStLocationsMarkers } from '../store/actions/maps/setMarkers.js';
-// import { setSelectedProtectedArea } from '../store/actions/locations/setSelectedProtectedArea.js'
+import { setSelectedProtectedArea } from '../store/actions/locations/setSelectedProtectedArea.js'
 
 
 class StatesDropdown extends Component {
@@ -15,10 +15,15 @@ class StatesDropdown extends Component {
 
     this.handleLocationChange = this.handleLocationChange.bind(this);
     this.handleOnClick = this.handleOnClick.bind(this);
+    this.handleMouseover = this.handleMouseover.bind(this);
   }
 
   handleOnClick(e, value) {
     this.props.protectedAreaSelector(value);
+  }
+
+  handleMouseover() {
+    console.log("moused over the list item");
   }
 
   handleLocationChange (e, {value}) {
@@ -35,8 +40,7 @@ class StatesDropdown extends Component {
 
 
   render() {
-    let places = this.props.selectedStLocations.map(l => <div><List.Icon name="leaf" /> <List.Item content={l.loc} id={l.id} onClick={this.handleOnClick} /></div> )
-
+    let places = this.props.selectedStLocations.map(l => <div key={l.id}><div className={"hover-list-icon"}><List.Icon name="leaf" /></div><div onMouseEnter={this.handleMouseover}> <List.Item className={"hover-list-item"} content={l.loc} key={l.id} id={l.id} onClick={this.handleOnClick} /></div></div> )
     return (
       <div>
         <Dropdown
@@ -61,11 +65,15 @@ class StatesDropdown extends Component {
 
 const mapStateToProps = state => ({
   selectedStLocations: state.locations.selectedStLocations,
+  selectedProtectedArea: state.locations.selectedProtectedArea,
 })
 
 const mapDispatchToProps = dispatch => ({
   markerMaker(locs) {
     return dispatch(getSelectedStLocationsMarkers(locs))
+  },
+  protectedAreaSelector(area) {
+    return dispatch(setSelectedProtectedArea(area))
   },
 })
 

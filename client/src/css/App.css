@@ -39,6 +39,20 @@ body {
   visibility: hidden;
 }
 
+.hover-list-icon {
+  color: orange;
+}
+.hover-list-icon:hover {
+  color: green;
+}
+
+.hover-list-item {
+  color: blue;
+}
+.hover-list-item[id^=id] {
+  color: orange;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

@@ -17,7 +17,7 @@ export default props => (
         <span className={'species-description'}> {props.desc}</span>
       </Card.Description>
       <div>
-        <Card.Meta extra>
+        <Card.Meta >
           <a target="_blank" rel="noopener noreferrer" href={"https://www.google.com/search?source=hp&q="+ props.name +"&oq=" + props.name}><span className={'click-for-google'}>Search the web for more</span></a>
         </Card.Meta>
       </div>

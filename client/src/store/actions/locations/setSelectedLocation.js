@@ -6,16 +6,16 @@ export const SET_SELECTED_ST = "SET_SELECTED_ST";
 export const RESET_SELECTED_ST = "RESET_SELECTED_ST";
 
 export function setSelectedSt(selectedSt) {
-  if (selectedSt != null) {
+  // if (selectedSt != null) {
     return {
       type: SET_SELECTED_ST,
       payload: selectedSt,
     }
-  } else {
-    return {
-      type: RESET_SELECTED_ST
-    }
-  }
+  // } else {
+    // return {
+      // type: RESET_SELECTED_ST
+    // }
+  // }
 }
 
 // set all protected areas for the selected state

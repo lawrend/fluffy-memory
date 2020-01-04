@@ -19,7 +19,6 @@ const mapDispatchToProps = dispatch => ({
 class LocationDetail extends Component {
   constructor(props) {
     super(props)
-    this.state = { loading: true };
     this.placeName = this.props.match.params.name;
     this.stName = this.props.match.params.stName;
   }

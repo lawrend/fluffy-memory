@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import LeftSideMenu from './menus/LeftSideMenu.js';
 import MapsContainer from '../containers/MapsContainer';
 import { setMapCenter, setSelectedStMap, setMapZoom } from '../store/actions/maps/getMap.js'
+import { setActiveMarker } from '../store/actions/maps/setActiveMarker.js'
 import { getStNames } from '../store/actions/locations/getLocations.js';
 import { setSelectedSt, getSelectedStLocations } from '../store/actions/locations/setSelectedLocation.js';
 import { setSelectedProtectedArea } from '../store/actions/locations/setSelectedProtectedArea.js';
@@ -21,9 +22,9 @@ class Home extends Component {
 
   resetMap() {
     this.props.zoomSetter(HIGH_ZOOM);
-    this.props.centerSetter(USA_CENTER)
+    this.props.centerSetter(USA_CENTER);
     this.props.selectedStSetter(null);
-    this.props.selectedStLocationsGetter(null)
+    this.props.selectedStLocationsGetter(null);
   }
 
   componentDidMount() {
@@ -32,6 +33,7 @@ class Home extends Component {
 
   render() {
     console.log("home selectedProtectedArea is: ", this.props.selectedProtectedArea)
+    console.log("active marker is: ", this.props.activeMarker)
     return (
       <div>
         <Header fixed='top' >
@@ -39,9 +41,10 @@ class Home extends Component {
             endangered
           </div>
         </Header>
-        <LeftSideMenu locations={this.props.locations} stnames={this.props.stnames} selectedSt={this.props.selectedSt}  setSelectedStMap={this.props.selectedStMapSetter} getSelectedStLocations={this.props.selectedStLocationsGetter} getSelectedStSpecies={this.props.selectedStSpeciesGetter} resetMap={this.resetMap} protectedAreaSelector={this.props.protectedAreaSelector} selectedProtectedArea={this.props.selectedProtectedArea} />
+
+        <LeftSideMenu locations={this.props.locations} stnames={this.props.stnames} selectedSt={this.props.selectedSt}  setSelectedStMap={this.props.selectedStMapSetter} getSelectedStLocations={this.props.selectedStLocationsGetter} getSelectedStSpecies={this.props.selectedStSpeciesGetter} resetMap={this.resetMap} protectedAreaSelector={this.props.protectedAreaSelector} />
         <div className='maps homepage'>
-          <MapsContainer zoom={this.props.zoom} center={this.props.center} locations={this.props.selectedStLocations} setSelectedProtectedArea={this.props.protectedAreaSelector} selectedProtectedArea={this.props.selectedProtectedArea} />
+          <MapsContainer zoom={this.props.zoom} center={this.props.center} locations={this.props.selectedStLocations} setSelectedProtectedArea={this.props.protectedAreaSelector} selectedProtectedArea={this.props.selectedProtectedArea} setActiveMarker={this.props.setActiveMarker} activeMarker={this.props.activeMarker}/>
           <Divider />
         </div>
       </div>
@@ -50,16 +53,16 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => ({
+  species: state.species.species,
   selectedProtectedArea: state.locations.selectedProtectedArea,
   locations: state.locations.locations,
-  species: state.species.species,
   stnames: state.locations.stnames,
   selectedSt: state.locations.selectedSt,
-  center: state.maps.center,
   selectedStSpecies: state.locations.selectedStSpecies,
-  zoom: state.maps.zoom,
   selectedStLocations: state.locations.selectedStLocations,
-  loading: state.species.loading,
+  zoom: state.maps.zoom,
+  center: state.maps.center,
+  activeMarker: state.maps.activeMarker,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -87,9 +90,15 @@ const mapDispatchToProps = dispatch => ({
   centerSetter(center) {
     return dispatch(setMapCenter(center))
   },
+  setActiveMarker(marker) {
+    return dispatch(setActiveMarker(marker))
+  },
 })
 
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
+
+
+        // <LeftSideMenu locations={this.props.locations} stnames={this.props.stnames} selectedSt={this.props.selectedSt}  setSelectedStMap={this.props.selectedStMapSetter} getSelectedStLocations={this.props.selectedStLocationsGetter} getSelectedStSpecies={this.props.selectedStSpeciesGetter} resetMap={this.resetMap} protectedAreaSelector={this.props.protectedAreaSelector} />
 

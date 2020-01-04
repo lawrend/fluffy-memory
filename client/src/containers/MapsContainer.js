@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Container } from 'semantic-ui-react';
 import { InfoWindow, Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { MAPS_KEY } from '../config.js';
 import Waiter from '../components/Loader.js';
@@ -13,29 +12,27 @@ export class MapsContainer extends Component {
     this.state = {
       activeMarker: {},
       showingInfoWindow: false,
-      selectedPlace: this.props.selectedProtectedArea,
     }
   }
 
-  onMarkerClick = (props, marker, e) => {
-    this.props.setSelectedProtectedArea({name: props.name, id: props.id })
-    this.setState({
-      activeMarker: marker,
-      showingInfoWindow: true,
-      // selectedPlace: props,
-    })
-  };
+  //   this.setState({
+  //     activeMarker: marker,
+  //     showingInfoWindow: true,
+  //     // selectedPlace: props,
+  //   })
+  // };
 
   onMarkerHover = (props, marker, e) => {
     this.props.setSelectedProtectedArea({name: props.name, id: props.id })
+    this.props.setActiveMarker(marker)
     this.setState({
       activeMarker: marker,
       showingInfoWindow: true,
-      // selectedPlace: props,
     })
   };
 
   onMapClicked = (props) => {
+    this.props.setActiveMarker(null)
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
@@ -45,10 +42,10 @@ export class MapsContainer extends Component {
   }
 
   render () {
-    const icon_url = {url: cromlech, scaledSize: new this.props.google.maps.Size(54, 54)};
+    const icon_url = {url: cromlech, scaledSize: new this.props.google.maps.Size(34, 34)};
 
-    let markers = this.props.locations.map(l=> { return <Marker icon={icon_url} onMouseover={this.onMarkerHover} onClick={this.onMarkerClick} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc} id={l.id} >
-    </Marker>})
+    let markers = this.props.locations.map(l=> { return <Marker icon={icon_url} onMouseover={this.onMarkerHover} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc} key={l.id} >
+        </Marker>})
 
     //map styles
     const styles =
@@ -92,30 +89,20 @@ export class MapsContainer extends Component {
         },
       ]
 
-    if (!this.props.loaded) {
-      return (
-        <Container>
-          <div>Loading...</div>
-        </Container>
-        )
-    } else {
-      return (
-        <div>
-          <Map google={this.props.google} zoom={this.props.zoom} mapType={'terrain'} mapTypeControl={false} initialCenter={this.props.center} center={this.props.center} styles={styles} onClick={this.onMapClicked} >
-            {markers}
-            <InfoWindow
-              marker={this.state.activeMarker}
-              visible={this.state.showingInfoWindow}>
-              <div><a href={'/location-detail/' + this.props.selectedProtectedArea.name}>
-                  <h1>{this.props.selectedProtectedArea.name}</h1>
-                  <h5>{this.props.selectedPlace}</h5>
-              </a></div>
-            </InfoWindow>
-
-          </Map>
-        </div>
-        )
-}
+    return (
+      <div>
+        <Map google={this.props.google} zoom={this.props.zoom} mapType={'terrain'} mapTypeControl={false} initialCenter={this.props.center} center={this.props.center} styles={styles} onClick={this.onMapClicked} >
+          {markers}
+          <InfoWindow
+          marker={this.props.activeMarker}
+          visible={this.state.showingInfoWindow}>
+          <div><a href={'/location-detail/' + this.props.selectedProtectedArea.name}>
+              <h1>{this.props.selectedProtectedArea.name}</h1>
+          </a></div>
+        </InfoWindow>
+      </Map>
+    </div>
+    )
 }
 }
 

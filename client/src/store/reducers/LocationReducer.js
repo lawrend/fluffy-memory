@@ -1,17 +1,14 @@
 const initialState = {
-  selected_location_species: [],
   selectedSt: "None",
-  selectedProtectedArea: [],
+  selectedProtectedArea: {},
   selectedStLocations: [],
-  selectedStSpecies: [],
   locations: [],
   stnames: [],
+  loading: true,
 };
 
 export default function manageLocation (state = initialState, action) {
   switch (action.type) {
-    // case 'SET_SELECTED_LOCATION_SPECIES':
-    //   return {...state, selected_location_species: action.payload}
     case 'SET_STNAMES':
       return {...state, stnames: action.payload}
     case 'SET_SELECTED_ST':
@@ -21,7 +18,7 @@ export default function manageLocation (state = initialState, action) {
     case 'SET_SELECTED_ST_LOCATIONS':
       return {...state, selectedStLocations: action.payload}
     case 'SET_LOCATIONS':
-      return {...state, locations: action.payload}
+      return {...state, locations: action.payload, loading: false}
     case 'SET_SELECTED_PROTECTED_AREA':
       return {...state, selectedProtectedArea: action.payload}
     default:
