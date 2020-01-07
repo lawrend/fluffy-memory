@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { InfoWindow, Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { MAPS_KEY } from '../config.js';
-import Waiter from '../components/Loader.js';
 import cromlech from '../resources/cromlech.png';
 
 export class MapsContainer extends Component {
@@ -10,9 +9,12 @@ export class MapsContainer extends Component {
     super(props);
 
     this.state = {
-      activeMarker: {},
       showingInfoWindow: false,
     }
+  }
+
+  componentDidMount() {
+    this.props.setMarkers(markers)
   }
 
   //   this.setState({
@@ -23,20 +25,28 @@ export class MapsContainer extends Component {
   // };
 
   onMarkerHover = (props, marker, e) => {
+    if(props.name !== this.props.selectedProtectedArea.name) {
+      this.props.setSelectedProtectedArea({name: props.name, id: props.id })
+      this.props.setActiveMarker(marker)
+    }
+    if (!this.state.showingInfoWindow) {
+      this.props.setActiveMarker(marker)
+      this.setState({
+        showingInfoWindow: true,
+      })
+    };
+  }
+
+  onMarkerClick = (props, marker, e) => {
     this.props.setSelectedProtectedArea({name: props.name, id: props.id })
     this.props.setActiveMarker(marker)
-    this.setState({
-      activeMarker: marker,
-      showingInfoWindow: true,
-    })
-  };
+  }
 
   onMapClicked = (props) => {
     this.props.setActiveMarker(null)
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
-        activeMarker: null,
       });
     }
   }
@@ -44,8 +54,8 @@ export class MapsContainer extends Component {
   render () {
     const icon_url = {url: cromlech, scaledSize: new this.props.google.maps.Size(34, 34)};
 
-    let markers = this.props.locations.map(l=> { return <Marker icon={icon_url} onMouseover={this.onMarkerHover} position={{lat: l.lat, lng: l.long}} title={l.loc} name={l.loc} key={l.id} >
-        </Marker>})
+    let markers = this.props.locations.map(l=> { return <Marker icon={icon_url} onClick={this.onMarkerClick} onMouseover={this.onMarkerHover} position={{lat: l.lat, lng: l.long}} name={l.loc} key={l.id} >
+      </Marker>})
 
     //map styles
     const styles =

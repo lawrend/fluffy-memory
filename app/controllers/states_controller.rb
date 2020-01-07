@@ -32,10 +32,13 @@ class StatesController < ApiController
     render json: @protected_areas
   end
 
+  # add_lat_lng is in ApiHelper
   def add_cords_to_st_locations
     @state_locs = @state.locations
     @state_locs.each do |pa|
-      add_lat_lng(pa)
+      if pa.lat === nil
+        add_lat_lng(pa)
+      end
     end
     render json: @state_locs
   end
