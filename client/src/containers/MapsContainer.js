@@ -13,9 +13,9 @@ export class MapsContainer extends Component {
     }
   }
 
-  componentDidMount() {
-    this.props.setMarkers(markers)
-  }
+  // componentDidMount() {
+    // this.props.setMarkers(markers)
+  // }
 
   //   this.setState({
   //     activeMarker: marker,

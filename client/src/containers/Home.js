@@ -60,7 +60,7 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, ownProps) => ({
   selectedStLocations: state.locations.selectedStLocations,
   selectedProtectedArea: state.locations.selectedProtectedArea,
   zoom: state.maps.zoom,
