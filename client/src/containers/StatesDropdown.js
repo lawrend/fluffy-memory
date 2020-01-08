@@ -5,6 +5,7 @@ import { getSelectedStLocationsMarkers } from '../store/actions/maps/setMarkers.
 import { getSelectedStLocations } from '../store/actions/locations/setSelectedLocation.js';
 import { setSelectedProtectedArea } from '../store/actions/locations/setSelectedProtectedArea.js'
 import { setSelectedStMap } from '../store/actions/maps/getMap.js'
+import { toggleInfoWindow } from '../store/actions/maps/toggleInfoWindow.js'
 
 
 class StatesDropdown extends Component {
@@ -17,15 +18,23 @@ class StatesDropdown extends Component {
 
     this.handleLocationChange = this.handleLocationChange.bind(this);
     this.handleOnClick = this.handleOnClick.bind(this);
-    this.handleMouseover = this.handleMouseover.bind(this);
+    this.handleMouseenter = this.handleMouseenter.bind(this);
+    this.handleMouseleave = this.handleMouseleave.bind(this);
   }
 
   handleOnClick(e, value) {
-    this.props.protectedAreaSelector(value);
+    this.props.protectedAreaSelector({name: e.target.getAttribute('name'), lat: e.target.getAttribute('lat'), lng: e.target.getAttribute('lng')});
+    this.props.toggleInfoWindow(true);
   }
 
-  handleMouseover() {
-    console.log("moused over the list item");
+  handleMouseenter(e, value) {
+    this.props.protectedAreaSelector({name: e.target.getAttribute('name'), lat: e.target.getAttribute('lat'), lng: e.target.getAttribute('lng')});
+    this.props.toggleInfoWindow(true);
+  }
+
+  handleMouseleave(e, value) {
+    this.props.protectedAreaSelector({name: undefined, lat: undefined, lng: undefined});
+    this.props.toggleInfoWindow(false);
   }
 
   handleLocationChange (e, {value}) {
@@ -34,6 +43,7 @@ class StatesDropdown extends Component {
       this.props.getSelectedStLocations(value)
       this.props.setSelectedStMap(value)
       this.props.markerMaker(value)
+      this.props.toggleInfoWindow(false)
     } else {
       this.props.getSelectedStLocations(null)
       console.log("handle location change tripped on dropdown with null or empty")
@@ -43,18 +53,20 @@ class StatesDropdown extends Component {
 
   render() {
     let places = this.props.selectedStLocations.map(l =>
-      <div key={l.id}>
-          <List.Icon className={"hover-list-icon"} name="leaf" />
-        <div onMouseEnter={this.handleMouseover}>
-          <List.Item
+      <div key={l.id} className={"hover-list-things"}>
+        <List.Icon name="leaf" />
+        <div onMouseEnter={this.handleMouseenter} onMouseLeave={this.handleMouseleave}>
+          <List.Item as='a' href={'/location-detail/' + this.props.selectedProtectedArea.name}
           content={l.loc}
           name={l.loc}
           key={l.id}
           id={l.id}
-          onClick={this.handleOnClick}
-          />
-        </div>
-      </div>)
+          lat={l.lat}
+          lng={l.long}
+          className={"hover-list-item"}
+        />
+          </div>
+          </div>)
 
     return (
       <div>
@@ -96,6 +108,9 @@ const mapDispatchToProps = dispatch => ({
   },
   setSelectedStMap(st) {
     dispatch(setSelectedStMap(st))
+  },
+  toggleInfoWindow(val) {
+    dispatch(toggleInfoWindow(val))
   },
 })
 

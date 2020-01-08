@@ -39,18 +39,35 @@ body {
   visibility: hidden;
 }
 
+.area-name-info-window div a h1{
+  color: orange !important;
+}
+
+/* #rgot > div > div > div.maps.homepage > div:nth-child(1) > div:nth-child(1) > div > div > div > div > div:nth-child(1) > div:nth-child(3) > div > div:nth-child(4) > div > div > div > div { */
+/*   background: rgb(134, 152, 133, .3) !important; */
+/* } */
 .hover-list-icon {
-  color: orange;
+  color: green;
 }
 .hover-list-icon:hover {
-  color: green;
+  color: orange;
 }
 
 .hover-list-item {
-  color: blue;
+  color: green !important;
 }
-.hover-list-item[id^=id] {
-  color: orange;
+
+.hover-list-item:hover {
+  color: orange !important;
+}
+
+.hover-list-things:hover {
+  color: orange !important;
+  cursor: default;
+}
+
+.hover-list-things {
+  color: green !important;
 }
 
 code {
