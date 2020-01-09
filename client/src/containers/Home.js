@@ -4,6 +4,7 @@ import MapsContainer from '../containers/MapsContainer';
 import { setSelectedProtectedArea } from '../store/actions/locations/setSelectedProtectedArea.js';
 import { setMapCenter, setMapZoom } from '../store/actions/maps/getMap.js'
 import { toggleInfoWindow } from '../store/actions/maps/toggleInfoWindow.js'
+import { setMarkersLoadingValue } from '../store/actions/maps/setMarkersLoadingValue.js'
 import { getStNames } from '../store/actions/locations/getLocations.js';
 import { setSelectedSt, getSelectedStLocations } from '../store/actions/locations/setSelectedLocation.js';
 import { connect } from 'react-redux';
@@ -44,12 +45,12 @@ class Home extends Component {
           <MapsContainer
           zoom={this.props.zoom}
           center={this.props.center}
-          locations={this.props.selectedStLocations}
+          selectedStLocations={this.props.selectedStLocations}
           selectedProtectedArea={this.props.selectedProtectedArea}
           setSelectedProtectedArea={this.props.protectedAreaSelector}
           showingInfoWindow={this.props.showingInfoWindow}
           toggleInfoWindow={this.props.toggleInfoWindow}
-          setMarkers={this.props.setMarkers}
+          setMarkersLoadingValue={this.props.setMarkersLoadingValue}
         />
             <Divider />
           </div>
@@ -63,7 +64,6 @@ const mapStateToProps = (state) => ({
   selectedProtectedArea: state.locations.selectedProtectedArea,
   zoom: state.maps.zoom,
   center: state.maps.center,
-  // activeMarker: state.maps.activeMarker,
   showingInfoWindow: state.maps.showingInfoWindow,
 })
 
@@ -88,6 +88,9 @@ const mapDispatchToProps = dispatch => ({
   },
   toggleInfoWindow(val) {
     return dispatch(toggleInfoWindow(val))
+  },
+  setMarkersLoadingValue(val) {
+    return dispatch(setMarkersLoadingValue(val))
   },
 })
 

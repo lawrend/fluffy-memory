@@ -7,52 +7,54 @@ export class MapsContainer extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
-      showingInfoWindow: false,
+      markersDone: false,
+      // showingInfoWindow: false,
     }
   }
-
-  // componentDidMount() {
-  // this.props.setMarkers(markers)
-  // }
-
-  //   this.setState({
-  //     activeMarker: marker,
-  //     showingInfoWindow: true,
-  //     // selectedPlace: props,
-  //   })
-  // };
 
   onMarkerHover = (props, marker, e) => {
     if(marker.name !== this.props.selectedProtectedArea.name) {
       this.props.setSelectedProtectedArea({name: props.name, id: props.id, lat: marker.lat, lng: marker.lng})
     }
-    // this.props.setActiveMarker(marker)
-
     if (!this.props.showingInfoWindow) {
       this.props.toggleInfoWindow(true);
-      // this.props.setActiveMarker(marker)
     };
   }
 
   onMarkerClick = (props, marker, e) => {
     this.props.setSelectedProtectedArea({ name: props.name, id: props.id })
-    // this.props.setActiveMarker(marker)
   }
 
   onMapClicked = (props) => {
-    // this.props.setActiveMarker(null)
     if (this.props.showingInfoWindow) {
-        this.props.toggleInfoWindow(false)
+      this.props.toggleInfoWindow(false)
     }
   }
 
+  componentDidUpdate= () => {
+    if(
+      (this.props.selectedStLocations.length > 0)
+      &&
+      (
+        (this.props.selectedStLocations[this.props.selectedStLocations.length -1].lat === null)
+        ||
+        (this.props.selectedStLocations[this.props.selectedStLocations.length -1].lat === undefined))
+    )
+    {
+      this.props.setMarkersLoadingValue(true)
+    } else {
+      this.props.setMarkersLoadingValue(false)
+    }
+
+  }
+
   render () {
+    console.log("sel st locs ", this.props.selectedStLocations)
     console.log("showing info window ", this.props.showingInfoWindow)
     const icon_url = {url: cromlech, scaledSize: new this.props.google.maps.Size(34, 34)};
 
-    let markers = this.props.locations.map(l=> { return <Marker icon={icon_url} onClick={this.onMarkerClick} onMouseover={this.onMarkerHover} lat={l.lat} lng={l.long} position={{lat: l.lat, lng: l.long}} name={l.loc} key={l.id} >
+    let markers = this.props.selectedStLocations.map(l=> { return <Marker icon={icon_url} onClick={this.onMarkerClick} onMouseover={this.onMarkerHover} lat={l.lat} lng={l.long} position={{lat: l.lat, lng: l.long}} name={l.loc} key={l.id} >
       </Marker>})
 
     //map styles
@@ -92,7 +94,6 @@ export class MapsContainer extends Component {
         {featureType: 'water',
           stylers: [
             {'color': '#6F7661'}
-            // {'color': '#00AAF3'}
           ]
         },
       ]
@@ -101,18 +102,18 @@ export class MapsContainer extends Component {
       <div>
         <Map google={this.props.google} zoom={this.props.zoom} mapType={'terrain'} mapTypeControl={false} initialCenter={this.props.center} center={this.props.center} styles={styles} onClick={this.onMapClicked} >
           {markers}
-          <InfoWindow
-          visible={this.props.showingInfoWindow}
-          position={{lat: this.props.selectedProtectedArea.lat, lng: this.props.selectedProtectedArea.lng}}>
+            <InfoWindow
+            visible={this.props.showingInfoWindow}
+            position={{lat: this.props.selectedProtectedArea.lat, lng: this.props.selectedProtectedArea.lng}}>
 
-          <span className={"area-name-info-window"}>
-          <div><a href={'/location-detail/' + this.props.selectedProtectedArea.name}>
-              <h1>{this.props.selectedProtectedArea.name}</h1>
-          </a></div>
-      </span></InfoWindow>
-      </Map>
-    </div>
-    )
+            <span className={"area-name-info-window"}>
+              <div><a href={'/location-detail/' + this.props.selectedProtectedArea.name}>
+                  <h1>{this.props.selectedProtectedArea.name}</h1>
+              </a></div>
+          </span></InfoWindow>
+        </Map>
+      </div>
+      )
 }
 }
 

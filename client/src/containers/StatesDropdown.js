@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { List, Divider, Dropdown } from 'semantic-ui-react';
+import Waiter from '../components/Loader.js';
 import { connect } from 'react-redux';
 import { getSelectedStLocationsMarkers } from '../store/actions/maps/setMarkers.js';
 import { getSelectedStLocations } from '../store/actions/locations/setSelectedLocation.js';
@@ -16,15 +17,13 @@ class StatesDropdown extends Component {
       isActive: false,
     };
 
-    this.handleLocationChange = this.handleLocationChange.bind(this);
-    this.handleOnClick = this.handleOnClick.bind(this);
+    //can auto bind by form of function
+    //func = () => stuff func does;
+    //above form auto binds the this
+    //cannot do this with functions that call two others
+    this.handleStateSelection = this.handleStateSelection.bind(this);
     this.handleMouseenter = this.handleMouseenter.bind(this);
     this.handleMouseleave = this.handleMouseleave.bind(this);
-  }
-
-  handleOnClick(e, value) {
-    this.props.protectedAreaSelector({name: e.target.getAttribute('name'), lat: e.target.getAttribute('lat'), lng: e.target.getAttribute('lng')});
-    this.props.toggleInfoWindow(true);
   }
 
   handleMouseenter(e, value) {
@@ -33,11 +32,11 @@ class StatesDropdown extends Component {
   }
 
   handleMouseleave(e, value) {
-    this.props.protectedAreaSelector({name: undefined, lat: undefined, lng: undefined});
-    this.props.toggleInfoWindow(false);
+      this.props.protectedAreaSelector({name: undefined, lat: undefined, lng: undefined});
+      this.props.toggleInfoWindow(false);
   }
 
-  handleLocationChange (e, {value}) {
+  handleStateSelection (e, {value}) {
     if (value !== null && value !== "") {
       console.log("handle location changed tripped with value of: ", value)
       this.props.getSelectedStLocations(value)
@@ -67,11 +66,30 @@ class StatesDropdown extends Component {
         />
           </div>
           </div>)
+    if(this.props.markersLoading) return (
+  <div>
+        <Dropdown
+        onChange={this.handleStateSelection}
+        placeholder="Select State"
+        fluid
+        scrolling
+        clearable
+        options={this.props.stnames}
+      />
+          <Divider />
+          <List >
+            <List.Content>
+            <Waiter />
+            </List.Content>
+          </List>
+        </div>
 
+
+    );
     return (
       <div>
         <Dropdown
-        onChange={this.handleLocationChange}
+        onChange={this.handleStateSelection}
         placeholder="Select State"
         fluid
         scrolling
@@ -94,6 +112,7 @@ const mapStateToProps = state => ({
   selectedStLocations: state.locations.selectedStLocations,
   selectedProtectedArea: state.locations.selectedProtectedArea,
   stnames: state.locations.stnames,
+  markersLoading: state.maps.markersLoading,
 })
 
 const mapDispatchToProps = dispatch => ({

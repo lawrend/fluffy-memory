@@ -10,6 +10,7 @@ export default class LeftSideMenu extends Component {
     }
   }
 
+  //auto binds the this
   handleItemClick = (e) => this.props.resetMap()
 
   render() {
