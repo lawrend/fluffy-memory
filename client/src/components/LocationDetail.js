@@ -30,23 +30,24 @@ class LocationDetail extends Component {
   render() {
     if (this.props.loading) return <Waiter />;
 
-    let species = this.props.selectedLocationSpecies.map(s => <SpeciesItem name={s.name} id={s.id} desc={s.desc} status={s.status} imgsrc={s.imgsrc} /> )
+    let species = this.props.selectedLocationSpecies.map(s => <SpeciesItem name={s.name} id={s.id} desc={s.desc} status={s.status} imgsrc={s.imgsrc} key={s.id}/> )
     return(
       <div>
-        <div>
+      <div>
         <h1 className={'location-name'}>
           {this.placeName}
         </h1>
-        <h2>{this.stName}</h2>
       </div>
-        <Card.Group centered>
-          {species}
-        </Card.Group>
-        <a href='/home'><div className={'home-link'}>Home</div></a>
-      </div>
-      )
+
+      <Card.Group centered>
+        {species}
+      </Card.Group>
+      <a href='/home'><div className={'home-link'}>Home</div></a>
+    </div>
+    )
 
 }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LocationDetail);
+

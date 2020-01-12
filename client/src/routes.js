@@ -14,7 +14,7 @@ class Routes extends Component {
         <Route exact path="/" component={Blackness} />
         <Route path="/home" component={Home} />
         <Route path="/location-detail/:name" component={LocationDetail} />
-        <Route path="/species/locations/:id" component={LocationListingsContainer} />
+        <Route path="/species/locations/:id/:speciesName" component={LocationListingsContainer} />
         <Route component={ErrorRoute} />
       </Switch>
         )

@@ -15,9 +15,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 class Blackness extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   componentDidMount () {
     this.props.locationGetter()

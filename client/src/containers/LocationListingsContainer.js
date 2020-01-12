@@ -17,6 +17,7 @@ class LocationListingsContainer extends Component {
   constructor(props) {
     super(props)
     this.speciesId = this.props.match.params.id;
+    this.speciesName = this.props.match.params.speciesName;
   }
 
   componentDidMount() {
@@ -26,10 +27,10 @@ class LocationListingsContainer extends Component {
   render() {
     console.log("species locations: " + this.props.species_locations)
     let species_locations =
-  this.props.species_locations.map(l => <LocationListing name={l.loc} id={l.id} st={l.st} />)
+  this.props.species_locations.map(l => <LocationListing name={l.loc} id={l.id} key={l.id} st={l.st} />)
     return(
       <div>
-        <h2>Locations</h2>
+        <h2 className={'species-name'}>Areas That Protect the {this.speciesName}</h2>
         {species_locations}
       </div>
     )
