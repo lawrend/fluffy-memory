@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import BrowserHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 import App from './App';
 import store from './store/index.js'
 import 'semantic-ui-css/semantic.css';
@@ -13,7 +13,7 @@ import './css/index.css';
 // commenting out for activeadmin
 // import * as serviceWorker from './serviceWorker';
 
-const history = BrowserHistory();
+const history = createBrowserHistory();
 
 ReactDOM.render(
 
@@ -26,4 +26,4 @@ ReactDOM.render(
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.register();
+serviceWorker.unregister();

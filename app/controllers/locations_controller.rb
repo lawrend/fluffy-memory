@@ -7,6 +7,7 @@ class LocationsController < ApiController
   # either get all the species/locations records or make them
   def index
     if Location.all.count < 2
+      # get_enigma_dataset is a class method from the enigma concern
       @new_locations = Location.get_enigma_dataset("f2778fbc-47fd-45e3-a01a-936040650096")
       @rows = @new_locations['table_rows']['rows']
       @names = @rows.collect {|r| r[1,5]}
