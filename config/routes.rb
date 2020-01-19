@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-
-  scope '/api' do
+scope '/api' do
     resources :species, :locations,
       :species_locations
   end
@@ -24,3 +23,4 @@ Rails.application.routes.draw do
     !request.xhr? && request.format.html?
   end
 end
+
